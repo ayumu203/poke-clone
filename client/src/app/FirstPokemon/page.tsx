@@ -14,11 +14,12 @@ import { send_first_pokemon } from '../../../libs/sendFirstPokemon';
 import { Move } from '../../../types/Move';
 import { useMoveContext } from '../../../contexts/moveContext';
 import { fetch_team_pokemon } from '../../../libs/fetchTeamPokemons';
+import { fetch_team_move } from '../../../libs/fetchTeamMove';
 
 
 export default function Home() {
     const { user } = useUser();
-    const { addPokemon } = useTeamPokemonContext();
+    const { pokemons,addPokemon,removePokemon } = useTeamPokemonContext();
     const { addMove } = useMoveContext();
     const [ firstPokemonOption,setFirstPokemonOption ] = useState<Pokemon[] | null>(null);
     const [ selectName,setSelectName ] = useState<string|null>(null);
@@ -29,9 +30,25 @@ export default function Home() {
         if(user){
             const findFirstPokemon = async() => {
                 const data = await fetch_player(user.id);
+                // ポケモンを所持している場合は手持ちのデータをロードして、ホーム画面へ遷移する
                 if(data.first_pokemon === "exist"){
-                    const pokemons = await fetch_team_pokemon(user.id);
-                    addPokemon(...[pokemons]);
+                    const pks:Pokemon[] = await fetch_team_pokemon(user.id);
+                    for(let i = 0; i < pks.length; i++){
+                        await addPokemon(pks[i]);
+                    }
+                    for(let i = 0; i < pokemons.length; i++){
+                        for(let j = 0; j < pokemons.length; j++){
+                            if(pokemons[i].pokemon_id === pokemons[j].pokemon_id){
+                                await removePokemon(j);
+                            }
+                        }
+                    }
+                    const moves = await fetch_team_move(user.id);
+                    for(let i = 0; i < moves.length; i++){
+                        for(let j = 0; j < moves[i].length; j++){
+                            await addMove(moves[i][j]);
+                        }
+                    }
                     router.push("/");
                 }
                 const result:Pokemon[] = await fetch_first_option();
@@ -58,15 +75,16 @@ export default function Home() {
             pokemon.index = 1;
             pokemon.level = 1;
             pokemon.exp = 0;
-            addPokemon(pokemon);
+            if(pokemons.length === 0)addPokemon(pokemon);
         }
 
         if(firstPokemonOption && selectIndex !== -1){
             const pokemon:Pokemon = firstPokemonOption[selectIndex];
             const mvs:Move[] = await send_first_pokemon(String(user?.id),Number(selectId),pokemon.move1_id,pokemon.move2_id);
-            addFirstPokemon(pokemon);
-            addMove(mvs[0]);
-            addMove(mvs[1]);
+            await addFirstPokemon(pokemon);
+            for(let i = 0; i < mvs.length; i++){
+                await addMove(mvs[i]);
+            }
             router.push('/');
         }
     }

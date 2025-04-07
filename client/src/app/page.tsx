@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -6,9 +6,11 @@ import { useUser } from "../../contexts/userContext";
 import { supabase } from "../../libs/supabase";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
+import { useTeamPokemonContext } from "../../contexts/teamContext";
 
 export default function Home() {
   const { user } = useUser();
+  const { pokemons,removePokemon } = useTeamPokemonContext();
   const router = useRouter();
 
   const handlePageMove = (to:string) => {
@@ -19,8 +21,28 @@ export default function Home() {
     if (!user) {
       router.push("/Login");
     }
-  }, [user]);
 
+    const seenPokemonIds = new Set();
+    const duplicateIndices = [];
+  
+    // まず、すべての重複を特定する
+    for (let i = 0; i < pokemons.length; i++) {
+      const pokemonId = pokemons[i].pokemon_id;
+      if (seenPokemonIds.has(pokemonId)) {
+        duplicateIndices.push(i);
+      } else {
+        seenPokemonIds.add(pokemonId);
+      }
+    }
+
+    // 次に、配列の末尾から順に重複を削除する
+    // これにより、まだ処理していないアイテムのインデックスがずれません
+    for (let i = duplicateIndices.length - 1; i >= 0; i--) {
+      removePokemon(duplicateIndices[i]);
+    }
+  
+
+  }, [user]);
   if (!user) return (<>Now loading...</>); // ログインしてない場合は一旦何も表示しない
   return (
     <div className="h-[100vh] bg-cyan-50">

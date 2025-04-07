@@ -11,6 +11,7 @@ const makeClientPokemon = async(teamPokemon:Team_pokemon,pokemon:Pokemon,move1:M
     index:teamPokemon?.pokemon_index,
     name:pokemon?.name,
     type:pokemon?.type,
+    level:teamPokemon?.level,
     front_image:pokemon?.front_image,
     back_image:pokemon?.back_image,
     base_hp:pokemon?.base_hp,
@@ -21,12 +22,13 @@ const makeClientPokemon = async(teamPokemon:Team_pokemon,pokemon:Pokemon,move1:M
     base_speed:pokemon?.base_speed,
     move1_id:pokemon?.move1_id,
     move2_id:pokemon?.move2_id,
-    is_evolve:pokemon?.is_evolve
+    is_evolve:pokemon?.is_evolve,
+    exp:teamPokemon?.exp
     }
     return data;
 }
 
-export const handle_make_clientPokemon = async(player_id:string,count:number) => {
+export const handle_make_client_pokemon = async(player_id:string,count:number) => {
 const p = [];
 for(let i = 0; i < count; i++){
     const teamPokemon:Team_pokemon = await team_pokemon_getter(player_id,1);
