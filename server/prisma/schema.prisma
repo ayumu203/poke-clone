@@ -1,0 +1,60 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model player {
+  player_id String @unique
+  name      String @db.VarChar(10)
+}
+
+model team_pokemon {
+  player_id     String
+  pokemon_index Int
+  pokemon_id    Int
+  level         Int
+  exp           Int
+
+  @@unique([player_id, pokemon_index], name: "pokemon_identifier")
+}
+
+model pokemon {
+  pokemon_id           Int     @id @unique
+  name                 String  @db.VarChar(10)
+  base_hp              Int
+  base_attack          Int
+  base_defence         Int
+  base_special_attack  Int
+  base_special_defence Int
+  base_speed           Int
+  back_image           String
+  front_image          String
+  is_evolve            Boolean
+  move1_id             Int
+  move2_id             Int
+  type                 String  @db.VarChar(10)
+}
+
+model Move {
+  name           String  @db.VarChar(10)
+  type           String  @db.VarChar(10)
+  description    String
+  power          Int
+  accuracy       Int
+  pp             Int
+  status_effect  Boolean
+  status_name    String
+  status_rank    Int
+  ailment_effect Boolean
+  ailment_name   String
+  healing_effect Boolean
+  healing_amount Int
+  priority       Int
+  ailment_chance Int
+  move_id        Int     @id @unique
+}

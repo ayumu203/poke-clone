@@ -1,0 +1,50 @@
+[
+  {
+    "pokemon_id": 494,
+    "name": "ビクティニ",
+    "type": "psychic",
+    "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/494.gif",
+    "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/494.gif",
+    "base_hp": 100,
+    "base_attack": 100,
+    "base_defence": 100,
+    "base_special_attack": 100,
+    "base_special_defence": 100,
+    "base_speed": 100,
+    "move1_id": 1,
+    "move2_id": 2,
+    "is_evolve": true
+  },
+  {
+    "pokemon_id": 495,
+    "name": "ツタージャ",
+    "type": "grass",
+    "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/495.gif",
+    "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/495.gif",
+    "base_hp": 45,
+    "base_attack": 45,
+    "base_defence": 55,
+    "base_special_attack": 45,
+    "base_special_defence": 55,
+    "base_speed": 63,
+    "move1_id": 1,
+    "move2_id": 2,
+    "is_evolve": true
+  },
+  {
+    "pokemon_id": 501,
+    "name": "ミジュマル",
+    "type": "water",
+    "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/501.gif",
+    "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/501.gif",
+    "base_hp": 55,
+    "base_attack": 55,
+    "base_defence": 45,
+    "base_special_attack": 63,
+    "base_special_defence": 45,
+    "base_speed": 45,
+    "move1_id": 1,
+    "move2_id": 2,
+    "is_evolve": true
+  }
+]    
