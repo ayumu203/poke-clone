@@ -15,4 +15,4 @@ export type Move = {
     ailment_chance:number,
     healing_effect:boolean,
     healing_amount:number
-}
+} | null;

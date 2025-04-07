@@ -13,4 +13,4 @@ export type Pokemon = {
     move1_id:number,
     move2_id:number,
     is_evolve:Boolean
-};
+} | null;

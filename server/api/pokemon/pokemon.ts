@@ -3,7 +3,7 @@ import { Pokemon } from "../../types/pokemon.types";
 
 const prisma = new PrismaClient();
 
-export async function fetch_pokemon(pokemon_id:number):Promise<Pokemon | null> {
+export async function pokemon_getter(pokemon_id:number):Promise<Pokemon> {
     const data = await prisma.pokemon.findFirst({ where: {pokemon_id} });
     if(data){
         const pokemon:Pokemon = {

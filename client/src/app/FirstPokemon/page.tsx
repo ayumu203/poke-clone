@@ -11,11 +11,15 @@ import { fetch_player } from '../../../libs/fetchPlayer';
 import { fetch_first_option } from '../../../libs/fetchFirstPokemon';
 import { Pokemon } from '../../../types/Pokemon';
 import { send_first_pokemon } from '../../../libs/sendFirstPokemon';
+import { Move } from '../../../types/Move';
+import { useMoveContext } from '../../../contexts/moveContext';
+import { fetch_team_pokemon } from '../../../libs/fetchTeamPokemons';
 
 
 export default function Home() {
     const { user } = useUser();
     const { addPokemon } = useTeamPokemonContext();
+    const { addMove } = useMoveContext();
     const [ firstPokemonOption,setFirstPokemonOption ] = useState<Pokemon[] | null>(null);
     const [ selectName,setSelectName ] = useState<string|null>(null);
     const [ selectId,setSelectId ] = useState<number|null>(null);
@@ -24,9 +28,12 @@ export default function Home() {
     useEffect(()=>{
         if(user){
             const findFirstPokemon = async() => {
-                // data = { player , pokemon:string }
                 const data = await fetch_player(user.id);
-                if(data.first_pokemon === "exist")router.push("/");
+                if(data.first_pokemon === "exist"){
+                    const pokemons = await fetch_team_pokemon(user.id);
+                    addPokemon(...[pokemons]);
+                    router.push("/");
+                }
                 const result:Pokemon[] = await fetch_first_option();
                 setFirstPokemonOption(result);
             }
@@ -47,11 +54,19 @@ export default function Home() {
         }
     }
     const handleDetermination = async() =>{
+        function addFirstPokemon(pokemon:Pokemon){
+            pokemon.index = 1;
+            pokemon.level = 1;
+            pokemon.exp = 0;
+            addPokemon(pokemon);
+        }
+
         if(firstPokemonOption && selectIndex !== -1){
             const pokemon:Pokemon = firstPokemonOption[selectIndex];
-            console.log(pokemon);
-            addPokemon(pokemon);
-            await send_first_pokemon(String(user?.id),Number(selectId));
+            const mvs:Move[] = await send_first_pokemon(String(user?.id),Number(selectId),pokemon.move1_id,pokemon.move2_id);
+            addFirstPokemon(pokemon);
+            addMove(mvs[0]);
+            addMove(mvs[1]);
             router.push('/');
         }
     }

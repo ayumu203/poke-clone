@@ -1,11 +1,15 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import type { Express, Request, Response } from 'express';
-import { player_exist, player_getter, player_register } from './api/playerdata/dataHandler';
+import type { Request, Response } from 'express';
+import { player_exist, player_getter, player_register } from './api/playerdata/playerHandler';
 import { team_pokemon_exist, team_pokemon_getter, team_pokemon_register } from './api/teamPokemon/teamPokemonHandler';
-import { fetch_pokemon } from './api/pokemon/pokemon';
+import { pokemon_getter } from './api/pokemon/pokemon';
 import { Player } from './types/player.type';
 import { Pokemon } from './types/pokemon.types';
+import { move_getter } from './api/move/move';
+import { Move } from './types/move.type';
+import { Team_pokemon } from './types/team_pokemon.type';
+import { handle_make_clientPokemon } from './api/client/makeClientPokemon';
 const cors = require('cors');
 const app = express();
 
@@ -24,7 +28,8 @@ app.get("/", async(request:Request, response:Response) => {
   response.status(200).send("This is the end point"); 
 }); 
 
-// ログイン処理ユーザ認証・戦闘ポケモンの確認まで
+// ログイン処理後プレイヤーデータをデータベース所に作成する
+// ポケモンを所持しているかどうかをexist・noneで返す
 app.post("/data/player", async(req:Request,res:Response) =>{
   try {
     const player_id = req.body.id;
@@ -33,9 +38,9 @@ app.post("/data/player", async(req:Request,res:Response) =>{
     if(!result){
       await player_register(player_id,"トレーナー君");
     }
-    const player:Player|null = await player_getter(player_id);
+    const player:Player = await player_getter(player_id);
     
-    // パーティ戦闘のポケモンが存在する場合はexist、存在しない場合はnoneを返す.
+    // ポケモンを所持している場合はexist、存在しない場合はnoneを返す.
     const exist = await team_pokemon_exist(player_id,1);
     if(!exist){
       res.status(200).send({player:player,first_pokemon:"none"});
@@ -46,25 +51,68 @@ app.post("/data/player", async(req:Request,res:Response) =>{
   }
 });
 
-// 最初のポケモンの選択肢を表示
-app.post("/first-pokemon-option",async(req:Request,res:Response) =>{
-  const data = require('./data/firstPokemonOption.json');
-  res.status(200).json(data)
+// ログイン後所持しているポケモンがいる場合は、クライアントサイドのPokemon型に対応したデータを渡す
+app.post("/data/team-pokemon",async(req:Request,res:Response) => {
+  const player_id = req.body.id;
+  try{
+    // 2匹目のフラグなのでflag2
+    const flag2:Boolean = await team_pokemon_exist(player_id,2);
+    const flag3:Boolean = await team_pokemon_exist(player_id,3);
+  
+    if(!flag2){
+      const data = await handle_make_clientPokemon(player_id,1);
+      res.status(200).send(data);
+    }
+    else if(flag2 && !flag3){
+      const data = await handle_make_clientPokemon(player_id,2);
+      res.status(200).send(data);
+    }
+    else if(flag2 && flag3){
+      const data = await handle_make_clientPokemon(player_id,3);
+      res.status(200).send(data);
+    }  
+    else res.status(204).send("データを取得できませんでした.");
+  } catch(error){
+    console.error(error);
+    throw error;
+  }
 });
 
-// 最初のポケモンを選択
+// 最初に選べる3匹のポケモンのデータを返す
+app.post("/first-pokemon-option",async(req:Request,res:Response) =>{
+  const data = require('./data/firstPokemonOption.json');
+  res.status(200).json(data);
+});
+
+// 最初のポケモンを登録後、そのポケモンの技データを返す
 app.post("/first-pokemon-determination",async(req:Request,res:Response)=>{
   const player_id:string = req.body.player_id;
   const pokemon_id:number = Number(req.body.pokemon_id);
+  const move1_id:number = Number(req.body.move1_id);
+  const move2_id:number = Number(req.body.move2_id);
+
+  // ユーザの手持ちにデータを追加
   await team_pokemon_register(player_id,pokemon_id,Number(1));
-  const pokemon = await team_pokemon_getter(player_id,1);
-  res.status(200).send(pokemon);
+
+  const move1:Move = await move_getter(move1_id);
+  const move2:Move = await move_getter(move2_id);
+
+  if(move1 && move2){
+    const data = [
+      {id:move1.move_id,name:move1.name,description:move1.description},
+      {id:move2.move_id,name:move2.name,description:move2.description}
+    ]
+    res.status(200).send(data);
+  }
+  else {
+    res.status(200).send("cannnot get data");
+  }
 });
 
-// ポケモンデータ参照
+// Pokemonテーブルのデータ参照
 app.post("/data/pokemon",async(req:Request,res:Response)=>{
   const pokemon_id = Number(req.body.id);
-  const pokemon:Pokemon|null = await fetch_pokemon(pokemon_id);
+  const pokemon:Pokemon = await pokemon_getter(pokemon_id);
   if(!pokemon)res.status(200).send(null);
   res.status(200).send(pokemon);
 })

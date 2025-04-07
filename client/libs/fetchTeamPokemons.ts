@@ -1,12 +1,12 @@
-export const send_first_pokemon = async(player_id:string,pokemon_id:number,move1_id:number,move2_id:number) =>{
-    const url = `http://localhost:3001/first-pokemon-determination`;
+export const fetch_team_pokemon = async(id:string) =>{
+    const url = `http://localhost:3001/data/team-pokemon`;
     try {
         const response = await fetch(url,{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify({player_id:player_id,pokemon_id:pokemon_id,move1_id,move2_id}),
+            body:JSON.stringify({id:id}),
         });
         if (!response.ok) {
             throw new Error('response error');

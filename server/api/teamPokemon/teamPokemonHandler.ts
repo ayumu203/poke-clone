@@ -1,9 +1,10 @@
-import { team_pokemon, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import { Team_pokemon } from "../../types/team_pokemon.type";
 
 const prisma = new PrismaClient();
 
 // n番目のポケモンを取得
-export async function team_pokemon_getter(player_id:string,index:number):Promise<team_pokemon|null> {
+export async function team_pokemon_getter(player_id:string,index:number):Promise<Team_pokemon> {
     const data = await prisma.team_pokemon.findUnique({where: {
         pokemon_identifier:{
             player_id:player_id,
@@ -11,7 +12,7 @@ export async function team_pokemon_getter(player_id:string,index:number):Promise
         }}  
     });
     if(!data)return null;
-    const pokemon:team_pokemon = {
+    const pokemon:Team_pokemon = {
         player_id:player_id,
         pokemon_index:index,
         pokemon_id:data.pokemon_id,

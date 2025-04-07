@@ -22,7 +22,6 @@ export default function Home() {
   }, [user]);
 
   if (!user) return (<>Now loading...</>); // ログインしてない場合は一旦何も表示しない
-
   return (
     <div className="h-[100vh] bg-cyan-50">
       <header>

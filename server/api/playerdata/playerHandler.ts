@@ -3,7 +3,7 @@ import { Player } from "../../types/player.type";
 
 const prisma = new PrismaClient();
 
-export async function player_getter(player_id:string):Promise<Player|null> {
+export async function player_getter(player_id:string):Promise<Player> {
     const data = await prisma.player.findFirst({where: {player_id} });
     if(!data)return data;
     const player:Player = {

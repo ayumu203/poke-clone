@@ -4,6 +4,7 @@ import "./globals.css";
 import { DotGothic16 } from 'next/font/google'
 import { PlayerProvider } from "../../contexts/playerContext";
 import { TeamPokemonProvider } from "../../contexts/teamContext";
+import { MoveProvider } from "../../contexts/moveContext";
  
 // If loading a variable font, you don't need to specify the font weight
 const inter = DotGothic16({
@@ -27,7 +28,9 @@ export default function RootLayout({
           <UserProvider>
             <PlayerProvider>
               <TeamPokemonProvider>
-                {children}
+                <MoveProvider>
+                  {children}
+                </MoveProvider>
               </TeamPokemonProvider>
             </PlayerProvider>
           </UserProvider>
