@@ -25,6 +25,7 @@ export default function Home() {
     const [ selectName,setSelectName ] = useState<string|null>(null);
     const [ selectId,setSelectId ] = useState<number|null>(null);
     const [ selectIndex,setSelectIndex ] = useState<number>(-1);
+    const router = useRouter();
 
     useEffect(()=>{
         if(user){
@@ -58,6 +59,7 @@ export default function Home() {
         }
     },[user]);
 
+    // ポケモン選択操作
     const handleSelection = (index:number) => {
         if(index === -1){
             setSelectName(null);
@@ -70,6 +72,10 @@ export default function Home() {
             setSelectIndex(index);
         }
     }
+
+    // ポケモンを決定し、データベースへ登録する
+    // また技のデータをここで受け取る
+    // 最後にホーム画面へ遷移する
     const handleDetermination = async() =>{
         function addFirstPokemon(pokemon:Pokemon){
             pokemon.index = 1;
@@ -88,7 +94,6 @@ export default function Home() {
             router.push('/');
         }
     }
-    const router = useRouter();
 
 
     return (

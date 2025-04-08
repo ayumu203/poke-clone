@@ -25,6 +25,7 @@ export default function Home() {
     const seenPokemonIds = new Set();
     const duplicateIndices = [];
   
+    // reactのレンダリングによりポケモンが重複して存在してしまうため削除する操作
     // まず、すべての重複を特定する
     for (let i = 0; i < pokemons.length; i++) {
       const pokemonId = pokemons[i].pokemon_id;
@@ -74,4 +75,3 @@ export default function Home() {
     </div>
   );
 }
-// onClick={()=>supabase.auth.signOut()}
