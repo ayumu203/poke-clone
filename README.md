@@ -37,7 +37,7 @@
 ロジックの改善
 
 #### server
-* makeClientMove.ts,makeCoientPokemon
+* makeClientMove.ts,makeColientPokemon
 なぞのtmpの変数名の変更
 * /masterdata/Move
 Moveのnullのハンドリング
