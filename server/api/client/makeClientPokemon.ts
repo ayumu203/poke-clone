@@ -35,8 +35,8 @@ for(let i = 0; i < count; i++){
     const pokemon:Pokemon = await pokemon_getter(Number(teamPokemon?.pokemon_id));
     const move1:Move = await move_getter(Number(pokemon?.move1_id));    
     const move2:Move = await move_getter(Number(pokemon?.move2_id));    
-    const tmp = await makeClientPokemon(teamPokemon,pokemon,move1,move2);
-    await p.push(tmp);
+    const pkm = await makeClientPokemon(teamPokemon,pokemon,move1,move2);
+    await p.push(pkm);
 }
 return p;
 }
