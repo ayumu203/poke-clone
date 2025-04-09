@@ -22,28 +22,6 @@
     >$ docker exec -it poke-clone-server-1 /bin/bash
     ># npx prisma studio
 
-## 今後の実装
-### リファクタリング
-* 現在特にclientのコードが乱れているためリファクタリングを行いたい.
-
-#### client
-* Header.tsx
-ユーザへのメッセージ部分を変更
-* FirstPokemon/page.tsx
-処理が冗長化・読みづらい
-* Login/page.tsx
-ヘッダー・フッターの追加
-* /page.tsx
-ロジックの改善
-
-#### server
-* makeClientMove.ts,makeClientPokemon
-なぞのtmpの変数名の変更
-* /masterdata/Move
-Moveのnullのハンドリング
-* /move/move.ts
-型に付属した余分なnullの削除
-
 ### ポケモンの技データの登録
 * 現在のシステムではすべてのポケモンにmove_idの1と2が割り当てられている.(はたくとからてチョップだったきがする)
 * そのため各ポケモンに割り当てる技データとpokemon_idをおよび理解のためpokemonのnameを記述したJSONファイルを自動生成できるようにする.
@@ -70,3 +48,25 @@ Moveのnullのハンドリング
     ]
 }
 ``` 
+
+## 今後の実装
+### リファクタリング
+* 現在特にclientのコードが乱れているためリファクタリングを行いたい.
+
+#### client
+* Header.tsx
+ユーザへのメッセージ部分を変更
+* FirstPokemon/page.tsx
+処理が冗長化・読みづらい
+* Login/page.tsx
+ヘッダー・フッターの追加
+* /page.tsx
+ロジックの改善
+
+#### server
+* makeClientMove.ts,makeClientPokemon
+なぞのtmpの変数名の変更
+* /masterdata/Move
+Moveのnullのハンドリング
+* /move/move.ts
+型に付属した余分なnullの削除
