@@ -37,13 +37,13 @@ export default function Home() {
                     for(let i = 0; i < pks.length; i++){
                         await addPokemon(pks[i]);
                     }
-                    for(let i = 0; i < pokemons.length; i++){
-                        for(let j = 0; j < pokemons.length; j++){
-                            if(pokemons[i].pokemon_id === pokemons[j].pokemon_id){
-                                await removePokemon(j);
-                            }
-                        }
-                    }
+                    // for(let i = 0; i < pokemons.length; i++){
+                    //     for(let j = 0; j < pokemons.length; j++){
+                    //         if(pokemons[i].pokemon_id === pokemons[j].pokemon_id){
+                    //             await removePokemon(j);
+                    //         }
+                    //     }
+                    // }
                     const moves = await fetch_team_move(user.id);
                     for(let i = 0; i < moves.length; i++){
                         for(let j = 0; j < moves[i].length; j++){
