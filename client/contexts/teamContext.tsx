@@ -7,12 +7,14 @@ type TeamPokemonContextType = {
     pokemons:Pokemon[],
     addPokemon:(pokemon:Pokemon) => void;
     removePokemon:(index:number) => void;
+    clearPokemons:() => void;
 };
 
 const TeamPokemonContext = createContext<TeamPokemonContextType>({
     pokemons:[],
     addPokemon:() => {},
     removePokemon:() => {},
+    clearPokemons:()=> {},
 });
 
 export const TeamPokemonProvider = ({children}:{children:React.ReactNode}) => {
@@ -25,9 +27,12 @@ export const TeamPokemonProvider = ({children}:{children:React.ReactNode}) => {
     const removePokemon = (index:number) => {
         setPokemons(prev => prev.filter((_,i) => i !== index))
     }
+    const clearPokemons = () =>{
+        setPokemons([]);
+    }
 
     return(
-        <TeamPokemonContext.Provider value={{pokemons,addPokemon, removePokemon }}>
+        <TeamPokemonContext.Provider value={{pokemons,addPokemon, removePokemon, clearPokemons }}>
             {children}
         </TeamPokemonContext.Provider>
     )

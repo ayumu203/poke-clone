@@ -6,11 +6,13 @@ import { Move } from "../types/Move";
 type MoveContextType = {
     moves:Move[],
     addMove:(move:Move) => void;
+    clearMoves: () => void;
 };
 
 const MoveContext = createContext<MoveContextType>({
     moves:[],
     addMove:() => {},
+    clearMoves:() => {},
 });
 
 export const MoveProvider = ({children}:{children:React.ReactNode}) => {
@@ -20,8 +22,12 @@ export const MoveProvider = ({children}:{children:React.ReactNode}) => {
         setMoves(prev => [...prev,move]);
     };
 
+    const clearMoves = () => {
+        setMoves([]);
+    }
+
     return(
-        <MoveContext.Provider value={{moves,addMove }}>
+        <MoveContext.Provider value={{ moves, addMove, clearMoves }}>
             {children}
         </MoveContext.Provider>
     )

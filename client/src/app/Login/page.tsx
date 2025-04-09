@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { useUser } from "../../../contexts/userContext";
 import { supabase } from "../../../libs/supabase";
 import Image from "next/image";
+import Header from "../Components/Header/Header";
+import Footer from "../Components/Footer/Footer";
 
 export default function LoginPage() {
   const { user } = useUser();
@@ -20,6 +22,7 @@ export default function LoginPage() {
 
   return (
     <div className="">
+      <Header />
       <div className="justify-items-center mt-10 mb-8">
         <Image width={"200"} height={"50"} src={"/logo/google-brand-color.png"} alt="Google"></Image>
       </div>
@@ -31,6 +34,7 @@ export default function LoginPage() {
           onlyThirdPartyProviders
         />
       </div>
+      <Footer />
     </div>
   );
 }
