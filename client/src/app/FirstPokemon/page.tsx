@@ -66,28 +66,6 @@ export default function Home() {
             }
         };
         initializePlayerAndPokemonData();
-        // if(user){
-        //     const findFirstPokemon = async() => {
-        //         const data = await fetch_player(user.id);
-        //         // ポケモンを所持している場合は手持ちのデータをロードして、ホーム画面へ遷移する
-        //         if(data.first_pokemon === "exist"){
-        //             const pks:Pokemon[] = await fetch_team_pokemon(user.id);
-        //             for(let i = 0; i < pks.length; i++){
-        //                 await addPokemon(pks[i]);
-        //             }
-        //             const moves = await fetch_team_move(user.id);
-        //             for(let i = 0; i < moves.length; i++){
-        //                 for(let j = 0; j < moves[i].length; j++){
-        //                     await addMove(moves[i][j]);
-        //                 }
-        //             }
-        //             router.push("/");
-        //         }
-        //         const result:Pokemon[] = await fetch_first_option();
-        //         setFirstPokemonOption(result);
-        //     }
-        //     findFirstPokemon();
-        // }
     },[player]);
 
     // ポケモン選択操作
@@ -119,7 +97,7 @@ export default function Home() {
             const pokemon:Pokemon = firstPokemonOption[selectIndex];
             const mvs:Move[] = await send_first_pokemon(String(player?.id),Number(selectId),pokemon.move1_id,pokemon.move2_id);
             await addFirstPokemon(pokemon);
-            mvs.map((move) => {addMove(move)});
+            mvs.map(async(move) => {await addMove(move)});
             router.push('/');
         }
     }
