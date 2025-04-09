@@ -97,7 +97,9 @@ export default function Home() {
             const pokemon:Pokemon = firstPokemonOption[selectIndex];
             const mvs:Move[] = await send_first_pokemon(String(player?.id),Number(selectId),pokemon.move1_id,pokemon.move2_id);
             await addFirstPokemon(pokemon);
-            mvs.map(async(move) => {await addMove(move)});
+            for(const move of mvs){
+                addMove(move);
+            }
             router.push('/');
         }
     }

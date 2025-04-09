@@ -32,7 +32,7 @@ export default function Home() {
         }
         return "";
     }
-    console.log(pokemons);
+    console.log(moves);
     return (
     <div>
         <Link　className='text-1000' href={"/"}>もどる</Link>

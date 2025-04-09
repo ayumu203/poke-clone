@@ -10,6 +10,7 @@ import { move_getter } from './api/move/move';
 import { Move } from './types/move.type';
 import { handle_make_client_pokemon } from './api/client/makeClientPokemon';
 import { handle_make_client_move } from './api/client/makeClientMove';
+import { ClientMove } from './types/clientMove.type';
 const cors = require('cors');
 const app = express();
 
@@ -128,9 +129,9 @@ app.post("/first-pokemon-determination",async(req:Request,res:Response)=>{
     const move2:Move = await move_getter(move2_id);
   
     if(move1 && move2){
-      const data = [
-        {id:move1.move_id,name:move1.name,description:move1.description},
-        {id:move2.move_id,name:move2.name,description:move2.description}
+      const data:ClientMove[] = [
+        {move_id:move1.move_id,type:move1.type,name:move1.name,description:move1.description},
+        {move_id:move2.move_id,type:move2.type,name:move2.name,description:move2.description}
       ]
       res.status(200).send(data);
     }
