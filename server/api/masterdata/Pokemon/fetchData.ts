@@ -1,3 +1,4 @@
+import { url } from "inspector";
 import { Pokemon } from "../../../types/pokemon.types";
 
 // 外部APIから必要データを取得するAPI
@@ -29,7 +30,7 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
 };
 
 // 日本語名取得
-const fetchName = async (url: string, headers: HeadersInit): Promise<string> => {
+const fetchName = async (url: string, headers: HeadersInit,pokemon_id:number): Promise<string> => {
     const response = await fetch(url);
     if (!response.ok) {
     throw new Error('response error');
@@ -39,6 +40,18 @@ const fetchName = async (url: string, headers: HeadersInit): Promise<string> => 
     return name;
 };
 
+export const fetchPokemonName = async(pokemon_id:number): Promise<string> =>{
+    const name_url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon_id}`;
+    const headers = {
+    'Content-Type': 'application/json',
+    };
+    const name:string = await fetchName(name_url,headers,pokemon_id);
+    try {
+        return name;
+    }   catch(error){
+        throw error;
+    }
+}
 
 export const fetchPokemonInfo = async(pokemon_id:number): Promise<Pokemon> => {
     const base_status_url = `https://pokeapi.co/api/v2/pokemon/${pokemon_id}`;
@@ -48,12 +61,8 @@ export const fetchPokemonInfo = async(pokemon_id:number): Promise<Pokemon> => {
     };
 
     try{
-        const [name, pokemon] = await Promise.all([
-            fetchName(name_url, headers),
-            fetchBaseStat(base_status_url, headers,pokemon_id)
-        ]);
-    
-        return {...pokemon,name};
+        const pokemon = await fetchBaseStat(base_status_url,headers,pokemon_id);
+        return pokemon;
     } catch(error){
         console.error('Error fetching Pokémon data:', error);
         throw error;

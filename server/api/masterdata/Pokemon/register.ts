@@ -1,6 +1,6 @@
 import {PrismaClient} from "@prisma/client";
 import { Pokemon } from "../../../types/pokemon.types";
-import { fetchPokemonInfo } from "./fetchData";
+import { fetchPokemonInfo, fetchPokemonName } from "./fetchData";
 
 const prisma = new PrismaClient()
 
@@ -15,12 +15,13 @@ async function store_pokemon_info_from_api(){
     let end = 649;
     for(let i = begin; i <= end; i++){
       const pokemon:Pokemon = await fetchPokemonInfo(i);
+      const name:string = await fetchPokemonName(i);
       let is_evolve = 0;
       if(pokemon){
         if(pokemon.is_evolve)is_evolve = 1;
         await prisma.pokemon.create({data:{
           pokemon_id:pokemon.pokemon_id,
-          name:pokemon.name,
+          name:name,
           type:pokemon.type,
           front_image:pokemon.front_image,
           back_image:pokemon.back_image,
