@@ -6,44 +6,17 @@ import { useUser } from "../../contexts/userContext";
 import { supabase } from "../../libs/supabase";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
-import { useTeamPokemonContext } from "../../contexts/teamContext";
 
 export default function Home() {
   const { user } = useUser();
-  const { pokemons,removePokemon } = useTeamPokemonContext();
   const router = useRouter();
-
-  const handlePageMove = (to:string) => {
-    router.push(to);
-  }
 
   useEffect(() => {
     if (!user) {
       router.push("/Login");
     }
-
-    const seenPokemonIds = new Set();
-    const duplicateIndices = [];
-  
-    // reactのレンダリングによりポケモンが重複して存在してしまうため削除する操作
-    // まず、すべての重複を特定する
-    for (let i = 0; i < pokemons.length; i++) {
-      const pokemonId = pokemons[i].pokemon_id;
-      if (seenPokemonIds.has(pokemonId)) {
-        duplicateIndices.push(i);
-      } else {
-        seenPokemonIds.add(pokemonId);
-      }
-    }
-
-    // 次に、配列の末尾から順に重複を削除する
-    // これにより、まだ処理していないアイテムのインデックスがずれません
-    for (let i = duplicateIndices.length - 1; i >= 0; i--) {
-      removePokemon(duplicateIndices[i]);
-    }
-  
-
   }, [user]);
+
   if (!user) return (<>Now loading...</>); // ログインしてない場合は一旦何も表示しない
   return (
     <div className="h-[100vh] bg-cyan-50">
@@ -58,7 +31,7 @@ export default function Home() {
           ログアウト
       </button>
       <button
-        onClick={()=>{handlePageMove('PokemonInfo')}}
+        onClick={()=>{router.push("/PokemonInfo")}}
         style={{
           position:"absolute",
           top:"30%",

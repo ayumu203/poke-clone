@@ -20,8 +20,14 @@ const TeamPokemonContext = createContext<TeamPokemonContextType>({
 export const TeamPokemonProvider = ({children}:{children:React.ReactNode}) => {
     const [pokemons,setPokemons] = useState<Pokemon[]>([]);
 
-    const addPokemon = (pokemon:Pokemon) => {
-        setPokemons(prev => [...prev,pokemon]);
+    const addPokemon = (pokemonToAdd:Pokemon) => {
+        setPokemons(currentPokemons => {
+            const pokemonExist = currentPokemons.some(
+                pokemon => pokemon.pokemon_id === pokemonToAdd.pokemon_id
+            );
+            if(!pokemonExist)return [...currentPokemons,pokemonToAdd];
+            else return currentPokemons;
+        })
     };
 
     const removePokemon = (index:number) => {
