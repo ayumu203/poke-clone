@@ -6,9 +6,9 @@
 1. supabaseの登録,gcpの設定を行う.(supabase googleログイン等で調べると情報が出てきます)
 1. /serverに.envを作成し以下の内容を貼り付ける
     > DATABASE_URL="postgresql://postgres:postgres@db:5432/postgres?schema=public"
-1. /clientに.env.localを作成し,以下を貼り付ける(supabaseの設定に関しては割愛します)
-    >NEXT_PUBLIC_SUPABASE_URL=*kye*
-    >NEXT_PUBLIC_SUPABASE_ANON_KEY=*key*
+1. /clientに.env.localを作成し,以下を貼り付ける
+    >NEXT_PUBLIC_SUPABASE_URL=***
+    >NEXT_PUBLIC_SUPABASE_ANON_KEY=***
     >NEXT_SUPABASE_URL=http://localhost:3000
 1. /clientで以下を実行
     >$ npm install
@@ -18,7 +18,7 @@
     >$ docker compose up --build -d
 * 起動
     >$ docker compose up -d
-* Prisma studioの起動(GUIでデータベースの管理ができる)
+* データベース参照
     >$ docker exec -it poke-clone-server-1 /bin/bash
     ># npx prisma studio
 
