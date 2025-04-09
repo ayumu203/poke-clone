@@ -11,7 +11,8 @@ export default function Header() {
                 {date.getMonth()}/{date.getDate()} XD:IL
             </span>
             <span>
-                こんにちは、{player ? player.name : "ユーザ"} 
+                {player && <>こんにちは、{player.name}</>}
+                {!player && <>まずはログインをしてね</>}
             </span>
             <span className="ml-5">
                 天気:OY
