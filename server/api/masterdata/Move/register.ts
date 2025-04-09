@@ -10,7 +10,8 @@ async function store_move_info_from_api(){
     const del = await prisma.move.deleteMany();
 
     for(let i = 1; i <= 500; i++){
-        const move:Move = await fetchMoveInfo(i);
+      const move:Move = await fetchMoveInfo(i);
+      if(move){
         let power = 0;
         let accuracy = 0;
         if(move.power !== null)power = move.power;
@@ -33,6 +34,7 @@ async function store_move_info_from_api(){
             healing_effect:move.healing_effect,
             healing_amount:move.healing_amount
         }})
+      }
     }
 
     const allPokemon = await prisma.move.findMany({
