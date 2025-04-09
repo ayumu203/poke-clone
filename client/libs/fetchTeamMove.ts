@@ -1,5 +1,6 @@
 export const fetch_team_move = async(id:string) =>{
-    const url = `http://localhost:3001/data/team-move`;
+    const base_url = process.env.NEXT_PUBLIC_API_URL;
+    const url = `${base_url}/data/team-move`;
     try {
         const response = await fetch(url,{
             method:"POST",

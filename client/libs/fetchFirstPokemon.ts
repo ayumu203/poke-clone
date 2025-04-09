@@ -1,5 +1,6 @@
 export const fetch_first_option = async() =>{
-    const url = `http://localhost:3001/first-pokemon-option`;
+    const base_url = process.env.NEXT_PUBLIC_API_URL;
+    const url = `${base_url}/first-pokemon-option`;
     try {
         const response = await fetch(url,{
             method:"POST",

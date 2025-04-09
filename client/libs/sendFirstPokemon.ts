@@ -1,5 +1,6 @@
 export const send_first_pokemon = async(player_id:string,pokemon_id:number,move1_id:number,move2_id:number) =>{
-    const url = `http://localhost:3001/first-pokemon-determination`;
+    const base_url = process.env.NEXT_PUBLIC_API_URL;
+    const url = `${base_url}/first-pokemon-determination`;
     try {
         const response = await fetch(url,{
             method:"POST",

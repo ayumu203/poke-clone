@@ -1,5 +1,6 @@
 export const fetch_player = async(id:string) =>{
-    const url = `http://localhost:3001/data/player`;
+    const base_url = process.env.NEXT_PUBLIC_API_URL;
+    const url = `${base_url}/data/player`;
     try {
         const response = await fetch(url,{
             method:"POST",

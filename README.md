@@ -5,11 +5,13 @@
 1. >$ git clone git@github.com:ayumu203/poke-clon.git
 1. supabaseの登録,gcpの設定を行う.(supabase googleログイン等で調べると情報が出てきます)
 1. /serverに.envを作成し以下の内容を貼り付ける
-    > DATABASE_URL="postgresql://postgres:postgres@db:5432/postgres?schema=public"
+    > DATABASE_URL="postgresql://postgres:postgres@db:5432/ postgres?schema=public"
 1. /clientに.env.localを作成し,以下を貼り付ける
-    >NEXT_PUBLIC_SUPABASE_URL=*** \
-    >NEXT_PUBLIC_SUPABASE_ANON_KEY=*** \
-    >NEXT_SUPABASE_URL=http://localhost:3000 
+NEXT_PUBLIC_SUPABASE_URL=*URL* \
+NEXT_PUBLIC_SUPABASE_ANON_KEY=*ANON_KEY* \
+NEXT_SUPABASE_URL=http://localhost:3000 \
+NEXT_PUBLIC_API_URL=http://localhost:3001
+
 1. /clientで以下を実行
     >$ npm install
 
