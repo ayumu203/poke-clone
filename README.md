@@ -26,15 +26,18 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 
 ## 今後の実装
 
-### 再ロード時の処理
+### ポケモンバトル
+
+
+### 再ロード時の処理(保留)
 * 画面が再ロードされたときログイン画面へ遷移するようにする
 
-### ポケモン進化先の確認データ
+### ポケモン進化先の確認データ(motoki)
 * 以下より各ポケモンに進化先が存在するかを判定する
 * 存在する場合はis_evolveをtrueに設定し、それ以外ではfalseにする
 APIエンドポイント:https://pokeapi.co/api/v2/evolution-chain/{id}/
 
-### ポケモンの技データの登録
+### ポケモンの技データの登録(motoki)
 * 現在のシステムではすべてのポケモンにmove_idの1と2が割り当てられている.(はたくとからてチョップだったきがする)
 * そのため各ポケモンに割り当てる技データとpokemon_idをおよび理解のためpokemonのnameを記述したJSONファイルを自動生成できるようにする.
 * server/api/masterdata/Pokemon/registerMove.tsにて実装
