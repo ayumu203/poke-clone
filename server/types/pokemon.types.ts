@@ -12,5 +12,5 @@ export type Pokemon = {
     base_speed:number,
     move1_id:number,
     move2_id:number,
-    is_evolve:Boolean
+    is_evolve:number
 } | null;

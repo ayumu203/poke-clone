@@ -16,9 +16,7 @@ async function store_pokemon_info_from_api(){
     for(let i = begin; i <= end; i++){
       const pokemon:Pokemon = await fetchPokemonInfo(i);
       const name:string = await fetchPokemonName(i);
-      let is_evolve = 0;
       if(pokemon){
-        if(pokemon.is_evolve)is_evolve = 1;
         await prisma.pokemon.create({data:{
           pokemon_id:pokemon.pokemon_id,
           name:name,
@@ -33,7 +31,7 @@ async function store_pokemon_info_from_api(){
           base_speed:pokemon.base_speed,
           move1_id:pokemon.move1_id,
           move2_id:pokemon.move2_id,
-          is_evolve:Boolean(is_evolve)
+          is_evolve:pokemon.is_evolve
         }}); 
       }
     }

@@ -24,7 +24,7 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
         base_speed:data.stats[5].base_stat,
         move1_id:1,
         move2_id:2,
-        is_evolve:true
+        is_evolve:-1
     };
     return pokemon;
 };
