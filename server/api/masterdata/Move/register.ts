@@ -28,6 +28,7 @@ async function store_move_info_from_api(){
             status_effect:move.status_effect,
             status_name:move.status_name,
             status_rank:move.status_rank,
+            status_target:move.status_target,
             ailment_effect:move.ailment_effect,
             ailment_name:move.ailment_name,
             ailment_chance:move.ailment_chance,

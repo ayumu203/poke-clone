@@ -11,10 +11,12 @@ const fetchMove = async (url: string, headers: HeadersInit,move_id:number): Prom
     let status_effect = false;
     let status_name = "none";
     let status_rank = 0;
+    let status_target:string = "";
     if(data.stat_changes.length !== 0){
         status_effect = true;
         status_name = data.stat_changes[0].stat.name;
         status_rank = data.stat_changes[0].change;
+        status_target = data.target.name;
     }
     // 状態異常
     let ailment_effect = false;
@@ -40,7 +42,6 @@ const fetchMove = async (url: string, headers: HeadersInit,move_id:number): Prom
             description = data.flavor_text_entries[i].flavor_text;
         }
     }
-
     const move:Move = {
         move_id:move_id,
         name:data.names[0].name,
@@ -53,6 +54,7 @@ const fetchMove = async (url: string, headers: HeadersInit,move_id:number): Prom
         status_effect:status_effect,
         status_name:status_name,
         status_rank:status_rank,
+        status_target:status_target,
         ailment_effect:ailment_effect,
         ailment_name:ailment_name,
         ailment_chance:ailment_chance,

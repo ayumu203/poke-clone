@@ -50,11 +50,12 @@ model Move {
   status_effect  Boolean
   status_name    String
   status_rank    Int
+  status_target String
   ailment_effect Boolean
   ailment_name   String
+  ailment_chance Int
   healing_effect Boolean
   healing_amount Int
   priority       Int
-  ailment_chance Int
   move_id        Int     @id @unique
 }
