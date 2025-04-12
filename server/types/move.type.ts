@@ -6,7 +6,8 @@ export type Move = {
     pp:number,
     power:number,
     accuracy:number,
-    priority:number
+    priority:number,
+    damage_class:string,
     status_effect:boolean,
     status_name:string,
     status_rank:number,
