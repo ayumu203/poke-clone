@@ -65,6 +65,9 @@ APIエンドポイント:https://pokeapi.co/api/v2/evolution-chain/{id}/
 }
 ``` 
 
+### 修正等
+* 技の物理・特殊の項目を追加しなければならない.notyet
+
 ### リファクタリング
 ### 4/11追加
 * moveスキーマにstatus_target:stringを追加
