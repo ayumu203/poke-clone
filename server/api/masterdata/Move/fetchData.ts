@@ -51,6 +51,7 @@ const fetchMove = async (url: string, headers: HeadersInit,move_id:number): Prom
         power:data.power,
         accuracy:data.accuracy,
         priority:data.priority,
+        damage_class: data.damage_class.name || "none",
         status_effect:status_effect,
         status_name:status_name,
         status_rank:status_rank,
@@ -78,38 +79,3 @@ export const fetchMoveInfo = async(move_id:number): Promise<Move> => {
         throw error;
     }
 }
-
-// const fetchMoveName = async (url: string, headers: HeadersInit,move_id:number): Promise<string> => {
-//     const response = await fetch(url);
-//     if (!response.ok) {
-//     throw new Error('response error');
-//     }
-//     const data: any = await response.json();
-
-//     return data.names[0].name;
-// };
-
-// export const fetchMoveNameInfo = async(move_id:number): Promise<string> => {
-//     const url = `https://pokeapi.co/api/v2/move/${move_id}`;
-//     const headers = {
-//     'Content-Type': 'application/json',
-//     };
-
-//     try{
-//         const name:string = await fetchMoveName(url,headers,move_id);
-//         return name;
-//     } catch(error){
-//         console.error('Error fetching Pokémon data:', error);
-//         throw error;
-//     }
-// }
-
-
-// async function tmp() {
-//     for(let i = 1; i<559; i++){
-//         const data = await fetchMoveNameInfo(i);
-//         await console.dir(data);
-//     }
-// }
-
-// tmp();

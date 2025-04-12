@@ -1,3 +1,19 @@
+// // This is your Prisma schema file,
+// // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// generator client {
+//   provider = "prisma-client-js"
+//   output   = "../lib/generated/prisma"
+// }
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-1.1.x"]
@@ -34,10 +50,10 @@ model pokemon {
   base_speed           Int
   back_image           String
   front_image          String
-  is_evolve            Int
   move1_id             Int
   move2_id             Int
   type                 String  @db.VarChar(10)
+  is_evolve            Int
 }
 
 model Move {
@@ -47,6 +63,7 @@ model Move {
   power          Int
   accuracy       Int
   pp             Int
+  damage_class   String
   status_effect  Boolean
   status_name    String
   status_rank    Int

@@ -1,6 +1,7 @@
 import {PrismaClient} from "@prisma/client";
 import { Pokemon } from "../../../types/pokemon.types";
 import { fetchPokemonInfo, fetchPokemonName } from "./fetchData";
+import { pokemon_id_begin, pokemon_id_end } from "../../../const/pokemon_id.const";
 
 const prisma = new PrismaClient()
 
@@ -10,9 +11,9 @@ async function store_pokemon_info_from_api(){
     const del = await prisma.pokemon.deleteMany();
 
     // イッシュ地方の図鑑番号が最初のポケモンビクティニよりデータ回収スタート
-    let begin = 494;
+    let begin = pokemon_id_begin;
     // 図鑑番号最後のゲノセクトで終了
-    let end = 649;
+    let end = pokemon_id_end;
     for(let i = begin; i <= end; i++){
       const pokemon:Pokemon = await fetchPokemonInfo(i);
       const name:string = await fetchPokemonName(i);
