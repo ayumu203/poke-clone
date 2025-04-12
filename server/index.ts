@@ -117,6 +117,11 @@ app.post("/first-pokemon-option",async(req:Request,res:Response) =>{
 // 最初のポケモンを登録後、そのポケモンの技データを返す
 app.post("/first-pokemon-determination",async(req:Request,res:Response)=>{
   try {
+    const exist = await team_pokemon_exist(req.body.player_id,1);
+    if(exist){
+      res.status(200).send("ポケモンはすでに登録されています.");
+      return;
+    }
     const player_id:string = req.body.player_id;
     const pokemon_id:number = Number(req.body.pokemon_id);
     const move1_id:number = Number(req.body.move1_id);

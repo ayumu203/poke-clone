@@ -12,7 +12,7 @@
     "base_special_defence": 100,
     "base_speed": 100,
     "move1_id": 1,
-    "move2_id": 2,
+    "move2_id": 3,
     "is_evolve": true
   },
   {
@@ -27,8 +27,8 @@
     "base_special_attack": 45,
     "base_special_defence": 55,
     "base_speed": 63,
-    "move1_id": 1,
-    "move2_id": 2,
+    "move1_id": 43,
+    "move2_id": 22,
     "is_evolve": true
   },
   {
@@ -43,8 +43,8 @@
     "base_special_attack": 63,
     "base_special_defence": 45,
     "base_speed": 45,
-    "move1_id": 1,
-    "move2_id": 2,
+    "move1_id": 55,
+    "move2_id": 147,
     "is_evolve": true
   }
 ]    

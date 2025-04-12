@@ -44,7 +44,7 @@ export async function team_pokemon_register(player_id:string,pokemon_id:number,i
             player_id:player_id,
             pokemon_index:index,
             pokemon_id:pokemon_id,
-            level:1,
+            level:5,
             exp:0
         }})
     }

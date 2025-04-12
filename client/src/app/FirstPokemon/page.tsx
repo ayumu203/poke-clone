@@ -88,7 +88,7 @@ export default function Home() {
     const handleDetermination = async() =>{
         function addFirstPokemon(pokemon:Pokemon){
             pokemon.index = 1;
-            pokemon.level = 1;
+            pokemon.level = 5;
             pokemon.exp = 0;
             if(pokemons.length === 0)addPokemon(pokemon);
         }
