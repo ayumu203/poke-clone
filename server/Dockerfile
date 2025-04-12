@@ -2,16 +2,22 @@ FROM node:18-bullseye
 
 WORKDIR /app
 
-
+# package.json だけ先にコピーしてキャッシュを活かす
 COPY package*.json ./
+
+# 依存関係をインストール
 RUN npm install
 
+# アプリ全体をコピー
 COPY . .
 
-RUN npx prisma generate --schema=./prisma/schema.prisma
+# Prismaのコードを生成
+RUN npx prisma generate
 
-COPY . .
+# 必要であればマイグレーション（開発用なら不要）
+# RUN npx prisma migrate deploy
 
 EXPOSE 3001
 
-CMD ["sh", "-c", "npm run dev"]
+# devを実行するだけにする。generateやmigrateはイメージ作成時に済ませるのが一般的
+CMD ["npm", "run", "dev"]
