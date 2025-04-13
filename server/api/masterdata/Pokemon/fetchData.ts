@@ -8,9 +8,6 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
     if (!response.ok) {
     throw new Error('response error');
     }
-    const localData = require('./pokemoninfo.json'); 
-    const localPokemon = localData.find((pokemon: Pokemon) => pokemon?.pokemon_id === pokemon_id);
-    console.log("localPokemon",localPokemon);
     const data: any = await response.json();
     const pokemon:Pokemon = {
         pokemon_id:pokemon_id,
@@ -24,9 +21,8 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
         base_special_attack:data.stats[3].base_stat,
         base_special_defence:data.stats[4].base_stat,
         base_speed:data.stats[5].base_stat,
-        move1_id:localPokemon.move1_id,
-        move2_id:localPokemon.move2_id,
-        is_evolve:-1
+        evolve_level:-1,
+        move_list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
     };
     return pokemon;
 };

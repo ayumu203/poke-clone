@@ -3,5 +3,6 @@ export type Team_pokemon = {
     pokemon_id:Number,
     pokemon_index:number,
     level:number,
-    exp:number
+    exp:number,
+    move_list:string[]
 } | null;

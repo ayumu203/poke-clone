@@ -17,8 +17,7 @@ export class BattlePokemon {
     #special_attack:number;
     #special_defence:number;
     #speed:number;
-    #move1_id:number;
-    #move2_id:number;
+    #move_list:Array<number>;
     #rank:Rank;
     #ailment:string;
     constructor(params: {
@@ -26,7 +25,8 @@ export class BattlePokemon {
         pokemon_index:number;
         level:number;
         exp:number;
-        image:string
+        image:string;
+        move_list:Array<number>;
     }){
         //初期化
         if(!params.pokemon){
@@ -46,8 +46,7 @@ export class BattlePokemon {
         this.#special_attack = calcPokemonRealStats(params.pokemon.base_special_attack,params.level);
         this.#special_defence = calcPokemonRealStats(params.pokemon.base_special_defence,params.level);
         this.#speed = calcPokemonRealStats(params.pokemon.base_speed,params.level);
-        this.#move1_id = params.pokemon.move1_id;
-        this.#move2_id = params.pokemon.move2_id;
+        this.#move_list = params.move_list;
         this.#rank = new Rank({
             attack: 0,
             defense: 0,
@@ -80,11 +79,8 @@ export class BattlePokemon {
     getExp():number{    
         return this.#exp;
     }
-    getMove1Id():number{
-        return this.#move1_id;
-    }
-    getMove2Id():number{
-        return this.#move2_id;
+    getMoveList():Array<number>{
+        return this.#move_list;
     }
     getRank():Rank{
         return this.#rank;

@@ -30,9 +30,8 @@ async function store_pokemon_info_from_api(){
           base_special_attack:pokemon.base_special_attack,
           base_special_defence:pokemon.base_special_defence,
           base_speed:pokemon.base_speed,
-          move1_id:pokemon.move1_id,
-          move2_id:pokemon.move2_id,
-          is_evolve:pokemon.is_evolve
+          evolve_level:pokemon.evolve_level,
+          move_list:pokemon.move_list,
         }}); 
       }
     }

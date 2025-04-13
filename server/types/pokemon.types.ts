@@ -10,7 +10,6 @@ export type Pokemon = {
     base_special_attack:number,
     base_special_defence:number,
     base_speed:number,
-    move1_id:number,
-    move2_id:number,
-    is_evolve:number
+    evolve_level:number,
+    move_list:number[],
 } | null;

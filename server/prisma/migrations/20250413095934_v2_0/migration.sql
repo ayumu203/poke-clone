@@ -10,48 +10,49 @@ CREATE TABLE "team_pokemon" (
     "pokemon_index" INTEGER NOT NULL,
     "pokemon_id" INTEGER NOT NULL,
     "level" INTEGER NOT NULL,
-    "exp" INTEGER NOT NULL
+    "exp" INTEGER NOT NULL,
+    "move_list" INTEGER[]
 );
 
 -- CreateTable
 CREATE TABLE "pokemon" (
     "pokemon_id" INTEGER NOT NULL,
     "name" VARCHAR(10) NOT NULL,
+    "type" VARCHAR(10) NOT NULL,
+    "front_image" TEXT NOT NULL,
+    "back_image" TEXT NOT NULL,
     "base_hp" INTEGER NOT NULL,
     "base_attack" INTEGER NOT NULL,
     "base_defence" INTEGER NOT NULL,
     "base_special_attack" INTEGER NOT NULL,
     "base_special_defence" INTEGER NOT NULL,
     "base_speed" INTEGER NOT NULL,
-    "back_image" TEXT NOT NULL,
-    "front_image" TEXT NOT NULL,
-    "move1_id" INTEGER NOT NULL,
-    "move2_id" INTEGER NOT NULL,
-    "type" VARCHAR(10) NOT NULL,
+    "evolve_level" INTEGER NOT NULL,
+    "move_list" INTEGER[],
 
     CONSTRAINT "pokemon_pkey" PRIMARY KEY ("pokemon_id")
 );
 
 -- CreateTable
 CREATE TABLE "Move" (
+    "move_id" INTEGER NOT NULL,
+    "move_category" VARCHAR(20) NOT NULL,
     "name" VARCHAR(10) NOT NULL,
     "type" VARCHAR(10) NOT NULL,
-    "description" TEXT NOT NULL,
-    "power" INTEGER NOT NULL,
-    "accuracy" INTEGER NOT NULL,
-    "pp" INTEGER NOT NULL,
     "damage_class" TEXT NOT NULL,
-    "status_effect" BOOLEAN NOT NULL,
-    "status_name" TEXT NOT NULL,
-    "status_rank" INTEGER NOT NULL,
+    "power" INTEGER NOT NULL,
+    "pp" INTEGER NOT NULL,
+    "accuracy" INTEGER NOT NULL,
+    "priority" INTEGER NOT NULL,
+    "status_name" TEXT[],
+    "status_rank" INTEGER[],
     "status_target" TEXT NOT NULL,
-    "ailment_effect" BOOLEAN NOT NULL,
+    "status_chance" INTEGER NOT NULL,
     "ailment_name" TEXT NOT NULL,
     "ailment_chance" INTEGER NOT NULL,
-    "healing_effect" BOOLEAN NOT NULL,
     "healing_amount" INTEGER NOT NULL,
-    "priority" INTEGER NOT NULL,
-    "move_id" INTEGER NOT NULL,
+    "drain_power" INTEGER NOT NULL,
+    "description" TEXT NOT NULL,
 
     CONSTRAINT "Move_pkey" PRIMARY KEY ("move_id")
 );
