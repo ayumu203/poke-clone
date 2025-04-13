@@ -15,6 +15,7 @@ services:
    volumes:
 
      - ./client:/app
+     - /app/node_modules
 
    stdin_open: true
 
