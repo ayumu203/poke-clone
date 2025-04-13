@@ -54,6 +54,7 @@ export class BattlePokemon {
             special_attack: 0,
             special_defense: 0,
             speed: 0,
+            accuracy:0
         });
         this.#ailment = "none";
     }
@@ -113,8 +114,37 @@ export class BattlePokemon {
         return this.#speed;
     }
     //Setter
-    setCurrentHp(current_hp:number):void{   
-        this.#current_hp = current_hp;
+    setCurrentHp(current_hp:number):void{
+        if(this.#max_hp < current_hp){
+            this.#current_hp = this.#max_hp;
+        } 
+        else {
+            this.#current_hp = current_hp;
+        }   
+    }
+    setAilment(ailment:string):void{
+        this.#ailment = ailment;
+    }
+    setRank(status:string,rank:number):void{
+        switch(status){
+            case "attack":
+                this.#rank.setAttackRank(rank);
+                break;
+            case "defense":
+                this.#rank.setDefenseRank(rank);
+                break;
+            case "special_attack":          
+                this.#rank.setSpecialAttackRank(rank);
+                break;
+            case "special_defense":
+                this.#rank.setSpecialDefenseRank(rank);
+                break;
+            case "speed":
+                this.#rank.setSpeedRank(rank);
+                break;
+            default:
+                throw new Error("Invalid status");
+            }   
     }
     setExp(exp:number):void{
         this.#exp = exp;

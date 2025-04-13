@@ -4,18 +4,21 @@ export class Rank {
     #special_attack: number;
     #special_defense: number;
     #speed: number;
+    #accuracy: number;
     constructor(params: {
         attack: number;
         defense: number;
         special_attack: number;
         special_defense: number;
         speed: number;
+        accuracy: number;
     }) {
         this.#attack = params.attack;
         this.#defense = params.defense;
         this.#special_attack = params.special_attack;
         this.#special_defense = params.special_defense;
         this.#speed = params.speed;
+        this.#accuracy = params.accuracy;
     }
     //Getter
     getAttackRank(): number {   
@@ -33,6 +36,9 @@ export class Rank {
     getSpeedRank(): number {
         return this.#speed;
     }
+    getAccuracyRank(): number {
+        return this.#accuracy;
+    }
     //Setter
     setAttackRank(rank: number): void {
         this.#attack = this.#attack + rank;
@@ -48,5 +54,8 @@ export class Rank {
     }
     setSpeedRank(rank: number): void {
         this.#speed = this.#speed + rank;
+    }
+    setAccuracyRank(rank: number): void {
+        this.#accuracy = this.#accuracy + rank;
     }
 }

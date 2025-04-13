@@ -10,10 +10,10 @@
     "base_speed": 100,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/494.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/494.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 495,
@@ -26,10 +26,10 @@
     "base_speed": 63,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/495.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/495.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 496,
@@ -42,10 +42,10 @@
     "base_speed": 83,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/496.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/496.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 497,
@@ -58,10 +58,10 @@
     "base_speed": 113,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/497.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/497.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 498,
@@ -74,10 +74,10 @@
     "base_speed": 45,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/498.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/498.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fire"
+    "type": "fire",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 499,
@@ -90,10 +90,10 @@
     "base_speed": 55,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/499.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/499.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fire"
+    "type": "fire",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 500,
@@ -106,10 +106,10 @@
     "base_speed": 65,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/500.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/500.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fire"
+    "type": "fire",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 501,
@@ -122,10 +122,10 @@
     "base_speed": 45,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/501.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/501.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 502,
@@ -138,10 +138,10 @@
     "base_speed": 60,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/502.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/502.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 503,
@@ -154,10 +154,10 @@
     "base_speed": 70,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/503.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/503.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 504,
@@ -170,10 +170,10 @@
     "base_speed": 42,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/504.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/504.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 505,
@@ -186,10 +186,10 @@
     "base_speed": 77,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/505.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/505.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 506,
@@ -202,10 +202,10 @@
     "base_speed": 55,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/506.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/506.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 507,
@@ -218,10 +218,10 @@
     "base_speed": 60,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/507.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/507.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 508,
@@ -234,10 +234,10 @@
     "base_speed": 80,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/508.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/508.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 509,
@@ -250,10 +250,10 @@
     "base_speed": 66,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/509.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/509.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 510,
@@ -266,10 +266,10 @@
     "base_speed": 106,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/510.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/510.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 511,
@@ -282,10 +282,10 @@
     "base_speed": 64,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/511.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/511.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 512,
@@ -298,10 +298,10 @@
     "base_speed": 101,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/512.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/512.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 513,
@@ -314,10 +314,10 @@
     "base_speed": 64,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/513.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/513.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fire"
+    "type": "fire",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 514,
@@ -330,10 +330,10 @@
     "base_speed": 101,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/514.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/514.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fire"
+    "type": "fire",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 515,
@@ -346,10 +346,10 @@
     "base_speed": 64,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/515.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/515.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 516,
@@ -362,10 +362,10 @@
     "base_speed": 101,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/516.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/516.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 517,
@@ -378,10 +378,10 @@
     "base_speed": 24,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/517.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/517.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 518,
@@ -394,10 +394,10 @@
     "base_speed": 29,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/518.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/518.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 519,
@@ -410,10 +410,10 @@
     "base_speed": 43,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/519.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/519.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 520,
@@ -426,10 +426,10 @@
     "base_speed": 65,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/520.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/520.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 521,
@@ -442,10 +442,10 @@
     "base_speed": 93,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/521.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/521.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 522,
@@ -458,10 +458,10 @@
     "base_speed": 76,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/522.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/522.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "electric"
+    "type": "electric",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 523,
@@ -474,10 +474,10 @@
     "base_speed": 116,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/523.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/523.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "electric"
+    "type": "electric",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 524,
@@ -490,10 +490,10 @@
     "base_speed": 15,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/524.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/524.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "rock"
+    "type": "rock",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 525,
@@ -506,10 +506,10 @@
     "base_speed": 20,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/525.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/525.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "rock"
+    "type": "rock",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 526,
@@ -522,10 +522,10 @@
     "base_speed": 25,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/526.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/526.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "rock"
+    "type": "rock",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 527,
@@ -538,10 +538,10 @@
     "base_speed": 72,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/527.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/527.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 528,
@@ -554,10 +554,10 @@
     "base_speed": 114,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/528.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/528.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 529,
@@ -570,10 +570,10 @@
     "base_speed": 68,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/529.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/529.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ground"
+    "type": "ground",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 530,
@@ -586,10 +586,10 @@
     "base_speed": 88,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/530.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/530.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ground"
+    "type": "ground",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 531,
@@ -602,10 +602,10 @@
     "base_speed": 50,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/531.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/531.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 532,
@@ -618,10 +618,10 @@
     "base_speed": 35,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/532.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/532.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fighting"
+    "type": "fighting",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 533,
@@ -634,10 +634,10 @@
     "base_speed": 40,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/533.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/533.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fighting"
+    "type": "fighting",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 534,
@@ -650,10 +650,10 @@
     "base_speed": 45,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/534.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/534.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fighting"
+    "type": "fighting",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 535,
@@ -666,10 +666,10 @@
     "base_speed": 64,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/535.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/535.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 536,
@@ -682,10 +682,10 @@
     "base_speed": 69,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/536.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/536.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 537,
@@ -698,10 +698,10 @@
     "base_speed": 74,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/537.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/537.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 538,
@@ -714,10 +714,10 @@
     "base_speed": 45,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/538.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/538.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fighting"
+    "type": "fighting",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 539,
@@ -730,10 +730,10 @@
     "base_speed": 85,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/539.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/539.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fighting"
+    "type": "fighting",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 540,
@@ -746,10 +746,10 @@
     "base_speed": 42,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/540.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/540.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 541,
@@ -762,10 +762,10 @@
     "base_speed": 42,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/541.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/541.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 542,
@@ -778,10 +778,10 @@
     "base_speed": 92,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/542.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/542.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 543,
@@ -794,10 +794,10 @@
     "base_speed": 57,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/543.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/543.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 544,
@@ -810,10 +810,10 @@
     "base_speed": 47,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/544.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/544.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 545,
@@ -826,10 +826,10 @@
     "base_speed": 112,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/545.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/545.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 546,
@@ -842,10 +842,10 @@
     "base_speed": 66,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/546.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/546.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 547,
@@ -858,10 +858,10 @@
     "base_speed": 116,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/547.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/547.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 548,
@@ -874,10 +874,10 @@
     "base_speed": 30,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/548.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/548.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 549,
@@ -890,10 +890,10 @@
     "base_speed": 90,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/549.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/549.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 550,
@@ -906,10 +906,10 @@
     "base_speed": 98,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/550.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/550.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 551,
@@ -922,10 +922,10 @@
     "base_speed": 65,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/551.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/551.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ground"
+    "type": "ground",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 552,
@@ -938,10 +938,10 @@
     "base_speed": 74,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/552.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/552.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ground"
+    "type": "ground",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 553,
@@ -954,10 +954,10 @@
     "base_speed": 92,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/553.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/553.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ground"
+    "type": "ground",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 554,
@@ -970,10 +970,10 @@
     "base_speed": 50,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/554.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/554.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fire"
+    "type": "fire",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 555,
@@ -986,10 +986,10 @@
     "base_speed": 95,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/555.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/555.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fire"
+    "type": "fire",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 556,
@@ -1002,10 +1002,10 @@
     "base_speed": 60,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/556.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/556.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 557,
@@ -1018,10 +1018,10 @@
     "base_speed": 55,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/557.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/557.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 558,
@@ -1034,10 +1034,10 @@
     "base_speed": 45,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/558.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/558.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 559,
@@ -1050,10 +1050,10 @@
     "base_speed": 48,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/559.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/559.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 560,
@@ -1066,10 +1066,10 @@
     "base_speed": 58,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/560.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/560.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 561,
@@ -1082,10 +1082,10 @@
     "base_speed": 97,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/561.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/561.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 562,
@@ -1098,10 +1098,10 @@
     "base_speed": 30,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/562.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/562.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ghost"
+    "type": "ghost",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 563,
@@ -1114,10 +1114,10 @@
     "base_speed": 30,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/563.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/563.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ghost"
+    "type": "ghost",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 564,
@@ -1130,10 +1130,10 @@
     "base_speed": 22,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/564.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/564.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 565,
@@ -1146,10 +1146,10 @@
     "base_speed": 32,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/565.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/565.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 566,
@@ -1162,10 +1162,10 @@
     "base_speed": 70,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/566.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/566.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "rock"
+    "type": "rock",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 567,
@@ -1178,10 +1178,10 @@
     "base_speed": 110,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/567.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/567.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "rock"
+    "type": "rock",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 568,
@@ -1194,10 +1194,10 @@
     "base_speed": 65,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/568.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/568.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "poison"
+    "type": "poison",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 569,
@@ -1210,10 +1210,10 @@
     "base_speed": 75,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/569.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/569.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "poison"
+    "type": "poison",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 570,
@@ -1226,10 +1226,10 @@
     "base_speed": 65,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/570.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/570.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 571,
@@ -1242,10 +1242,10 @@
     "base_speed": 105,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/571.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/571.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 572,
@@ -1258,10 +1258,10 @@
     "base_speed": 75,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/572.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/572.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 573,
@@ -1274,10 +1274,10 @@
     "base_speed": 115,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/573.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/573.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 574,
@@ -1290,10 +1290,10 @@
     "base_speed": 45,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/574.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/574.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 575,
@@ -1306,10 +1306,10 @@
     "base_speed": 55,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/575.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/575.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 576,
@@ -1322,10 +1322,10 @@
     "base_speed": 65,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/576.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/576.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 577,
@@ -1338,10 +1338,10 @@
     "base_speed": 20,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/577.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/577.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 578,
@@ -1354,10 +1354,10 @@
     "base_speed": 30,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/578.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/578.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 579,
@@ -1370,10 +1370,10 @@
     "base_speed": 30,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/579.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/579.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 580,
@@ -1386,10 +1386,10 @@
     "base_speed": 55,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/580.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/580.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 581,
@@ -1402,10 +1402,10 @@
     "base_speed": 98,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/581.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/581.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 582,
@@ -1418,10 +1418,10 @@
     "base_speed": 44,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/582.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/582.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ice"
+    "type": "ice",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 583,
@@ -1434,10 +1434,10 @@
     "base_speed": 59,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/583.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/583.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ice"
+    "type": "ice",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 584,
@@ -1450,10 +1450,10 @@
     "base_speed": 79,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/584.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/584.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ice"
+    "type": "ice",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 585,
@@ -1466,10 +1466,10 @@
     "base_speed": 75,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/585.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/585.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 586,
@@ -1482,10 +1482,10 @@
     "base_speed": 95,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/586.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/586.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 587,
@@ -1498,10 +1498,10 @@
     "base_speed": 103,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/587.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/587.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "electric"
+    "type": "electric",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 588,
@@ -1514,10 +1514,10 @@
     "base_speed": 60,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/588.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/588.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 589,
@@ -1530,10 +1530,10 @@
     "base_speed": 20,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/589.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/589.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 590,
@@ -1546,10 +1546,10 @@
     "base_speed": 15,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/590.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/590.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 591,
@@ -1562,10 +1562,10 @@
     "base_speed": 30,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/591.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/591.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 592,
@@ -1578,10 +1578,10 @@
     "base_speed": 40,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/592.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/592.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 593,
@@ -1594,10 +1594,10 @@
     "base_speed": 60,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/593.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/593.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 594,
@@ -1610,10 +1610,10 @@
     "base_speed": 65,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/594.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/594.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 595,
@@ -1626,10 +1626,10 @@
     "base_speed": 65,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/595.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/595.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 596,
@@ -1642,10 +1642,10 @@
     "base_speed": 108,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/596.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/596.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 597,
@@ -1658,10 +1658,10 @@
     "base_speed": 10,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/597.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/597.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 598,
@@ -1674,10 +1674,10 @@
     "base_speed": 20,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/598.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/598.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 599,
@@ -1690,10 +1690,10 @@
     "base_speed": 30,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/599.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/599.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "steel"
+    "type": "steel",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 600,
@@ -1706,10 +1706,10 @@
     "base_speed": 50,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/600.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/600.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "steel"
+    "type": "steel",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 601,
@@ -1722,10 +1722,10 @@
     "base_speed": 90,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/601.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/601.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "steel"
+    "type": "steel",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 602,
@@ -1738,10 +1738,10 @@
     "base_speed": 60,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/602.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/602.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "electric"
+    "type": "electric",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 603,
@@ -1754,10 +1754,10 @@
     "base_speed": 40,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/603.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/603.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "electric"
+    "type": "electric",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 604,
@@ -1770,10 +1770,10 @@
     "base_speed": 50,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/604.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/604.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "electric"
+    "type": "electric",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 605,
@@ -1786,10 +1786,10 @@
     "base_speed": 30,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/605.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/605.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 606,
@@ -1802,10 +1802,10 @@
     "base_speed": 40,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/606.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/606.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "psychic"
+    "type": "psychic",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 607,
@@ -1818,10 +1818,10 @@
     "base_speed": 20,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/607.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/607.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ghost"
+    "type": "ghost",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 608,
@@ -1834,10 +1834,10 @@
     "base_speed": 55,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/608.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/608.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ghost"
+    "type": "ghost",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 609,
@@ -1850,10 +1850,10 @@
     "base_speed": 80,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/609.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/609.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ghost"
+    "type": "ghost",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 610,
@@ -1866,10 +1866,10 @@
     "base_speed": 57,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/610.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/610.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dragon"
+    "type": "dragon",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 611,
@@ -1882,10 +1882,10 @@
     "base_speed": 67,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/611.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/611.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dragon"
+    "type": "dragon",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 612,
@@ -1898,10 +1898,10 @@
     "base_speed": 97,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/612.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/612.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dragon"
+    "type": "dragon",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 613,
@@ -1914,10 +1914,10 @@
     "base_speed": 40,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/613.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/613.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ice"
+    "type": "ice",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 614,
@@ -1930,10 +1930,10 @@
     "base_speed": 50,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/614.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/614.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ice"
+    "type": "ice",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 615,
@@ -1946,10 +1946,10 @@
     "base_speed": 105,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/615.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/615.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ice"
+    "type": "ice",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 616,
@@ -1962,10 +1962,10 @@
     "base_speed": 25,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/616.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/616.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 617,
@@ -1978,10 +1978,10 @@
     "base_speed": 145,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/617.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/617.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 618,
@@ -1994,10 +1994,10 @@
     "base_speed": 32,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/618.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/618.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ground"
+    "type": "ground",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 619,
@@ -2010,10 +2010,10 @@
     "base_speed": 65,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/619.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/619.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fighting"
+    "type": "fighting",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 620,
@@ -2026,10 +2026,10 @@
     "base_speed": 105,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/620.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/620.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fighting"
+    "type": "fighting",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 621,
@@ -2042,10 +2042,10 @@
     "base_speed": 48,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/621.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/621.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dragon"
+    "type": "dragon",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 622,
@@ -2058,10 +2058,10 @@
     "base_speed": 35,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/622.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/622.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ground"
+    "type": "ground",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 623,
@@ -2074,10 +2074,10 @@
     "base_speed": 55,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/623.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/623.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ground"
+    "type": "ground",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 624,
@@ -2090,10 +2090,10 @@
     "base_speed": 60,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/624.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/624.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 625,
@@ -2106,10 +2106,10 @@
     "base_speed": 70,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/625.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/625.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 626,
@@ -2122,10 +2122,10 @@
     "base_speed": 55,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/626.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/626.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 627,
@@ -2138,10 +2138,10 @@
     "base_speed": 60,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/627.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/627.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 628,
@@ -2154,10 +2154,10 @@
     "base_speed": 80,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/628.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/628.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 629,
@@ -2170,10 +2170,10 @@
     "base_speed": 60,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/629.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/629.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 630,
@@ -2186,10 +2186,10 @@
     "base_speed": 80,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/630.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/630.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 631,
@@ -2202,10 +2202,10 @@
     "base_speed": 65,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/631.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/631.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "fire"
+    "type": "fire",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 632,
@@ -2218,10 +2218,10 @@
     "base_speed": 109,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/632.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/632.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 633,
@@ -2234,10 +2234,10 @@
     "base_speed": 38,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/633.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/633.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 634,
@@ -2250,10 +2250,10 @@
     "base_speed": 58,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/634.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/634.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 635,
@@ -2266,10 +2266,10 @@
     "base_speed": 98,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/635.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/635.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dark"
+    "type": "dark",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 636,
@@ -2282,10 +2282,10 @@
     "base_speed": 60,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/636.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/636.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 637,
@@ -2298,10 +2298,10 @@
     "base_speed": 100,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/637.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/637.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 638,
@@ -2314,10 +2314,10 @@
     "base_speed": 108,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/638.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/638.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "steel"
+    "type": "steel",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 639,
@@ -2330,10 +2330,10 @@
     "base_speed": 108,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/639.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/639.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "rock"
+    "type": "rock",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 640,
@@ -2346,10 +2346,10 @@
     "base_speed": 108,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/640.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/640.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "grass"
+    "type": "grass",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 641,
@@ -2362,10 +2362,10 @@
     "base_speed": 111,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/641.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/641.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "flying"
+    "type": "flying",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 642,
@@ -2378,10 +2378,10 @@
     "base_speed": 111,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/642.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/642.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "electric"
+    "type": "electric",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 643,
@@ -2394,10 +2394,10 @@
     "base_speed": 90,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/643.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/643.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dragon"
+    "type": "dragon",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 644,
@@ -2410,10 +2410,10 @@
     "base_speed": 90,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/644.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/644.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dragon"
+    "type": "dragon",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 645,
@@ -2426,10 +2426,10 @@
     "base_speed": 101,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/645.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/645.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "ground"
+    "type": "ground",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 646,
@@ -2442,10 +2442,10 @@
     "base_speed": 95,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/646.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/646.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "dragon"
+    "type": "dragon",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 647,
@@ -2458,10 +2458,10 @@
     "base_speed": 108,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/647.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/647.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "water"
+    "type": "water",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 648,
@@ -2474,10 +2474,10 @@
     "base_speed": 90,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/648.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/648.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "normal"
+    "type": "normal",
+    "is_evolve": -1
   },
   {
     "pokemon_id": 649,
@@ -2490,9 +2490,9 @@
     "base_speed": 99,
     "back_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/649.gif",
     "front_image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/649.gif",
-    "is_evolve": true,
     "move1_id": 1,
     "move2_id": 2,
-    "type": "bug"
+    "type": "bug",
+    "is_evolve": -1
   }
 ]
