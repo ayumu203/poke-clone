@@ -44,23 +44,23 @@ const fetchMove = async (url: string, headers: HeadersInit,move_id:number): Prom
     }
     const move:Move = {
         move_id:move_id,
+        move_category:data.meta.category.name,
         name:data.names[0].name,
         type:data.type.name,
-        description:description,
-        pp:data.pp,
+        damage_class: data.damage_class.name,
         power:data.power,
+        pp:data.pp,
         accuracy:data.accuracy,
         priority:data.priority,
-        damage_class: data.damage_class.name,
-        status_effect:status_effect,
-        status_name:status_name,
-        status_rank:status_rank,
+        status_name:[status_name],
+        status_rank:[status_rank],
         status_target:status_target,
-        ailment_effect:ailment_effect,
+        status_chance:0,
         ailment_name:ailment_name,
         ailment_chance:ailment_chance,
-        healing_effect:healing_effect,
-        healing_amount:healing_amount
+        healing_amount:healing_amount,
+        drain_power:data.meta.drain,
+        description:description,
     };
     return move;
 };

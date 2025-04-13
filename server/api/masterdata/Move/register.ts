@@ -18,23 +18,23 @@ async function store_move_info_from_api(){
         if(move.accuracy !== null)accuracy = move.accuracy;
         await prisma.move.create({data:{
             move_id:move.move_id,
+            move_category:move.move_category,
             name:move.name,
             type:move.type,
-            description:move.description,
-            pp:move.pp/2,
+            damage_class: move.damage_class,
             power:power,
+            pp:move.pp/2,
             accuracy:accuracy,
             priority:move.priority,
-            damage_class: move.damage_class,
-            status_effect:move.status_effect,
             status_name:move.status_name,
             status_rank:move.status_rank,
             status_target:move.status_target,
-            ailment_effect:move.ailment_effect,
+            status_chance:move.status_chance,
             ailment_name:move.ailment_name,
             ailment_chance:move.ailment_chance,
-            healing_effect:move.healing_effect,
-            healing_amount:move.healing_amount
+            healing_amount:move.healing_amount,
+            drain_power:move.drain_power,
+            description:move.description,
         }})
       }
     }
