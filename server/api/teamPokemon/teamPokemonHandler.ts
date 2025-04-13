@@ -11,13 +11,15 @@ export async function team_pokemon_getter(player_id:string,index:number):Promise
             pokemon_index:index
         }}  
     });
+    console.log(data);
     if(!data)return null;
     const pokemon:Team_pokemon = {
         player_id:player_id,
         pokemon_index:index,
         pokemon_id:data.pokemon_id,
         level:Number(data.level),
-        exp:Number(data.exp)
+        exp:Number(data.exp),
+        move_list:data.move_list,
     }
     return pokemon;
 }
@@ -39,13 +41,17 @@ export async function team_pokemon_exist(player_id:string,index:number):Promise<
 // n番目に指定図鑑番号のポケモンを登録
 export async function team_pokemon_register(player_id:string,pokemon_id:number,index:number) {
     const exist:Boolean = await team_pokemon_exist(player_id,index);
+    const pokemon = await prisma.pokemon.findFirst({where: {
+        pokemon_id:pokemon_id,
+    }});
     if(!exist){
         await prisma.team_pokemon.create({data: {
             player_id:player_id,
             pokemon_index:index,
             pokemon_id:pokemon_id,
             level:5,
-            exp:0
+            exp:0,
+            move_list:pokemon?.move_list,
         }})
     }
 }

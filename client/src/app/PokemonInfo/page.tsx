@@ -32,7 +32,7 @@ export default function Home() {
         }
         return "";
     }
-    console.log(moves);
+    console.log("ポケモンデータ",pokemons);
     return (
     <div>
         <Link　className='text-1000' href={"/"}>もどる</Link>
@@ -46,12 +46,12 @@ export default function Home() {
                     front_image={pokemon.front_image} 
                     type={pokemon.type} 
                     level={pokemon.level}
-                    move1_name={idToName(pokemon.move1_id)}
-                    move2_name={idToName(pokemon.move2_id)}
-                    move1_description={idToDescription(pokemon.move1_id)}
-                    move2_description={idToDescription(pokemon.move2_id)}
-                    move1_type={idToType(pokemon.move1_id)}
-                    move2_type={idToType(pokemon.move2_id)}    
+                    move1_name={idToName(pokemon.move_list[0])}
+                    move2_name={idToName(pokemon.move_list[1])}
+                    move1_description={idToDescription(pokemon.move_list[0])}
+                    move2_description={idToDescription(pokemon.move_list[1])}
+                    move1_type={idToType(pokemon.move_list[0])}
+                    move2_type={idToType(pokemon.move_list[1])}
                 />)
             }
         </div>   

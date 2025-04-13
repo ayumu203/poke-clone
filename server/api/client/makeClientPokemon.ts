@@ -5,7 +5,7 @@ import { move_getter } from "../move/move";
 import { pokemon_getter } from "../pokemon/pokemon";
 import { team_pokemon_getter } from "../teamPokemon/teamPokemonHandler";
 
-const makeClientPokemon = async(teamPokemon:Team_pokemon,pokemon:Pokemon,move1:Move,move2:Move) =>{
+const makeClientPokemon = async(teamPokemon:Team_pokemon,pokemon:Pokemon) =>{
     const data = {
     pokemon_id:pokemon?.pokemon_id,
     index:teamPokemon?.pokemon_index,
@@ -20,10 +20,9 @@ const makeClientPokemon = async(teamPokemon:Team_pokemon,pokemon:Pokemon,move1:M
     base_special_attack:pokemon?.base_special_attack,
     base_special_defence:pokemon?.base_special_defence,
     base_speed:pokemon?.base_speed,
-    move1_id:pokemon?.move1_id,
-    move2_id:pokemon?.move2_id,
-    is_evolve:pokemon?.is_evolve,
-    exp:teamPokemon?.exp
+    exp:teamPokemon?.exp,
+    evolve_level:pokemon?.evolve_level,
+    move_list:teamPokemon?.move_list,
     }
     return data;
 }
@@ -31,11 +30,9 @@ const makeClientPokemon = async(teamPokemon:Team_pokemon,pokemon:Pokemon,move1:M
 export const handle_make_client_pokemon = async(player_id:string,count:number) => {
 const p = [];
 for(let i = 0; i < count; i++){
-    const teamPokemon:Team_pokemon = await team_pokemon_getter(player_id,1);
+    const teamPokemon:Team_pokemon = await team_pokemon_getter(player_id,i+1);
     const pokemon:Pokemon = await pokemon_getter(Number(teamPokemon?.pokemon_id));
-    const move1:Move = await move_getter(Number(pokemon?.move1_id));    
-    const move2:Move = await move_getter(Number(pokemon?.move2_id));    
-    const pkm = await makeClientPokemon(teamPokemon,pokemon,move1,move2);
+    const pkm = await makeClientPokemon(teamPokemon,pokemon);
     await p.push(pkm);
 }
 return p;

@@ -13,6 +13,5 @@ export type Pokemon = {
     special_attack:number,
     special_defence:number,
     speed:number,
-    move1_id:number,
-    move2_id:number
+    move_list:number[]
 };

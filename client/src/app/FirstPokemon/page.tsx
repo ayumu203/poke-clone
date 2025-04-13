@@ -19,11 +19,11 @@ import { usePlayer } from '../../../contexts/playerContext';
 
 export default function Home() {
     const { player } = usePlayer();
-    const { pokemons,addPokemon,clearPokemons } = useTeamPokemonContext();
+    const { addPokemon,clearPokemons } = useTeamPokemonContext();
     const { addMove,clearMoves } = useMoveContext();
     const [ firstPokemonOption,setFirstPokemonOption ] = useState<Pokemon[] | null>(null);
     const [ selectName,setSelectName ] = useState<string|null>(null);
-    const [ selectId,setSelectId ] = useState<number|null>(null);
+    const [ ,setSelectId ] = useState<number|null>(null);
     const [ selectIndex,setSelectIndex ] = useState<number>(-1);
     const router = useRouter();
 
@@ -46,14 +46,12 @@ export default function Home() {
                     teamPks.map((pokemon) => {
                         addPokemon(pokemon);
                     })
-
-                    const teamMVs:Move[][] = await fetch_team_move(player.id);
-
-                    teamMVs.forEach(pokemonMVs => {
-                        pokemonMVs.forEach(move => {
-                            addMove(move);
-                        });
-                    });
+                    console.log("ポケモンデータ",teamPks);
+                    const moves:Move[] = await fetch_team_move(player.id);
+                    moves.map((move) => {
+                        addMove(move);
+                    })
+                    console.log("技データ",moves);
                     router.push("/");
                 }
                 else {
@@ -83,23 +81,18 @@ export default function Home() {
     }
 
     // ポケモンを決定し、データベースへ登録する
-    // また技のデータをここで受け取る
     // 最後にホーム画面へ遷移する
     const handleDetermination = async() =>{
-        function addFirstPokemon(pokemon:Pokemon){
-            pokemon.index = 1;
-            pokemon.level = 5;
-            pokemon.exp = 0;
-            if(pokemons.length === 0)addPokemon(pokemon);
-        }
-
         if(firstPokemonOption && selectIndex !== -1){
-            const pokemon:Pokemon = firstPokemonOption[selectIndex];
-            const mvs:Move[] = await send_first_pokemon(String(player?.id),Number(selectId),pokemon.move1_id,pokemon.move2_id);
-            await addFirstPokemon(pokemon);
-            for(const move of mvs){
-                addMove(move);
-            }
+            const pokemon:Pokemon = await send_first_pokemon(player!.id,firstPokemonOption[selectIndex].pokemon_id);
+            clearPokemons();
+            const teamPks:Pokemon[] = await fetch_team_pokemon(player!.id);
+            teamPks.map((pokemon) => {
+                addPokemon(pokemon);
+            })
+            console.log("ポケモンデータ",teamPks);
+    const moves:Move[] = await fetch_team_move(player!.id);
+            await Promise.all(moves.map(move => addMove(move)));
             router.push('/');
         }
     }

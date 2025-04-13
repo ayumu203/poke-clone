@@ -22,7 +22,7 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
         base_special_defence:data.stats[4].base_stat,
         base_speed:data.stats[5].base_stat,
         evolve_level:-1,
-        move_list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+        move_list: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
     };
     return pokemon;
 };

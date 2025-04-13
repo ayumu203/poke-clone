@@ -18,9 +18,8 @@ export async function pokemon_getter(pokemon_id:number):Promise<Pokemon> {
             base_special_attack:data.base_special_attack,
             base_special_defence:data.base_special_defence,
             base_speed:data.base_speed,
-            move1_id:data.move1_id,
-            move2_id:data.move2_id,
-            is_evolve:data.is_evolve
+            evolve_level:data.evolve_level,
+            move_list:data.move_list,
         }
         return pokemon;
     }

@@ -9,8 +9,8 @@ import { Pokemon } from './types/pokemon.types';
 import { move_getter } from './api/move/move';
 import { Move } from './types/move.type';
 import { handle_make_client_pokemon } from './api/client/makeClientPokemon';
-import { handle_make_client_move } from './api/client/makeClientMove';
 import { ClientMove } from './types/clientMove.type';
+import { Team_pokemon } from './types/team_pokemon.type';
 const cors = require('cors');
 const app = express();
 
@@ -54,7 +54,7 @@ app.post("/data/player", async(req:Request,res:Response) =>{
   }
 });
 
-// ログイン後所持しているポケモンがいる場合は、クライアントサイドのPokemon型に対応したデータを渡す
+// // ログイン後所持しているポケモンがいる場合は、クライアントサイドのPokemon型に対応したデータを渡す
 app.post("/data/team-pokemon",async(req:Request,res:Response) => {
   const player_id:string = req.body.id;
   try{
@@ -69,7 +69,6 @@ app.post("/data/team-pokemon",async(req:Request,res:Response) => {
     if(flag3)pokemon_count++;
     const data = await handle_make_client_pokemon(player_id,pokemon_count);
     res.status(200).send(data);
-
   } catch(error){
     console.error(error);
     res.status(204).send("データを取得できませんでした.");
@@ -90,9 +89,29 @@ app.post("/data/team-move",async(req:Request,res:Response) => {
     if(flag1)pokemon_count++;
     if(flag2)pokemon_count++;
     if(flag3)pokemon_count++;
-    const data = await handle_make_client_move(player_id,pokemon_count);
-    res.status(200).send(data);
 
+    const data:ClientMove[] = [];
+
+    for(let i = 1; i <= pokemon_count; i++){
+      const team_pokemon:Team_pokemon = await team_pokemon_getter(player_id,i);
+      const move_list = team_pokemon?.move_list;
+      console.log(move_list);
+      if(move_list){
+        for(let j = 0; j < move_list.length; j++){
+          const move:Move = await move_getter(move_list[j]);
+          if(move){
+            const client_move:ClientMove = {
+              move_id:move.move_id,
+              name:move.name,
+              type:move.type, 
+              description:move.description
+            }
+            data.push(client_move);
+          }
+        }
+      }
+    }
+    res.status(200).send(data);
   } catch(error){
     console.error(error);
     res.status(204).send("データを取得できませんでした.");
@@ -102,8 +121,8 @@ app.post("/data/team-move",async(req:Request,res:Response) => {
 
 
 
-// 最初に選べる3匹のポケモンのデータを返す
-app.post("/first-pokemon-option",async(req:Request,res:Response) =>{
+// // 最初に選べる3匹のポケモンのデータを返す
+app.post("/first-pokemon/option",async(req:Request,res:Response) =>{
   try {
     const data = require('./data/firstPokemonOption.json');
     res.status(200).json(data);
@@ -115,7 +134,7 @@ app.post("/first-pokemon-option",async(req:Request,res:Response) =>{
 });
 
 // 最初のポケモンを登録後、そのポケモンの技データを返す
-app.post("/first-pokemon-determination",async(req:Request,res:Response)=>{
+app.post("/first-pokemon/register",async(req:Request,res:Response)=>{
   try {
     const exist = await team_pokemon_exist(req.body.player_id,1);
     if(exist){
@@ -124,28 +143,20 @@ app.post("/first-pokemon-determination",async(req:Request,res:Response)=>{
     }
     const player_id:string = req.body.player_id;
     const pokemon_id:number = Number(req.body.pokemon_id);
-    const move1_id:number = Number(req.body.move1_id);
-    const move2_id:number = Number(req.body.move2_id);
-  
-    // ユーザの手持ちにデータを追加
-    await team_pokemon_register(player_id,pokemon_id,Number(1));
-  
-    const move1:Move = await move_getter(move1_id);
-    const move2:Move = await move_getter(move2_id);
-  
-    if(move1 && move2){
-      const data:ClientMove[] = [
-        {move_id:move1.move_id,type:move1.type,name:move1.name,description:move1.description},
-        {move_id:move2.move_id,type:move2.type,name:move2.name,description:move2.description}
-      ]
-      res.status(200).send(data);
+    // 初期の3体以外は選択できない
+    if(!((pokemon_id === 494) || (pokemon_id === 495) || (pokemon_id === 501))){
+      res.status(200).send("ポケモンのIDが不正です.");
+      return;
     }
+    // ユーザの手持ちにデータを追加
+    const result = await team_pokemon_register(player_id,pokemon_id,Number(1));
+    const data = await handle_make_client_pokemon(player_id,1);
+    if(data)res.status(200).send(data);
     res.status(200).send("データが存在しません.")
   } catch(error){
     console.error(error);
     res.status(204).send("データを取得できませんでした.");
     throw error;
-
   }
 });
 
@@ -163,7 +174,7 @@ app.post("/data/pokemon",async(req:Request,res:Response)=>{
   }
 })
 
-// サーバ君
+// // サーバ君
 app.listen(PORT, () => { 
   console.log("Server running at PORT: ", PORT); 
 }).on("error", (error:Error) => {
