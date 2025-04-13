@@ -51,7 +51,7 @@ const fetchMove = async (url: string, headers: HeadersInit,move_id:number): Prom
         power:data.power,
         accuracy:data.accuracy,
         priority:data.priority,
-        damage_class: data.damage_class.name || "none",
+        damage_class: data.damage_class.name,
         status_effect:status_effect,
         status_name:status_name,
         status_rank:status_rank,

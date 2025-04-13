@@ -41,7 +41,7 @@ async function store_pokemon_info_from_api(){
       orderBy:{ pokemon_id:'asc' }
     });
   
-    console.log(JSON.stringify(allPokemon,null,2)); 
+    // console.log(JSON.stringify(allPokemon,null,2)); 
 }
 
 // サーバでしか動かさないためメイン関数を用意

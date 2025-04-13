@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import { Pokemon } from "../../../types/pokemon.types";
 
 // 外部APIから必要データを取得するAPI
@@ -9,6 +8,9 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
     if (!response.ok) {
     throw new Error('response error');
     }
+    const localData = require('./pokemoninfo.json'); 
+    const localPokemon = localData.find((pokemon: Pokemon) => pokemon?.pokemon_id === pokemon_id);
+    console.log("localPokemon",localPokemon);
     const data: any = await response.json();
     const pokemon:Pokemon = {
         pokemon_id:pokemon_id,
@@ -22,8 +24,8 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
         base_special_attack:data.stats[3].base_stat,
         base_special_defence:data.stats[4].base_stat,
         base_speed:data.stats[5].base_stat,
-        move1_id:1,
-        move2_id:2,
+        move1_id:localPokemon.move1_id,
+        move2_id:localPokemon.move2_id,
         is_evolve:-1
     };
     return pokemon;

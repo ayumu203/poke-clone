@@ -9,7 +9,7 @@ async function store_move_info_from_api(){
     // pokemon_infoのすべてのレコードを削除する
     const del = await prisma.move.deleteMany();
 
-    for(let i = 1; i <= 500; i++){
+    for(let i = 1; i <= 559; i++){
       const move:Move = await fetchMoveInfo(i);
       if(move){
         let power = 0;

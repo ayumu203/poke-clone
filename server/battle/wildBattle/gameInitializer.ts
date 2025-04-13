@@ -2,12 +2,13 @@ import { move_getter } from "../../api/move/move";
 import { pokemon_getter } from "../../api/pokemon/pokemon";
 import { team_pokemon_exist, team_pokemon_getter } from "../../api/teamPokemon/teamPokemonHandler";
 import { BattlePokemon } from "../../class/BattlePokemon.class";
+import { team_pokemon_count, wild_pokemon_count } from "../../const/pokemon_count.const";
 import { pokemon_id_begin, pokemon_id_end } from "../../const/pokemon_id.const";
 
-export const initGame = async (player_id:string) => {
+export const initGameData = async (player_id:string) => {
     const battlePokemons = [];
     const moves = [];
-    for(let i = 0; i < 3; i++){
+    for(let i = 0; i < team_pokemon_count; i++){
         const exist = await team_pokemon_exist(player_id,i);
         if(exist){
             const team_pokemon = await team_pokemon_getter(player_id,i);
@@ -32,11 +33,10 @@ export const initGame = async (player_id:string) => {
         }
     }
     // 野生ポケモンの出現数
-    const opponentCount = 1;
-    const begin = pokemon_id_begin
-    const end = pokemon_id_end
+    const begin = pokemon_id_begin;
+    const end = pokemon_id_end;
     const wildPokemons = [];
-    for(let i = 0; i < opponentCount; i++){
+    for(let i = 0; i < wild_pokemon_count; i++){
         const random = Math.floor(Math.random() * (end - begin + 1)) + begin;
         const pokemon = await pokemon_getter(random);
         if(!pokemon)continue;

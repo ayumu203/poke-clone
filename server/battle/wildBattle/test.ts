@@ -1,10 +1,12 @@
-import { gameHandler } from "./handleGame";
-import { initGame } from "./initGame";
+import { gameHandler } from "./gameHandler";
+import { initGameData } from "./gameInitializer";
 
 const test = async () => {
-    const initData = await initGame("8d64b01c-4949-4cfd-a3ee-e5dd0d85d63e");
+    // プレイヤーのplayer_idを指定
+    // 今回はplayer_id=100でテストデータを作成済み
+    const initData = await initGameData("100");
     // T2
-    console.log(initData.moves)
+    console.log("クライアントサイドの処理を擬似再現");
     console.log(initData.wildPokemons[0].getName(),"があらわれた！");
     console.log("手持ちのポケモン:",initData.battlePokemons[0].getName());
     console.log("レベル",initData.battlePokemons[0].getLevel());
@@ -16,9 +18,17 @@ const test = async () => {
     console.log("コマンドを選択");
     console.log("1:たたかう");
     console.log(initData.battlePokemons[0].getMove1Id(),"技1を選択");
-    gameHandler(initData.battlePokemons,initData.wildPokemons,initData.moves,{action_id:1,command_id:1});
+    console.log("サーバ側へ処理を移行");
+    while(true){
+        const result = await gameHandler(initData.battlePokemons,initData.wildPokemons,initData.moves,{action_id:1,command_id:1});
+        if(result.endFlag === true){
+            console.log("戦闘終了");
+            break;
+        }
+    }
 }
 
 for(let i = 0; i < 1; i++){
     test();
 }
+
