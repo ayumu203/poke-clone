@@ -24,12 +24,12 @@ export const initGameData = async (player_id:string) => {
                     image: pokemon.back_image,
                     move_list: team_pokemon.move_list
                 }));
-                const move1id = pokemon.move_list[0];
-                const move2id = pokemon.move_list[1];
-                const move1 = await move_getter(Number(move1id));
-                const move2 = await move_getter(Number(move2id));
-                moves.push(move1);
-                moves.push(move2);
+                for(let j = 0; j < team_pokemon.move_list.length; j++){
+                    const move_id = team_pokemon.move_list[j];
+                    const move = await move_getter(Number(move_id));
+                    if(!move)continue;
+                    moves.push(move);
+                }
             }
         }
     }
@@ -50,12 +50,12 @@ export const initGameData = async (player_id:string) => {
             image: pokemon.front_image,
             move_list: pokemon.move_list
         }));
-        const move1id = pokemon.move_list[0];
-        const move2id = pokemon.move_list[1];
-        const move1 = await move_getter(Number(move1id));
-        const move2 = await move_getter(Number(move2id));
-        moves.push(move1);
-        moves.push(move2);
+        for(let j = 0; j < pokemon.move_list.length; j++){
+            const move_id = pokemon.move_list[j];
+            const move = await move_getter(Number(move_id));
+            if(!move)continue;
+            moves.push(move);
+        }
     }
     return {
         battlePokemons,

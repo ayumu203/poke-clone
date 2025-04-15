@@ -1,34 +1,37 @@
 import { BattlePokemon } from "../class/BattlePokemon.class";
 import { handleHealing } from "./healingHandler";
 import { handleAttack } from "./attackHandler";
-import { statusRankHandler } from "./statusRankHandler";
 import { handleAilment } from "./ailmentHandler";
 import { Move } from "../types/move.type";
+import { handleStatusRank } from "./statusRankHandler";
 
 export const handleAction = (attacker:BattlePokemon[],defender:BattlePokemon[],move:Move) => {
     // 回復技
-    if(move!.move_category === "heal"){
-        const healing_amount:number = handleHealing(attacker,move);
-        attacker[0].setCurrentHp(attacker[0].getCurrentHp() + healing_amount);
-        console.log(attacker[0].getName(),"は",move?.name,"をつかった");
-        console.log(attacker[0].getName(),"のHPが",healing_amount,"回復した");
-        return ;
+    switch(move!.move_category){
+        case "heal":
+            handleHealing(attacker,move);
+            break;
+        case "damage":
+            handleAttack(attacker,defender,move);
+            break;
+        case "damage+raise":
+            handleAttack(attacker,defender,move);
+            handleStatusRank(attacker,defender,move);
+            break ;
+        case "damage+lower":
+            handleAttack(attacker,defender,move);
+            handleStatusRank(attacker,defender,move);
+            break ;
+        case "damage+ailment":
+            handleAttack(attacker,defender,move);
+            handleAilment(attacker,defender,move);
+            break ;
+        case "net-good-stats":
+            handleStatusRank(attacker,defender,move);
+            break ;
+        case "ailment":
+            console.log(attacker[0].getName(),"は",move?.name,"を使った");
+            handleAilment(attacker,defender,move);
+            break ;
     }
-    // 攻撃技
-    else if(move!.move_category === "damage" || move!.move_category === "damage+ailment"){
-        const damage:number = handleAttack(attacker,defender,move);
-        console.log("ダメージ:",damage);
-        defender[0].setCurrentHp(defender[0].getCurrentHp() - damage);
-        if(defender[0].getCurrentHp() < 0){
-            defender[0].setCurrentHp(0);
-        }
-        console.log(attacker[0].getName(),"は",move?.name,"をつかった");
-        console.log(defender[0].getName(),"に",damage,"のダメージを与えた");
-    }
-    // ステータス変化
-    if(move!.move_category === "net-good-stats"){
-        statusRankHandler(attacker,defender,move);
-        console.log(attacker[0].getName(),"は",move?.name,"をつかった");
-    }
-
 }

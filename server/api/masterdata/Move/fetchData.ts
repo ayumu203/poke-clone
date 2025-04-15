@@ -8,14 +8,16 @@ const fetchMove = async (url: string, headers: HeadersInit,move_id:number): Prom
     const data: any = await response.json();
 
     // ステータス変化
-    let status_effect = false;
-    let status_name = "none";
-    let status_rank = 0;
+    let status_name = [];
+    let status_rank = [];
     let status_target:string = "";
     if(data.stat_changes.length !== 0){
-        status_effect = true;
-        status_name = data.stat_changes[0].stat.name;
-        status_rank = data.stat_changes[0].change;
+        for(let i = 0; i < data.stat_changes.length; i++){
+            const name = data.stat_changes[i].stat.name;
+            const rank = data.stat_changes[i].change;
+            status_name.push(name);
+            status_rank.push(rank);
+        }
         status_target = data.target.name;
     }
     // 状態異常
@@ -52,8 +54,8 @@ const fetchMove = async (url: string, headers: HeadersInit,move_id:number): Prom
         pp:data.pp,
         accuracy:data.accuracy,
         priority:data.priority,
-        status_name:[status_name],
-        status_rank:[status_rank],
+        status_name:status_name,
+        status_rank:status_rank,
         status_target:status_target,
         status_chance:0,
         ailment_name:ailment_name,
