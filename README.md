@@ -26,7 +26,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 
 ## 今後の実装
 
-### ポケモンバトル
+### ポケモンバトル(arm)
 * 野生ポケモンとの戦闘を実装していく
 * 一部のデータを変更する
 
@@ -42,7 +42,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 * 存在する場合はis_evolveを進化するレベルに設定し、それ以外では-1にする
 APIエンドポイント:https://pokeapi.co/api/v2/evolution-chain/{id}/
 
-### ポケモンの技データの登録(motoki)
+### ポケモンの技データの登録(arm)
 * 現在のシステムではすべてのポケモンにmove_idの1と2が割り当てられている.(はたくとからてチョップだったきがする)
 * そのため各ポケモンに割り当てる技データとpokemon_idをおよび理解のためpokemonのnameを記述したJSONファイルを自動生成できるようにする.
 * server/api/masterdata/Pokemon/registerMove.tsにて実装
@@ -68,30 +68,3 @@ APIエンドポイント:https://pokeapi.co/api/v2/evolution-chain/{id}/
     ]
 }
 ``` 
-
-### 修正等
-* 技の物理・特殊の項目を追加しなければならない.notyet
-
-### リファクタリング
-### 4/11追加
-* moveスキーマにstatus_target:stringを追加
-### 4/11時点で完了しています
-* 現在特にclientのコードが乱れているためリファクタリングを行いたい.
-
-#### client
-* Header.tsx
-ユーザへのメッセージ部分を変更
-* FirstPokemon/page.tsx
-処理が冗長化・読みづらい
-* Login/page.tsx
-ヘッダー・フッターの追加
-* /page.tsx
-ロジックの改善
-
-#### server
-* makeClientMove.ts,makeClientPokemon
-なぞのtmpの変数名の変更
-* /masterdata/Move
-Moveのnullのハンドリング
-* /move/move.ts
-型に付属した余分なnullの削除
