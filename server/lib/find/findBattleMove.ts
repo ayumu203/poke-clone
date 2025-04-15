@@ -7,12 +7,12 @@ import { findMove } from "./findMove";
 // action.action_idが1の時は技1を、2の時は技2を取得する
 export const findBattleMove = (battlePokemons:BattlePokemon[],moves:Move[],action:Action):Move => {
     if(action.action_id === 1){
-        const moveId = battlePokemons[0].getMove1Id();
+        const moveId = battlePokemons[0].getMoveList()[0];
         const battleMove = findMove(moves,moveId); 
         return battleMove;
     }
     if(action.action_id === 2){
-        const moveId = battlePokemons[0].getMove2Id();
+        const moveId = battlePokemons[0].getMoveList()[1];
         const battleMove = findMove(moves,moveId); 
         return battleMove;
     }

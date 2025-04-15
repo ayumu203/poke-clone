@@ -21,10 +21,11 @@ export const initGameData = async (player_id:string) => {
                     pokemon_index: i,
                     level: team_pokemon.level,
                     exp: team_pokemon.exp,
-                    image: pokemon.back_image
+                    image: pokemon.back_image,
+                    move_list: team_pokemon.move_list
                 }));
-                const move1id = pokemon.move1_id;
-                const move2id = pokemon.move2_id;
+                const move1id = pokemon.move_list[0];
+                const move2id = pokemon.move_list[1];
                 const move1 = await move_getter(Number(move1id));
                 const move2 = await move_getter(Number(move2id));
                 moves.push(move1);
@@ -32,6 +33,7 @@ export const initGameData = async (player_id:string) => {
             }
         }
     }
+
     // 野生ポケモンの出現数
     const begin = pokemon_id_begin;
     const end = pokemon_id_end;
@@ -45,10 +47,11 @@ export const initGameData = async (player_id:string) => {
             pokemon_index: i,
             level: Math.floor(Math.random() * battlePokemons[0].getLevel()+3) + 1,
             exp: 0,
-            image: pokemon.front_image
+            image: pokemon.front_image,
+            move_list: pokemon.move_list
         }));
-        const move1id = pokemon.move1_id;
-        const move2id = pokemon.move2_id;
+        const move1id = pokemon.move_list[0];
+        const move2id = pokemon.move_list[1];
         const move1 = await move_getter(Number(move1id));
         const move2 = await move_getter(Number(move2id));
         moves.push(move1);

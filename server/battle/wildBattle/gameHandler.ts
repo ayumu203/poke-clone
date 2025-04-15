@@ -45,7 +45,7 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                         }
                     }
     
-                    // HPが0になった場合の処理
+                // HPが0になった場合の処理
                     if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() !== 0){
                         console.log(battlePokemons[0].getName(),"はもう動けない");
                         endFlag = true;

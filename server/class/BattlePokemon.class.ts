@@ -17,7 +17,7 @@ export class BattlePokemon {
     #special_attack:number;
     #special_defence:number;
     #speed:number;
-    #move_list:Array<number>;
+    #move_list:number[];
     #rank:Rank;
     #ailment:string;
     constructor(params: {

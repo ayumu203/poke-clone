@@ -10,7 +10,7 @@ export const handleAttack = (battlePokemons:BattlePokemon[],opponentPokemons:Bat
     let correction = 1;
     let move_power = 0;
     if(move){
-        move_power = move.power
+        move_power = move.power;
         if(move.damage_class === "physical"){
             atk = battlePokemons[0].getAttack() * ( 1 + battlePokemons[0].getRank().getAttackRank() / 2);
             def = opponentPokemons[0].getDefense() * ( 1 + opponentPokemons[0].getRank().getDefenseRank() / 2);
