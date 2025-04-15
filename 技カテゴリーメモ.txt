@@ -1,0 +1,18 @@
+技カテゴリー
+
+damage
+ailment
+net-good-stats 
+heal
+damage+ailment
+swagger  
+damage+lower    //相手の能力ランクに影響(良いものも悪いものも)
+damage+raise    //自身の能力ランクに影響(良いものも悪いものも)
+damage+heal     //吸収技
+
+技対象(target)
+user:使用者
+all-opponents:敵全体
+all-pokemon:すべてのポケモン
+selected-pokemon:選択したポケモン→実装だるいのでopponentとする・うまくいかない技は省く
+これ以外は実装がきついので実装しない
