@@ -5,7 +5,6 @@ import { Move } from "../../types/move.type";
 import { handleAction } from "../actionHandler";
 
 export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],action:Action) => {
-    console.log("サーバ側の処理を開始");
     let endFlag = false;
     if(action){
         const result = handleEnemyAilmentEffect(battlePokemons,wildPokemons,moves,endFlag);
@@ -19,29 +18,18 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
             return ({ battlePokemons,wildPokemons,moves,endFlag });
         }
 
-        if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() !== 0){
-            console.log(battlePokemons[0].getName(),"は倒れた");
+        const isContinue = handleGameEnd(battlePokemons,wildPokemons);
+        if(isContinue){
             endFlag = true;
             return ({ battlePokemons,wildPokemons,moves,endFlag });
         }
-        else if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() === 0){
-            console.log(wildPokemons[0].getName(),"は倒れた");
-            endFlag = true;
-            return ({ battlePokemons,wildPokemons,moves,endFlag });
-        }
-        else if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() === 0){
-            console.log(battlePokemons[0].getName(),"は倒れた");
-            console.log(wildPokemons[0].getName(),"は倒れた");
-            endFlag = true;
-            return ({ battlePokemons,wildPokemons,moves,endFlag });
-        }
-
 
         switch(action.action_id){
             // たたかう→技を選択
             case 1:
                 let battleMove:Move = findBattleMove(battlePokemons,moves,action);
-                let wildMove:Move = findBattleMove(wildPokemons,moves,{action_id:1,command_id:3});
+                const random = Math.floor(Math.random() * 4 - 1) + 1;
+                let wildMove:Move = findBattleMove(wildPokemons,moves,{action_id:1,command_id:random});
                 if(battleMove && wildMove){
                     // 先制技の優先度を比較
                     if(battleMove.priority > wildMove.priority){
@@ -81,27 +69,32 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                     }
     
                 // HPが0になった場合の処理
-                    if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() !== 0){
-                        console.log(battlePokemons[0].getName(),"は倒れた");
-                        endFlag = true;
-                    }
-                    else if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() === 0){
-                        console.log(wildPokemons[0].getName(),"は倒れた");
-                        endFlag = true;
-                    }
-                    else if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() === 0){
-                        console.log(battlePokemons[0].getName(),"は倒れた");
-                        console.log(wildPokemons[0].getName(),"は倒れた");
-                        endFlag = true;
-                    }
+                    endFlag = handleGameEnd(battlePokemons,wildPokemons);
                 }
                 break;
         }
     }
     console.log(battlePokemons[0].getName(),"のHP",battlePokemons[0].getCurrentHp());
     console.log(wildPokemons[0].getName(),"のHP",wildPokemons[0].getCurrentHp());
-    console.log("サーバ側の処理を終了");
     return ({ battlePokemons,wildPokemons,moves,endFlag });
+}
+
+const handleGameEnd = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[]):boolean => {
+    let endFlag = false;
+    if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() !== 0){
+        console.log(battlePokemons[0].getName(),"は倒れた");
+        endFlag = true;
+    }
+    else if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() === 0){
+        console.log(wildPokemons[0].getName(),"は倒れた");
+        endFlag = true;
+    }
+    else if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() === 0){
+        console.log(battlePokemons[0].getName(),"は倒れた");
+        console.log(wildPokemons[0].getName(),"は倒れた");
+        endFlag = true;
+    }
+    return endFlag;
 }
 
 const handleAilmentEffect = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],endFlag:boolean) => {

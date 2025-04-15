@@ -26,7 +26,6 @@ export class BattlePokemon {
         level:number;
         exp:number;
         image:string;
-        move_list:Array<number>;
     }){
         //初期化
         if(!params.pokemon){
@@ -46,7 +45,7 @@ export class BattlePokemon {
         this.#special_attack = calcPokemonRealStats(params.pokemon.base_special_attack,params.level);
         this.#special_defence = calcPokemonRealStats(params.pokemon.base_special_defence,params.level);
         this.#speed = calcPokemonRealStats(params.pokemon.base_speed,params.level);
-        this.#move_list = params.move_list;
+        this.#move_list = params.pokemon.move_list;
         this.#rank = new Rank({
             attack: 0,
             defense: 0,
