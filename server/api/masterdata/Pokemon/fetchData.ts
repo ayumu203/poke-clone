@@ -67,3 +67,42 @@ export const fetchPokemonInfo = async(pokemon_id:number): Promise<Pokemon> => {
     }
 }
 
+export const fetchPokemonEvolutionChainURL = async(info_url:string, pokemon_id:number): Promise<string> => {
+    const response = await fetch(info_url)
+    if (!response.ok) {
+    throw new Error('response error');
+    }
+    const data: any = await response.json();
+    const url:string = data.evolution_chain.url;
+    return url;
+}
+
+export const fetchPokemonEvolveLevel = async(pokemon_id:number): Promise<number> =>{
+    const info_url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon_id}`;
+    const evolution_chain_url = await fetchPokemonEvolutinChainURL(info_url, pokemon_id);
+
+    try {
+        const response = await fetch(evolution_chain_url);
+        if (!response.ok) {
+        throw new Error('response error');
+        }
+        const data: any = await response.json();
+
+        let link = data.chain;
+        let i = 1;
+        while(link.evolves_to.length !== 0){
+            if(link.species.url === info_url){
+                if(link.link.evolves_to[0].evolution_details.min_level !== null){
+                    const evolve_level = link.evolves_to[0].evolution_details.min_level;
+                    return evolve_level;
+                } else {
+                    return i*20;
+                }
+            }
+            i++;
+        }
+        return -1;
+    } catch(error){
+        throw error;
+    }
+}
