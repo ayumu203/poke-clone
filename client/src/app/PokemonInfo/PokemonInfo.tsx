@@ -7,10 +7,16 @@ type Info = {
   level:number,
   move1_name:string,
   move2_name:string,
+  move3_name:string,
+  move4_name:string,
   move1_description:string,
   move2_description:string,
+  move3_description:string,
+  move4_description:string,
   move1_type:string,
   move2_type:string,
+  move3_type:string,
+  move4_type:string,
 }
 
 export default function PokemonInfo(info:Info) {
@@ -68,13 +74,21 @@ export default function PokemonInfo(info:Info) {
               }}>{info.name}</p>
           </div>
           <div>
-            <div className='flex'>
+            <div className='flex mb-2'>
                 <p style={{color:typeToColor(info.move1_type)}}>{(info.move1_name)}</p>
                 <p>:{(info.move1_description)}</p>
             </div>
-            <div className='flex'>
+            <div className='flex mb-2'>
               <p style={{color:typeToColor(info.move2_type)}}>{(info.move2_name)}</p>
               <p>:{(info.move2_description)}</p>
+            </div>
+            <div className='flex mb-2'>
+              <p style={{color:typeToColor(info.move3_type)}}>{(info.move3_name)}</p>
+              <p>:{(info.move3_description)}</p>
+            </div>
+            <div className='flex mb-2'>
+              <p style={{color:typeToColor(info.move4_type)}}>{(info.move4_name)}</p>
+              <p>:{(info.move4_description)}</p>
             </div>
           </div>
       </div>

@@ -1,0 +1,2901 @@
+diff --git a/client/src/app/PokemonInfo/PokemonInfo.tsx b/client/src/app/PokemonInfo/PokemonInfo.tsx
+index 7b56dec..c3fee70 100644
+--- a/client/src/app/PokemonInfo/PokemonInfo.tsx
++++ b/client/src/app/PokemonInfo/PokemonInfo.tsx
+@@ -7,10 +7,16 @@ type Info = {
+   level:number,
+   move1_name:string,
+   move2_name:string,
++  move3_name:string,
++  move4_name:string,
+   move1_description:string,
+   move2_description:string,
++  move3_description:string,
++  move4_description:string,
+   move1_type:string,
+   move2_type:string,
++  move3_type:string,
++  move4_type:string,
+ }
+ 
+ export default function PokemonInfo(info:Info) {
+@@ -68,14 +74,22 @@ export default function PokemonInfo(info:Info) {
+               }}>{info.name}</p>
+           </div>
+           <div>
+-            <div className='flex'>
++            <div className='flex mb-2'>
+                 <p style={{color:typeToColor(info.move1_type)}}>{(info.move1_name)}</p>
+                 <p>:{(info.move1_description)}</p>
+             </div>
+-            <div className='flex'>
++            <div className='flex mb-2'>
+               <p style={{color:typeToColor(info.move2_type)}}>{(info.move2_name)}</p>
+               <p>:{(info.move2_description)}</p>
+             </div>
++            <div className='flex mb-2'>
++              <p style={{color:typeToColor(info.move3_type)}}>{(info.move3_name)}</p>
++              <p>:{(info.move3_description)}</p>
++            </div>
++            <div className='flex mb-2'>
++              <p style={{color:typeToColor(info.move4_type)}}>{(info.move4_name)}</p>
++              <p>:{(info.move4_description)}</p>
++            </div>
+           </div>
+       </div>
+     </div>
+diff --git a/client/src/app/PokemonInfo/page.tsx b/client/src/app/PokemonInfo/page.tsx
+index bb2c467..2483370 100644
+--- a/client/src/app/PokemonInfo/page.tsx
++++ b/client/src/app/PokemonInfo/page.tsx
+@@ -5,8 +5,8 @@ import Header from '../Components/Header/Header';
+ import Footer from '../Components/Footer/Footer';
+ import { useTeamPokemonContext } from '../../../contexts/teamContext';
+ import PokemonInfo from './PokemonInfo';
+-import Link from 'next/link';
+ import { useMoveContext } from '../../../contexts/moveContext';
++import Link from 'next/link';
+ 
+ export default function Home() {
+     const { pokemons } = useTeamPokemonContext();
+@@ -34,8 +34,8 @@ export default function Home() {
+     }
+     console.log("ポケモンデータ",pokemons);
+     return (
+-    <div>
+-        <Link　className='text-1000' href={"/"}>もどる</Link>
++    <>
++        <Link className='text-1000' href={"/"}>もどる</Link>
+         <Header></Header>
+         <div className='h-[95vh] bg-cyan-50'>
+             {
+@@ -48,14 +48,20 @@ export default function Home() {
+                     level={pokemon.level}
+                     move1_name={idToName(pokemon.move_list[0])}
+                     move2_name={idToName(pokemon.move_list[1])}
++                    move3_name={idToName(pokemon.move_list[2])}
++                    move4_name={idToName(pokemon.move_list[3])}
+                     move1_description={idToDescription(pokemon.move_list[0])}
+                     move2_description={idToDescription(pokemon.move_list[1])}
++                    move3_description={idToDescription(pokemon.move_list[2])}
++                    move4_description={idToDescription(pokemon.move_list[3])}
+                     move1_type={idToType(pokemon.move_list[0])}
+                     move2_type={idToType(pokemon.move_list[1])}
++                    move3_type={idToType(pokemon.move_list[2])}
++                    move4_type={idToType(pokemon.move_list[3])}
+                 />)
+             }
+         </div>   
+         <Footer></Footer>
+-    </div>
++    </>
+     )
+ }
+diff --git a/node_modules/.package-lock.json b/node_modules/.package-lock.json
+index a0ea474..9c19b02 100644
+--- a/node_modules/.package-lock.json
++++ b/node_modules/.package-lock.json
+@@ -32,6 +32,42 @@
+         "node": ">=18"
+       }
+     },
++    "node_modules/@img/sharp-libvips-linux-x64": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-x64/-/sharp-libvips-linux-x64-1.1.0.tgz",
++      "integrity": "sha512-yRj2+reB8iMg9W5sULM3S74jVS7zqSzHG3Ol/twnAAkAhnGQnpjj6e4ayUz7V+FpKypwgs82xbRdYtchTTUB+Q==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-linux-x64": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-x64/-/sharp-linux-x64-0.34.1.tgz",
++      "integrity": "sha512-wExv7SH9nmoBW3Wr2gvQopX1k8q2g5V5Iag8Zk6AVENsjwd+3adjwxtp3Dcu2QhOXr8W9NusBU6XcQUohBZ5MA==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-x64": "1.1.0"
++      }
++    },
+     "node_modules/@jridgewell/resolve-uri": {
+       "version": "3.1.2",
+       "resolved": "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz",
+@@ -57,6 +93,26 @@
+         "@jridgewell/sourcemap-codec": "^1.4.10"
+       }
+     },
++    "node_modules/@next/env": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/env/-/env-15.3.1.tgz",
++      "integrity": "sha512-cwK27QdzrMblHSn9DZRV+DQscHXRuJv6MydlJRpFSqJWZrTYMLzKDeyueJNN9MGd8NNiUKzDQADAf+dMLXX7YQ=="
++    },
++    "node_modules/@next/swc-linux-x64-gnu": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-15.3.1.tgz",
++      "integrity": "sha512-bfI4AMhySJbyXQIKH5rmLJ5/BP7bPwuxauTvVEiJ/ADoddaA9fgyNNCcsbu9SlqfHDoZmfI6g2EjzLwbsVTr5A==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
+     "node_modules/@prisma/client": {
+       "version": "6.6.0",
+       "resolved": "https://registry.npmjs.org/@prisma/client/-/client-6.6.0.tgz",
+@@ -133,6 +189,19 @@
+         "@prisma/debug": "6.6.0"
+       }
+     },
++    "node_modules/@swc/counter": {
++      "version": "0.1.3",
++      "resolved": "https://registry.npmjs.org/@swc/counter/-/counter-0.1.3.tgz",
++      "integrity": "sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ=="
++    },
++    "node_modules/@swc/helpers": {
++      "version": "0.5.15",
++      "resolved": "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.15.tgz",
++      "integrity": "sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==",
++      "dependencies": {
++        "tslib": "^2.8.0"
++      }
++    },
+     "node_modules/@tsconfig/node10": {
+       "version": "1.0.11",
+       "resolved": "https://registry.npmjs.org/@tsconfig/node10/-/node10-1.0.11.tgz",
+@@ -232,6 +301,24 @@
+       "integrity": "sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==",
+       "dev": true
+     },
++    "node_modules/@types/react": {
++      "version": "19.1.2",
++      "resolved": "https://registry.npmjs.org/@types/react/-/react-19.1.2.tgz",
++      "integrity": "sha512-oxLPMytKchWGbnQM9O7D67uPa9paTNxO7jVoNMXgkkErULBPhPARCfkKL9ytcIJJRGjbsVwW4ugJzyFFvm/Tiw==",
++      "dev": true,
++      "dependencies": {
++        "csstype": "^3.0.2"
++      }
++    },
++    "node_modules/@types/react-dom": {
++      "version": "19.1.2",
++      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.1.2.tgz",
++      "integrity": "sha512-XGJkWF41Qq305SKWEILa1O8vzhb3aOo3ogBlSmiqNko/WmRb6QIaweuZCXjKygVDXpzXb5wyxKTSOsmkuqj+Qw==",
++      "dev": true,
++      "peerDependencies": {
++        "@types/react": "^19.0.0"
++      }
++    },
+     "node_modules/@types/send": {
+       "version": "0.17.4",
+       "resolved": "https://registry.npmjs.org/@types/send/-/send-0.17.4.tgz",
+@@ -367,6 +454,17 @@
+         "node": ">=8"
+       }
+     },
++    "node_modules/busboy": {
++      "version": "1.6.0",
++      "resolved": "https://registry.npmjs.org/busboy/-/busboy-1.6.0.tgz",
++      "integrity": "sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==",
++      "dependencies": {
++        "streamsearch": "^1.1.0"
++      },
++      "engines": {
++        "node": ">=10.16.0"
++      }
++    },
+     "node_modules/bytes": {
+       "version": "3.1.2",
+       "resolved": "https://registry.npmjs.org/bytes/-/bytes-3.1.2.tgz",
+@@ -402,6 +500,25 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/caniuse-lite": {
++      "version": "1.0.30001714",
++      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001714.tgz",
++      "integrity": "sha512-mtgapdwDLSSBnCI3JokHM7oEQBLxiJKVRtg10AxM1AyeiKcM96f0Mkbqeq+1AbiCtvMcHRulAAEMu693JrSWqg==",
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/browserslist"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/caniuse-lite"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ]
++    },
+     "node_modules/chokidar": {
+       "version": "3.6.0",
+       "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+@@ -426,6 +543,52 @@
+         "fsevents": "~2.3.2"
+       }
+     },
++    "node_modules/client-only": {
++      "version": "0.0.1",
++      "resolved": "https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz",
++      "integrity": "sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA=="
++    },
++    "node_modules/color": {
++      "version": "4.2.3",
++      "resolved": "https://registry.npmjs.org/color/-/color-4.2.3.tgz",
++      "integrity": "sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==",
++      "optional": true,
++      "dependencies": {
++        "color-convert": "^2.0.1",
++        "color-string": "^1.9.0"
++      },
++      "engines": {
++        "node": ">=12.5.0"
++      }
++    },
++    "node_modules/color-convert": {
++      "version": "2.0.1",
++      "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
++      "integrity": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==",
++      "optional": true,
++      "dependencies": {
++        "color-name": "~1.1.4"
++      },
++      "engines": {
++        "node": ">=7.0.0"
++      }
++    },
++    "node_modules/color-name": {
++      "version": "1.1.4",
++      "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
++      "integrity": "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==",
++      "optional": true
++    },
++    "node_modules/color-string": {
++      "version": "1.9.1",
++      "resolved": "https://registry.npmjs.org/color-string/-/color-string-1.9.1.tgz",
++      "integrity": "sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==",
++      "optional": true,
++      "dependencies": {
++        "color-name": "^1.0.0",
++        "simple-swizzle": "^0.2.2"
++      }
++    },
+     "node_modules/concat-map": {
+       "version": "0.0.1",
+       "resolved": "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz",
+@@ -485,6 +648,12 @@
+       "integrity": "sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==",
+       "dev": true
+     },
++    "node_modules/csstype": {
++      "version": "3.1.3",
++      "resolved": "https://registry.npmjs.org/csstype/-/csstype-3.1.3.tgz",
++      "integrity": "sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==",
++      "dev": true
++    },
+     "node_modules/debug": {
+       "version": "4.4.0",
+       "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.0.tgz",
+@@ -509,6 +678,15 @@
+         "node": ">= 0.8"
+       }
+     },
++    "node_modules/detect-libc": {
++      "version": "2.0.3",
++      "resolved": "https://registry.npmjs.org/detect-libc/-/detect-libc-2.0.3.tgz",
++      "integrity": "sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==",
++      "optional": true,
++      "engines": {
++        "node": ">=8"
++      }
++    },
+     "node_modules/diff": {
+       "version": "4.0.2",
+       "resolved": "https://registry.npmjs.org/diff/-/diff-4.0.2.tgz",
+@@ -863,6 +1041,12 @@
+         "node": ">= 0.10"
+       }
+     },
++    "node_modules/is-arrayish": {
++      "version": "0.3.2",
++      "resolved": "https://registry.npmjs.org/is-arrayish/-/is-arrayish-0.3.2.tgz",
++      "integrity": "sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==",
++      "optional": true
++    },
+     "node_modules/is-binary-path": {
+       "version": "2.1.0",
+       "resolved": "https://registry.npmjs.org/is-binary-path/-/is-binary-path-2.1.0.tgz",
+@@ -979,6 +1163,23 @@
+       "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+       "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
+     },
++    "node_modules/nanoid": {
++      "version": "3.3.11",
++      "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.11.tgz",
++      "integrity": "sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==",
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "bin": {
++        "nanoid": "bin/nanoid.cjs"
++      },
++      "engines": {
++        "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
++      }
++    },
+     "node_modules/negotiator": {
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-1.0.0.tgz",
+@@ -987,6 +1188,59 @@
+         "node": ">= 0.6"
+       }
+     },
++    "node_modules/next": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/next/-/next-15.3.1.tgz",
++      "integrity": "sha512-8+dDV0xNLOgHlyBxP1GwHGVaNXsmp+2NhZEYrXr24GWLHtt27YrBPbPuHvzlhi7kZNYjeJNR93IF5zfFu5UL0g==",
++      "dependencies": {
++        "@next/env": "15.3.1",
++        "@swc/counter": "0.1.3",
++        "@swc/helpers": "0.5.15",
++        "busboy": "1.6.0",
++        "caniuse-lite": "^1.0.30001579",
++        "postcss": "8.4.31",
++        "styled-jsx": "5.1.6"
++      },
++      "bin": {
++        "next": "dist/bin/next"
++      },
++      "engines": {
++        "node": "^18.18.0 || ^19.8.0 || >= 20.0.0"
++      },
++      "optionalDependencies": {
++        "@next/swc-darwin-arm64": "15.3.1",
++        "@next/swc-darwin-x64": "15.3.1",
++        "@next/swc-linux-arm64-gnu": "15.3.1",
++        "@next/swc-linux-arm64-musl": "15.3.1",
++        "@next/swc-linux-x64-gnu": "15.3.1",
++        "@next/swc-linux-x64-musl": "15.3.1",
++        "@next/swc-win32-arm64-msvc": "15.3.1",
++        "@next/swc-win32-x64-msvc": "15.3.1",
++        "sharp": "^0.34.1"
++      },
++      "peerDependencies": {
++        "@opentelemetry/api": "^1.1.0",
++        "@playwright/test": "^1.41.2",
++        "babel-plugin-react-compiler": "*",
++        "react": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0",
++        "react-dom": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0",
++        "sass": "^1.3.0"
++      },
++      "peerDependenciesMeta": {
++        "@opentelemetry/api": {
++          "optional": true
++        },
++        "@playwright/test": {
++          "optional": true
++        },
++        "babel-plugin-react-compiler": {
++          "optional": true
++        },
++        "sass": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/nodemon": {
+       "version": "3.1.9",
+       "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.9.tgz",
+@@ -1078,6 +1332,11 @@
+         "node": ">=16"
+       }
+     },
++    "node_modules/picocolors": {
++      "version": "1.1.1",
++      "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
++      "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="
++    },
+     "node_modules/picomatch": {
+       "version": "2.3.1",
+       "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz",
+@@ -1090,6 +1349,33 @@
+         "url": "https://github.com/sponsors/jonschlinkert"
+       }
+     },
++    "node_modules/postcss": {
++      "version": "8.4.31",
++      "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.4.31.tgz",
++      "integrity": "sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==",
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/postcss/"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/postcss"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "dependencies": {
++        "nanoid": "^3.3.6",
++        "picocolors": "^1.0.0",
++        "source-map-js": "^1.0.2"
++      },
++      "engines": {
++        "node": "^10 || ^12 || >=14"
++      }
++    },
+     "node_modules/prisma": {
+       "version": "6.6.0",
+       "resolved": "https://registry.npmjs.org/prisma/-/prisma-6.6.0.tgz",
+@@ -1172,6 +1458,27 @@
+         "node": ">= 0.8"
+       }
+     },
++    "node_modules/react": {
++      "version": "19.1.0",
++      "resolved": "https://registry.npmjs.org/react/-/react-19.1.0.tgz",
++      "integrity": "sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==",
++      "peer": true,
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/react-dom": {
++      "version": "19.1.0",
++      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.1.0.tgz",
++      "integrity": "sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==",
++      "peer": true,
++      "dependencies": {
++        "scheduler": "^0.26.0"
++      },
++      "peerDependencies": {
++        "react": "^19.1.0"
++      }
++    },
+     "node_modules/readdirp": {
+       "version": "3.6.0",
+       "resolved": "https://registry.npmjs.org/readdirp/-/readdirp-3.6.0.tgz",
+@@ -1223,11 +1530,17 @@
+       "resolved": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
+       "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
+     },
++    "node_modules/scheduler": {
++      "version": "0.26.0",
++      "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.26.0.tgz",
++      "integrity": "sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA==",
++      "peer": true
++    },
+     "node_modules/semver": {
+       "version": "7.7.1",
+       "resolved": "https://registry.npmjs.org/semver/-/semver-7.7.1.tgz",
+       "integrity": "sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==",
+-      "dev": true,
++      "devOptional": true,
+       "bin": {
+         "semver": "bin/semver.js"
+       },
+@@ -1275,6 +1588,46 @@
+       "resolved": "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.2.0.tgz",
+       "integrity": "sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw=="
+     },
++    "node_modules/sharp": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/sharp/-/sharp-0.34.1.tgz",
++      "integrity": "sha512-1j0w61+eVxu7DawFJtnfYcvSv6qPFvfTaqzTQ2BLknVhHTwGS8sc63ZBF4rzkWMBVKybo4S5OBtDdZahh2A1xg==",
++      "hasInstallScript": true,
++      "optional": true,
++      "dependencies": {
++        "color": "^4.2.3",
++        "detect-libc": "^2.0.3",
++        "semver": "^7.7.1"
++      },
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-darwin-arm64": "0.34.1",
++        "@img/sharp-darwin-x64": "0.34.1",
++        "@img/sharp-libvips-darwin-arm64": "1.1.0",
++        "@img/sharp-libvips-darwin-x64": "1.1.0",
++        "@img/sharp-libvips-linux-arm": "1.1.0",
++        "@img/sharp-libvips-linux-arm64": "1.1.0",
++        "@img/sharp-libvips-linux-ppc64": "1.1.0",
++        "@img/sharp-libvips-linux-s390x": "1.1.0",
++        "@img/sharp-libvips-linux-x64": "1.1.0",
++        "@img/sharp-libvips-linuxmusl-arm64": "1.1.0",
++        "@img/sharp-libvips-linuxmusl-x64": "1.1.0",
++        "@img/sharp-linux-arm": "0.34.1",
++        "@img/sharp-linux-arm64": "0.34.1",
++        "@img/sharp-linux-s390x": "0.34.1",
++        "@img/sharp-linux-x64": "0.34.1",
++        "@img/sharp-linuxmusl-arm64": "0.34.1",
++        "@img/sharp-linuxmusl-x64": "0.34.1",
++        "@img/sharp-wasm32": "0.34.1",
++        "@img/sharp-win32-ia32": "0.34.1",
++        "@img/sharp-win32-x64": "0.34.1"
++      }
++    },
+     "node_modules/side-channel": {
+       "version": "1.1.0",
+       "resolved": "https://registry.npmjs.org/side-channel/-/side-channel-1.1.0.tgz",
+@@ -1343,6 +1696,15 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/simple-swizzle": {
++      "version": "0.2.2",
++      "resolved": "https://registry.npmjs.org/simple-swizzle/-/simple-swizzle-0.2.2.tgz",
++      "integrity": "sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==",
++      "optional": true,
++      "dependencies": {
++        "is-arrayish": "^0.3.1"
++      }
++    },
+     "node_modules/simple-update-notifier": {
+       "version": "2.0.0",
+       "resolved": "https://registry.npmjs.org/simple-update-notifier/-/simple-update-notifier-2.0.0.tgz",
+@@ -1355,6 +1717,14 @@
+         "node": ">=10"
+       }
+     },
++    "node_modules/source-map-js": {
++      "version": "1.2.1",
++      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
++      "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
+     "node_modules/statuses": {
+       "version": "2.0.1",
+       "resolved": "https://registry.npmjs.org/statuses/-/statuses-2.0.1.tgz",
+@@ -1363,6 +1733,36 @@
+         "node": ">= 0.8"
+       }
+     },
++    "node_modules/streamsearch": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/streamsearch/-/streamsearch-1.1.0.tgz",
++      "integrity": "sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==",
++      "engines": {
++        "node": ">=10.0.0"
++      }
++    },
++    "node_modules/styled-jsx": {
++      "version": "5.1.6",
++      "resolved": "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.1.6.tgz",
++      "integrity": "sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA==",
++      "dependencies": {
++        "client-only": "0.0.1"
++      },
++      "engines": {
++        "node": ">= 12.0.0"
++      },
++      "peerDependencies": {
++        "react": ">= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0"
++      },
++      "peerDependenciesMeta": {
++        "@babel/core": {
++          "optional": true
++        },
++        "babel-plugin-macros": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/supports-color": {
+       "version": "5.5.0",
+       "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-5.5.0.tgz",
+@@ -1447,6 +1847,11 @@
+         }
+       }
+     },
++    "node_modules/tslib": {
++      "version": "2.8.1",
++      "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
++      "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
++    },
+     "node_modules/type-is": {
+       "version": "2.0.1",
+       "resolved": "https://registry.npmjs.org/type-is/-/type-is-2.0.1.tgz",
+diff --git a/package-lock.json b/package-lock.json
+index 2aa827c..bc6be13 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -11,11 +11,14 @@
+       "dependencies": {
+         "@prisma/client": "^6.6.0",
+         "cors": "^2.8.5",
+-        "express": "^5.1.0"
++        "express": "^5.1.0",
++        "next": "^15.3.1"
+       },
+       "devDependencies": {
+         "@types/express": "^5.0.1",
+-        "@types/node": "^22.13.17",
++        "@types/node": "^22.14.1",
++        "@types/react": "^19.1.2",
++        "@types/react-dom": "^19.1.2",
+         "nodemon": "^3.1.9",
+         "prisma": "^6.6.0",
+         "ts-node": "^10.9.2",
+@@ -34,6 +37,15 @@
+         "node": ">=12"
+       }
+     },
++    "node_modules/@emnapi/runtime": {
++      "version": "1.4.3",
++      "resolved": "https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.4.3.tgz",
++      "integrity": "sha512-pBPWdu6MLKROBX05wSNKcNb++m5Er+KQ9QkB+WVM+pW2Kx9hoSrVTnu3BdkI5eBLZoKu/J6mW/B6i6bJB2ytXQ==",
++      "optional": true,
++      "dependencies": {
++        "tslib": "^2.4.0"
++      }
++    },
+     "node_modules/@esbuild/aix-ppc64": {
+       "version": "0.25.2",
+       "resolved": "https://registry.npmjs.org/@esbuild/aix-ppc64/-/aix-ppc64-0.25.2.tgz",
+@@ -434,6 +446,363 @@
+         "node": ">=18"
+       }
+     },
++    "node_modules/@img/sharp-darwin-arm64": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.34.1.tgz",
++      "integrity": "sha512-pn44xgBtgpEbZsu+lWf2KNb6OAf70X68k+yk69Ic2Xz11zHR/w24/U49XT7AeRwJ0Px+mhALhU5LPci1Aymk7A==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-darwin-arm64": "1.1.0"
++      }
++    },
++    "node_modules/@img/sharp-darwin-x64": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-darwin-x64/-/sharp-darwin-x64-0.34.1.tgz",
++      "integrity": "sha512-VfuYgG2r8BpYiOUN+BfYeFo69nP/MIwAtSJ7/Zpxc5QF3KS22z8Pvg3FkrSFJBPNQ7mmcUcYQFBmEQp7eu1F8Q==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-darwin-x64": "1.1.0"
++      }
++    },
++    "node_modules/@img/sharp-libvips-darwin-arm64": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-darwin-arm64/-/sharp-libvips-darwin-arm64-1.1.0.tgz",
++      "integrity": "sha512-HZ/JUmPwrJSoM4DIQPv/BfNh9yrOA8tlBbqbLz4JZ5uew2+o22Ik+tHQJcih7QJuSa0zo5coHTfD5J8inqj9DA==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-darwin-x64": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-darwin-x64/-/sharp-libvips-darwin-x64-1.1.0.tgz",
++      "integrity": "sha512-Xzc2ToEmHN+hfvsl9wja0RlnXEgpKNmftriQp6XzY/RaSfwD9th+MSh0WQKzUreLKKINb3afirxW7A0fz2YWuQ==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-arm": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm/-/sharp-libvips-linux-arm-1.1.0.tgz",
++      "integrity": "sha512-s8BAd0lwUIvYCJyRdFqvsj+BJIpDBSxs6ivrOPm/R7piTs5UIwY5OjXrP2bqXC9/moGsyRa37eYWYCOGVXxVrA==",
++      "cpu": [
++        "arm"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-arm64": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm64/-/sharp-libvips-linux-arm64-1.1.0.tgz",
++      "integrity": "sha512-IVfGJa7gjChDET1dK9SekxFFdflarnUB8PwW8aGwEoF3oAsSDuNUTYS+SKDOyOJxQyDC1aPFMuRYLoDInyV9Ew==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-ppc64": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-ppc64/-/sharp-libvips-linux-ppc64-1.1.0.tgz",
++      "integrity": "sha512-tiXxFZFbhnkWE2LA8oQj7KYR+bWBkiV2nilRldT7bqoEZ4HiDOcePr9wVDAZPi/Id5fT1oY9iGnDq20cwUz8lQ==",
++      "cpu": [
++        "ppc64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-s390x": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-s390x/-/sharp-libvips-linux-s390x-1.1.0.tgz",
++      "integrity": "sha512-xukSwvhguw7COyzvmjydRb3x/09+21HykyapcZchiCUkTThEQEOMtBj9UhkaBRLuBrgLFzQ2wbxdeCCJW/jgJA==",
++      "cpu": [
++        "s390x"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-x64": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-x64/-/sharp-libvips-linux-x64-1.1.0.tgz",
++      "integrity": "sha512-yRj2+reB8iMg9W5sULM3S74jVS7zqSzHG3Ol/twnAAkAhnGQnpjj6e4ayUz7V+FpKypwgs82xbRdYtchTTUB+Q==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linuxmusl-arm64": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-arm64/-/sharp-libvips-linuxmusl-arm64-1.1.0.tgz",
++      "integrity": "sha512-jYZdG+whg0MDK+q2COKbYidaqW/WTz0cc1E+tMAusiDygrM4ypmSCjOJPmFTvHHJ8j/6cAGyeDWZOsK06tP33w==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linuxmusl-x64": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-x64/-/sharp-libvips-linuxmusl-x64-1.1.0.tgz",
++      "integrity": "sha512-wK7SBdwrAiycjXdkPnGCPLjYb9lD4l6Ze2gSdAGVZrEL05AOUJESWU2lhlC+Ffn5/G+VKuSm6zzbQSzFX/P65A==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-linux-arm": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-arm/-/sharp-linux-arm-0.34.1.tgz",
++      "integrity": "sha512-anKiszvACti2sGy9CirTlNyk7BjjZPiML1jt2ZkTdcvpLU1YH6CXwRAZCA2UmRXnhiIftXQ7+Oh62Ji25W72jA==",
++      "cpu": [
++        "arm"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-arm": "1.1.0"
++      }
++    },
++    "node_modules/@img/sharp-linux-arm64": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-arm64/-/sharp-linux-arm64-0.34.1.tgz",
++      "integrity": "sha512-kX2c+vbvaXC6vly1RDf/IWNXxrlxLNpBVWkdpRq5Ka7OOKj6nr66etKy2IENf6FtOgklkg9ZdGpEu9kwdlcwOQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-arm64": "1.1.0"
++      }
++    },
++    "node_modules/@img/sharp-linux-s390x": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-s390x/-/sharp-linux-s390x-0.34.1.tgz",
++      "integrity": "sha512-7s0KX2tI9mZI2buRipKIw2X1ufdTeaRgwmRabt5bi9chYfhur+/C1OXg3TKg/eag1W+6CCWLVmSauV1owmRPxA==",
++      "cpu": [
++        "s390x"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-s390x": "1.1.0"
++      }
++    },
++    "node_modules/@img/sharp-linux-x64": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-x64/-/sharp-linux-x64-0.34.1.tgz",
++      "integrity": "sha512-wExv7SH9nmoBW3Wr2gvQopX1k8q2g5V5Iag8Zk6AVENsjwd+3adjwxtp3Dcu2QhOXr8W9NusBU6XcQUohBZ5MA==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-x64": "1.1.0"
++      }
++    },
++    "node_modules/@img/sharp-linuxmusl-arm64": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linuxmusl-arm64/-/sharp-linuxmusl-arm64-0.34.1.tgz",
++      "integrity": "sha512-DfvyxzHxw4WGdPiTF0SOHnm11Xv4aQexvqhRDAoD00MzHekAj9a/jADXeXYCDFH/DzYruwHbXU7uz+H+nWmSOQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linuxmusl-arm64": "1.1.0"
++      }
++    },
++    "node_modules/@img/sharp-linuxmusl-x64": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linuxmusl-x64/-/sharp-linuxmusl-x64-0.34.1.tgz",
++      "integrity": "sha512-pax/kTR407vNb9qaSIiWVnQplPcGU8LRIJpDT5o8PdAx5aAA7AS3X9PS8Isw1/WfqgQorPotjrZL3Pqh6C5EBg==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linuxmusl-x64": "1.1.0"
++      }
++    },
++    "node_modules/@img/sharp-wasm32": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-wasm32/-/sharp-wasm32-0.34.1.tgz",
++      "integrity": "sha512-YDybQnYrLQfEpzGOQe7OKcyLUCML4YOXl428gOOzBgN6Gw0rv8dpsJ7PqTHxBnXnwXr8S1mYFSLSa727tpz0xg==",
++      "cpu": [
++        "wasm32"
++      ],
++      "optional": true,
++      "dependencies": {
++        "@emnapi/runtime": "^1.4.0"
++      },
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-win32-ia32": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-win32-ia32/-/sharp-win32-ia32-0.34.1.tgz",
++      "integrity": "sha512-WKf/NAZITnonBf3U1LfdjoMgNO5JYRSlhovhRhMxXVdvWYveM4kM3L8m35onYIdh75cOMCo1BexgVQcCDzyoWw==",
++      "cpu": [
++        "ia32"
++      ],
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-win32-x64": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/@img/sharp-win32-x64/-/sharp-win32-x64-0.34.1.tgz",
++      "integrity": "sha512-hw1iIAHpNE8q3uMIRCgGOeDoz9KtFNarFLQclLxr/LK1VBkj8nby18RjFvr6aP7USRYAjTZW6yisnBWMX571Tw==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
+     "node_modules/@jridgewell/resolve-uri": {
+       "version": "3.1.2",
+       "resolved": "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz",
+@@ -459,6 +828,131 @@
+         "@jridgewell/sourcemap-codec": "^1.4.10"
+       }
+     },
++    "node_modules/@next/env": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/env/-/env-15.3.1.tgz",
++      "integrity": "sha512-cwK27QdzrMblHSn9DZRV+DQscHXRuJv6MydlJRpFSqJWZrTYMLzKDeyueJNN9MGd8NNiUKzDQADAf+dMLXX7YQ=="
++    },
++    "node_modules/@next/swc-darwin-arm64": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-15.3.1.tgz",
++      "integrity": "sha512-hjDw4f4/nla+6wysBL07z52Gs55Gttp5Bsk5/8AncQLJoisvTBP0pRIBK/B16/KqQyH+uN4Ww8KkcAqJODYH3w==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-darwin-x64": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-15.3.1.tgz",
++      "integrity": "sha512-q+aw+cJ2ooVYdCEqZVk+T4Ni10jF6Fo5DfpEV51OupMaV5XL6pf3GCzrk6kSSZBsMKZtVC1Zm/xaNBFpA6bJ2g==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-arm64-gnu": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-15.3.1.tgz",
++      "integrity": "sha512-wBQ+jGUI3N0QZyWmmvRHjXjTWFy8o+zPFLSOyAyGFI94oJi+kK/LIZFJXeykvgXUk1NLDAEFDZw/NVINhdk9FQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-arm64-musl": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-15.3.1.tgz",
++      "integrity": "sha512-IIxXEXRti/AulO9lWRHiCpUUR8AR/ZYLPALgiIg/9ENzMzLn3l0NSxVdva7R/VDcuSEBo0eGVCe3evSIHNz0Hg==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-x64-gnu": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-15.3.1.tgz",
++      "integrity": "sha512-bfI4AMhySJbyXQIKH5rmLJ5/BP7bPwuxauTvVEiJ/ADoddaA9fgyNNCcsbu9SlqfHDoZmfI6g2EjzLwbsVTr5A==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-x64-musl": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-15.3.1.tgz",
++      "integrity": "sha512-FeAbR7FYMWR+Z+M5iSGytVryKHiAsc0x3Nc3J+FD5NVbD5Mqz7fTSy8CYliXinn7T26nDMbpExRUI/4ekTvoiA==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-win32-arm64-msvc": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-15.3.1.tgz",
++      "integrity": "sha512-yP7FueWjphQEPpJQ2oKmshk/ppOt+0/bB8JC8svPUZNy0Pi3KbPx2Llkzv1p8CoQa+D2wknINlJpHf3vtChVBw==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-win32-x64-msvc": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-15.3.1.tgz",
++      "integrity": "sha512-3PMvF2zRJAifcRNni9uMk/gulWfWS+qVI/pagd+4yLF5bcXPZPPH2xlYRYOsUjmCJOXSTAC2PjRzbhsRzR2fDQ==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
+     "node_modules/@prisma/client": {
+       "version": "6.6.0",
+       "resolved": "https://registry.npmjs.org/@prisma/client/-/client-6.6.0.tgz",
+@@ -535,6 +1029,19 @@
+         "@prisma/debug": "6.6.0"
+       }
+     },
++    "node_modules/@swc/counter": {
++      "version": "0.1.3",
++      "resolved": "https://registry.npmjs.org/@swc/counter/-/counter-0.1.3.tgz",
++      "integrity": "sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ=="
++    },
++    "node_modules/@swc/helpers": {
++      "version": "0.5.15",
++      "resolved": "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.15.tgz",
++      "integrity": "sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==",
++      "dependencies": {
++        "tslib": "^2.8.0"
++      }
++    },
+     "node_modules/@tsconfig/node10": {
+       "version": "1.0.11",
+       "resolved": "https://registry.npmjs.org/@tsconfig/node10/-/node10-1.0.11.tgz",
+@@ -634,6 +1141,24 @@
+       "integrity": "sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==",
+       "dev": true
+     },
++    "node_modules/@types/react": {
++      "version": "19.1.2",
++      "resolved": "https://registry.npmjs.org/@types/react/-/react-19.1.2.tgz",
++      "integrity": "sha512-oxLPMytKchWGbnQM9O7D67uPa9paTNxO7jVoNMXgkkErULBPhPARCfkKL9ytcIJJRGjbsVwW4ugJzyFFvm/Tiw==",
++      "dev": true,
++      "dependencies": {
++        "csstype": "^3.0.2"
++      }
++    },
++    "node_modules/@types/react-dom": {
++      "version": "19.1.2",
++      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.1.2.tgz",
++      "integrity": "sha512-XGJkWF41Qq305SKWEILa1O8vzhb3aOo3ogBlSmiqNko/WmRb6QIaweuZCXjKygVDXpzXb5wyxKTSOsmkuqj+Qw==",
++      "dev": true,
++      "peerDependencies": {
++        "@types/react": "^19.0.0"
++      }
++    },
+     "node_modules/@types/send": {
+       "version": "0.17.4",
+       "resolved": "https://registry.npmjs.org/@types/send/-/send-0.17.4.tgz",
+@@ -769,6 +1294,17 @@
+         "node": ">=8"
+       }
+     },
++    "node_modules/busboy": {
++      "version": "1.6.0",
++      "resolved": "https://registry.npmjs.org/busboy/-/busboy-1.6.0.tgz",
++      "integrity": "sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==",
++      "dependencies": {
++        "streamsearch": "^1.1.0"
++      },
++      "engines": {
++        "node": ">=10.16.0"
++      }
++    },
+     "node_modules/bytes": {
+       "version": "3.1.2",
+       "resolved": "https://registry.npmjs.org/bytes/-/bytes-3.1.2.tgz",
+@@ -804,6 +1340,25 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/caniuse-lite": {
++      "version": "1.0.30001714",
++      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001714.tgz",
++      "integrity": "sha512-mtgapdwDLSSBnCI3JokHM7oEQBLxiJKVRtg10AxM1AyeiKcM96f0Mkbqeq+1AbiCtvMcHRulAAEMu693JrSWqg==",
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/browserslist"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/caniuse-lite"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ]
++    },
+     "node_modules/chokidar": {
+       "version": "3.6.0",
+       "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+@@ -828,6 +1383,52 @@
+         "fsevents": "~2.3.2"
+       }
+     },
++    "node_modules/client-only": {
++      "version": "0.0.1",
++      "resolved": "https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz",
++      "integrity": "sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA=="
++    },
++    "node_modules/color": {
++      "version": "4.2.3",
++      "resolved": "https://registry.npmjs.org/color/-/color-4.2.3.tgz",
++      "integrity": "sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==",
++      "optional": true,
++      "dependencies": {
++        "color-convert": "^2.0.1",
++        "color-string": "^1.9.0"
++      },
++      "engines": {
++        "node": ">=12.5.0"
++      }
++    },
++    "node_modules/color-convert": {
++      "version": "2.0.1",
++      "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
++      "integrity": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==",
++      "optional": true,
++      "dependencies": {
++        "color-name": "~1.1.4"
++      },
++      "engines": {
++        "node": ">=7.0.0"
++      }
++    },
++    "node_modules/color-name": {
++      "version": "1.1.4",
++      "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
++      "integrity": "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==",
++      "optional": true
++    },
++    "node_modules/color-string": {
++      "version": "1.9.1",
++      "resolved": "https://registry.npmjs.org/color-string/-/color-string-1.9.1.tgz",
++      "integrity": "sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==",
++      "optional": true,
++      "dependencies": {
++        "color-name": "^1.0.0",
++        "simple-swizzle": "^0.2.2"
++      }
++    },
+     "node_modules/concat-map": {
+       "version": "0.0.1",
+       "resolved": "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz",
+@@ -887,6 +1488,12 @@
+       "integrity": "sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==",
+       "dev": true
+     },
++    "node_modules/csstype": {
++      "version": "3.1.3",
++      "resolved": "https://registry.npmjs.org/csstype/-/csstype-3.1.3.tgz",
++      "integrity": "sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==",
++      "dev": true
++    },
+     "node_modules/debug": {
+       "version": "4.4.0",
+       "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.0.tgz",
+@@ -911,6 +1518,15 @@
+         "node": ">= 0.8"
+       }
+     },
++    "node_modules/detect-libc": {
++      "version": "2.0.3",
++      "resolved": "https://registry.npmjs.org/detect-libc/-/detect-libc-2.0.3.tgz",
++      "integrity": "sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==",
++      "optional": true,
++      "engines": {
++        "node": ">=8"
++      }
++    },
+     "node_modules/diff": {
+       "version": "4.0.2",
+       "resolved": "https://registry.npmjs.org/diff/-/diff-4.0.2.tgz",
+@@ -1279,6 +1895,12 @@
+         "node": ">= 0.10"
+       }
+     },
++    "node_modules/is-arrayish": {
++      "version": "0.3.2",
++      "resolved": "https://registry.npmjs.org/is-arrayish/-/is-arrayish-0.3.2.tgz",
++      "integrity": "sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==",
++      "optional": true
++    },
+     "node_modules/is-binary-path": {
+       "version": "2.1.0",
+       "resolved": "https://registry.npmjs.org/is-binary-path/-/is-binary-path-2.1.0.tgz",
+@@ -1395,6 +2017,23 @@
+       "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+       "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
+     },
++    "node_modules/nanoid": {
++      "version": "3.3.11",
++      "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.11.tgz",
++      "integrity": "sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==",
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "bin": {
++        "nanoid": "bin/nanoid.cjs"
++      },
++      "engines": {
++        "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
++      }
++    },
+     "node_modules/negotiator": {
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-1.0.0.tgz",
+@@ -1403,6 +2042,59 @@
+         "node": ">= 0.6"
+       }
+     },
++    "node_modules/next": {
++      "version": "15.3.1",
++      "resolved": "https://registry.npmjs.org/next/-/next-15.3.1.tgz",
++      "integrity": "sha512-8+dDV0xNLOgHlyBxP1GwHGVaNXsmp+2NhZEYrXr24GWLHtt27YrBPbPuHvzlhi7kZNYjeJNR93IF5zfFu5UL0g==",
++      "dependencies": {
++        "@next/env": "15.3.1",
++        "@swc/counter": "0.1.3",
++        "@swc/helpers": "0.5.15",
++        "busboy": "1.6.0",
++        "caniuse-lite": "^1.0.30001579",
++        "postcss": "8.4.31",
++        "styled-jsx": "5.1.6"
++      },
++      "bin": {
++        "next": "dist/bin/next"
++      },
++      "engines": {
++        "node": "^18.18.0 || ^19.8.0 || >= 20.0.0"
++      },
++      "optionalDependencies": {
++        "@next/swc-darwin-arm64": "15.3.1",
++        "@next/swc-darwin-x64": "15.3.1",
++        "@next/swc-linux-arm64-gnu": "15.3.1",
++        "@next/swc-linux-arm64-musl": "15.3.1",
++        "@next/swc-linux-x64-gnu": "15.3.1",
++        "@next/swc-linux-x64-musl": "15.3.1",
++        "@next/swc-win32-arm64-msvc": "15.3.1",
++        "@next/swc-win32-x64-msvc": "15.3.1",
++        "sharp": "^0.34.1"
++      },
++      "peerDependencies": {
++        "@opentelemetry/api": "^1.1.0",
++        "@playwright/test": "^1.41.2",
++        "babel-plugin-react-compiler": "*",
++        "react": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0",
++        "react-dom": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0",
++        "sass": "^1.3.0"
++      },
++      "peerDependenciesMeta": {
++        "@opentelemetry/api": {
++          "optional": true
++        },
++        "@playwright/test": {
++          "optional": true
++        },
++        "babel-plugin-react-compiler": {
++          "optional": true
++        },
++        "sass": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/nodemon": {
+       "version": "3.1.9",
+       "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.9.tgz",
+@@ -1494,6 +2186,11 @@
+         "node": ">=16"
+       }
+     },
++    "node_modules/picocolors": {
++      "version": "1.1.1",
++      "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
++      "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="
++    },
+     "node_modules/picomatch": {
+       "version": "2.3.1",
+       "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz",
+@@ -1506,6 +2203,33 @@
+         "url": "https://github.com/sponsors/jonschlinkert"
+       }
+     },
++    "node_modules/postcss": {
++      "version": "8.4.31",
++      "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.4.31.tgz",
++      "integrity": "sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==",
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/postcss/"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/postcss"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "dependencies": {
++        "nanoid": "^3.3.6",
++        "picocolors": "^1.0.0",
++        "source-map-js": "^1.0.2"
++      },
++      "engines": {
++        "node": "^10 || ^12 || >=14"
++      }
++    },
+     "node_modules/prisma": {
+       "version": "6.6.0",
+       "resolved": "https://registry.npmjs.org/prisma/-/prisma-6.6.0.tgz",
+@@ -1588,6 +2312,27 @@
+         "node": ">= 0.8"
+       }
+     },
++    "node_modules/react": {
++      "version": "19.1.0",
++      "resolved": "https://registry.npmjs.org/react/-/react-19.1.0.tgz",
++      "integrity": "sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==",
++      "peer": true,
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/react-dom": {
++      "version": "19.1.0",
++      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.1.0.tgz",
++      "integrity": "sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==",
++      "peer": true,
++      "dependencies": {
++        "scheduler": "^0.26.0"
++      },
++      "peerDependencies": {
++        "react": "^19.1.0"
++      }
++    },
+     "node_modules/readdirp": {
+       "version": "3.6.0",
+       "resolved": "https://registry.npmjs.org/readdirp/-/readdirp-3.6.0.tgz",
+@@ -1639,11 +2384,17 @@
+       "resolved": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
+       "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
+     },
++    "node_modules/scheduler": {
++      "version": "0.26.0",
++      "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.26.0.tgz",
++      "integrity": "sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA==",
++      "peer": true
++    },
+     "node_modules/semver": {
+       "version": "7.7.1",
+       "resolved": "https://registry.npmjs.org/semver/-/semver-7.7.1.tgz",
+       "integrity": "sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==",
+-      "dev": true,
++      "devOptional": true,
+       "bin": {
+         "semver": "bin/semver.js"
+       },
+@@ -1691,6 +2442,46 @@
+       "resolved": "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.2.0.tgz",
+       "integrity": "sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw=="
+     },
++    "node_modules/sharp": {
++      "version": "0.34.1",
++      "resolved": "https://registry.npmjs.org/sharp/-/sharp-0.34.1.tgz",
++      "integrity": "sha512-1j0w61+eVxu7DawFJtnfYcvSv6qPFvfTaqzTQ2BLknVhHTwGS8sc63ZBF4rzkWMBVKybo4S5OBtDdZahh2A1xg==",
++      "hasInstallScript": true,
++      "optional": true,
++      "dependencies": {
++        "color": "^4.2.3",
++        "detect-libc": "^2.0.3",
++        "semver": "^7.7.1"
++      },
++      "engines": {
++        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-darwin-arm64": "0.34.1",
++        "@img/sharp-darwin-x64": "0.34.1",
++        "@img/sharp-libvips-darwin-arm64": "1.1.0",
++        "@img/sharp-libvips-darwin-x64": "1.1.0",
++        "@img/sharp-libvips-linux-arm": "1.1.0",
++        "@img/sharp-libvips-linux-arm64": "1.1.0",
++        "@img/sharp-libvips-linux-ppc64": "1.1.0",
++        "@img/sharp-libvips-linux-s390x": "1.1.0",
++        "@img/sharp-libvips-linux-x64": "1.1.0",
++        "@img/sharp-libvips-linuxmusl-arm64": "1.1.0",
++        "@img/sharp-libvips-linuxmusl-x64": "1.1.0",
++        "@img/sharp-linux-arm": "0.34.1",
++        "@img/sharp-linux-arm64": "0.34.1",
++        "@img/sharp-linux-s390x": "0.34.1",
++        "@img/sharp-linux-x64": "0.34.1",
++        "@img/sharp-linuxmusl-arm64": "0.34.1",
++        "@img/sharp-linuxmusl-x64": "0.34.1",
++        "@img/sharp-wasm32": "0.34.1",
++        "@img/sharp-win32-ia32": "0.34.1",
++        "@img/sharp-win32-x64": "0.34.1"
++      }
++    },
+     "node_modules/side-channel": {
+       "version": "1.1.0",
+       "resolved": "https://registry.npmjs.org/side-channel/-/side-channel-1.1.0.tgz",
+@@ -1759,6 +2550,15 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/simple-swizzle": {
++      "version": "0.2.2",
++      "resolved": "https://registry.npmjs.org/simple-swizzle/-/simple-swizzle-0.2.2.tgz",
++      "integrity": "sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==",
++      "optional": true,
++      "dependencies": {
++        "is-arrayish": "^0.3.1"
++      }
++    },
+     "node_modules/simple-update-notifier": {
+       "version": "2.0.0",
+       "resolved": "https://registry.npmjs.org/simple-update-notifier/-/simple-update-notifier-2.0.0.tgz",
+@@ -1771,6 +2571,14 @@
+         "node": ">=10"
+       }
+     },
++    "node_modules/source-map-js": {
++      "version": "1.2.1",
++      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
++      "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
+     "node_modules/statuses": {
+       "version": "2.0.1",
+       "resolved": "https://registry.npmjs.org/statuses/-/statuses-2.0.1.tgz",
+@@ -1779,6 +2587,36 @@
+         "node": ">= 0.8"
+       }
+     },
++    "node_modules/streamsearch": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/streamsearch/-/streamsearch-1.1.0.tgz",
++      "integrity": "sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==",
++      "engines": {
++        "node": ">=10.0.0"
++      }
++    },
++    "node_modules/styled-jsx": {
++      "version": "5.1.6",
++      "resolved": "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.1.6.tgz",
++      "integrity": "sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA==",
++      "dependencies": {
++        "client-only": "0.0.1"
++      },
++      "engines": {
++        "node": ">= 12.0.0"
++      },
++      "peerDependencies": {
++        "react": ">= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0"
++      },
++      "peerDependenciesMeta": {
++        "@babel/core": {
++          "optional": true
++        },
++        "babel-plugin-macros": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/supports-color": {
+       "version": "5.5.0",
+       "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-5.5.0.tgz",
+@@ -1863,6 +2701,11 @@
+         }
+       }
+     },
++    "node_modules/tslib": {
++      "version": "2.8.1",
++      "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
++      "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
++    },
+     "node_modules/type-is": {
+       "version": "2.0.1",
+       "resolved": "https://registry.npmjs.org/type-is/-/type-is-2.0.1.tgz",
+diff --git a/package.json b/package.json
+index c317a56..1db445d 100644
+--- a/package.json
++++ b/package.json
+@@ -12,7 +12,9 @@
+   "description": "",
+   "devDependencies": {
+     "@types/express": "^5.0.1",
+-    "@types/node": "^22.13.17",
++    "@types/node": "^22.14.1",
++    "@types/react": "^19.1.2",
++    "@types/react-dom": "^19.1.2",
+     "nodemon": "^3.1.9",
+     "prisma": "^6.6.0",
+     "ts-node": "^10.9.2",
+@@ -21,7 +23,7 @@
+   "dependencies": {
+     "@prisma/client": "^6.6.0",
+     "cors": "^2.8.5",
+-    "express": "^5.1.0"
++    "express": "^5.1.0",
++    "next": "^15.3.1"
+   }
+ }
+-
+diff --git a/server/battle/actionHandler.ts b/server/battle/actionHandler.ts
+deleted file mode 100644
+index 0a484ef..0000000
+--- a/server/battle/actionHandler.ts
++++ /dev/null
+@@ -1,37 +0,0 @@
+-import { BattlePokemon } from "../class/BattlePokemon.class";
+-import { handleHealing } from "./healingHandler";
+-import { handleAttack } from "./attackHandler";
+-import { handleAilment } from "./ailmentHandler";
+-import { Move } from "../types/move.type";
+-import { handleStatusRank } from "./statusRankHandler";
+-
+-export const handleAction = (attacker:BattlePokemon[],defender:BattlePokemon[],move:Move) => {
+-    // 回復技
+-    switch(move!.move_category){
+-        case "heal":
+-            handleHealing(attacker,move);
+-            break;
+-        case "damage":
+-            handleAttack(attacker,defender,move);
+-            break;
+-        case "damage+raise":
+-            handleAttack(attacker,defender,move);
+-            handleStatusRank(attacker,defender,move);
+-            break ;
+-        case "damage+lower":
+-            handleAttack(attacker,defender,move);
+-            handleStatusRank(attacker,defender,move);
+-            break ;
+-        case "damage+ailment":
+-            handleAttack(attacker,defender,move);
+-            handleAilment(attacker,defender,move);
+-            break ;
+-        case "net-good-stats":
+-            handleStatusRank(attacker,defender,move);
+-            break ;
+-        case "ailment":
+-            console.log(attacker[0].getName(),"は",move?.name,"を使った");
+-            handleAilment(attacker,defender,move);
+-            break ;
+-    }
+-}
+diff --git a/server/battle/ailmentHandler.ts b/server/battle/ailmentHandler.ts
+deleted file mode 100644
+index 761443c..0000000
+--- a/server/battle/ailmentHandler.ts
++++ /dev/null
+@@ -1,16 +0,0 @@
+-import { BattlePokemon } from "../class/BattlePokemon.class";
+-import { Move } from "../types/move.type";
+-
+-export const handleAilment = (battlePokemons:BattlePokemon[],opponentPokemons:BattlePokemon[],move:Move):string => {
+-    if(move){
+-        let chance = 0;
+-        if(move.move_category === "ailment")chance = move?.accuracy;
+-        else chance = move?.ailment_chance;
+-        const random = Math.floor(Math.random() * 100);
+-        if(chance > random){    
+-            opponentPokemons[0].setAilment(move.ailment_name);
+-            const ailment_name:string = opponentPokemons[0].getAilment();
+-        }
+-    }
+-    return "none"
+-}
+\ No newline at end of file
+diff --git a/server/battle/attackHandler.ts b/server/battle/attackHandler.ts
+deleted file mode 100644
+index 883de47..0000000
+--- a/server/battle/attackHandler.ts
++++ /dev/null
+@@ -1,47 +0,0 @@
+-import { BattlePokemon } from "../class/BattlePokemon.class";
+-import { calcAttackDamage } from "../lib/calc/calcDamage";
+-import { typeCompare } from "../lib/typeCompare";
+-import { Move } from "../types/move.type";
+-
+-export const handleAttack = (attacker:BattlePokemon[],defender:BattlePokemon[], move:Move):void => {
+-    console.log(attacker[0].getName(),"は",move?.name,"をつかった");
+-    const level = attacker[0].getLevel();
+-    let move_power = 0;
+-    let correction = 1;
+-    let atk = 0;
+-    let def = 0;
+-    if(move){
+-        move_power = move.power;
+-        // 物理技なら攻撃・防御を,特殊技なら特攻・特防を割り当てる
+-        if(move.damage_class === "physical"){
+-            atk = attacker[0].getAttack() * ( 1 + attacker[0].getRank().getAttackRank() / 2);
+-            def = defender[0].getDefense() * ( 1 + defender[0].getRank().getDefenseRank() / 2);
+-        }
+-        else if(move.damage_class === "special"){
+-            atk = attacker[0].getSpecialAttack() * ( 1 + attacker[0].getRank().getSpecialAttackRank() / 2);
+-            def = defender[0].getSpecialDefense() * ( 1 + defender[0].getRank().getSpecialDefenseRank() / 2);
+-        }
+-        // ステータス変化技は呼び出し前に除外済み
+-        const battleType = attacker[0].getType();
+-        const wildType = defender[0].getType();
+-        const move_type = move.type;
+-    
+-        // タイプ一致補正
+-        if(battleType === move_type){
+-            correction *= 1.5;
+-        }
+-        // タイプ相性補正
+-        correction *= typeCompare(move_type,wildType);
+-        // やけど補正
+-        if(attacker[0].getAilment() === "burn" && move.damage_class === "physical"){
+-            correction *= 0.5;
+-        }
+-    }
+-    const damage = calcAttackDamage(atk,def,level,move_power,correction);
+-    defender[0].setCurrentHp(defender[0].getCurrentHp() - damage);
+-    if(defender[0].getCurrentHp() < 0){
+-        defender[0].setCurrentHp(0);
+-    }
+-    console.log(defender[0].getName(),"に",damage,"のダメージを与えた");
+-
+-}
+\ No newline at end of file
+diff --git a/server/battle/healingHandler.ts b/server/battle/healingHandler.ts
+deleted file mode 100644
+index 89f1d7f..0000000
+--- a/server/battle/healingHandler.ts
++++ /dev/null
+@@ -1,9 +0,0 @@
+-import { BattlePokemon } from "../class/BattlePokemon.class";
+-import { Move } from "../types/move.type";
+-
+-export const handleHealing = (user:BattlePokemon[],move:Move):void => {
+-    const healing_amount = move!.healing_amount / 100 * user[0].getMaxHp();
+-    user[0].setCurrentHp(user[0].getCurrentHp() + healing_amount);
+-    console.log(user[0].getName(),"は",move?.name,"をつかった");
+-    console.log(user[0].getName(),"のHPが",healing_amount,"回復した");
+-}
+\ No newline at end of file
+diff --git a/server/battle/statusRankHandler.ts b/server/battle/statusRankHandler.ts
+deleted file mode 100644
+index e514193..0000000
+--- a/server/battle/statusRankHandler.ts
++++ /dev/null
+@@ -1,139 +0,0 @@
+-import { BattlePokemon } from "../class/BattlePokemon.class";
+-import { Move } from "../types/move.type";
+-
+-
+-export const handleStatusRank = (user:BattlePokemon[],opponent:BattlePokemon[],move:Move) => {
+-    console.log(user[0].getName(),"は",move?.name,"をつかった");
+-    switch(move!.move_category){
+-        case "damage+raise":
+-        for(let i = 0; i < move!.status_name.length; i++){
+-            const statusName = move!.status_name[i];
+-            const statusRank = move!.status_rank[i];
+-            switch(statusName){
+-                case "attack":
+-                    user[0].getRank().setAttackRank(user[0].getRank().getAttackRank() + statusRank);
+-                    break;
+-                case "defense":
+-                    user[0].getRank().setDefenseRank(user[0].getRank().getDefenseRank() + statusRank);
+-                    break;
+-                case "special_attack":   
+-                    user[0].getRank().setSpecialAttackRank(user[0].getRank().getSpecialAttackRank() + statusRank);
+-                    break;
+-                case "special_defense":
+-                    user[0].getRank().setSpecialDefenseRank(user[0].getRank().getSpecialDefenseRank() + statusRank);
+-                    break;
+-                case "speed":
+-                    user[0].getRank().setSpeedRank(user[0].getRank().getSpeedRank() + statusRank);
+-                    break;
+-                case "accuracy":
+-                    user[0].getRank().setAccuracyRank(user[0].getRank().getAccuracyRank() + statusRank);
+-                    break;
+-            }
+-        }
+-        console.log(user[0].getName(),"は",move!.name,"をつかった,");
+-        for(let i = 0; i < move!.status_name.length; i++){
+-            console.log(move!.status_name[i],"が",move!.status_rank[i]);
+-        }
+-        console.log("変化した");
+-        break;
+-        case "damage+lower":
+-        for(let i = 0; i < move!.status_name.length; i++){  
+-            const statusName = move!.status_name[i];
+-            const statusRank = move!.status_rank[i];
+-            switch(statusName){
+-                case "attack":
+-                    opponent[0].getRank().setAttackRank(opponent[0].getRank().getAttackRank() - statusRank);
+-                    break;
+-                case "defense":
+-                    opponent[0].getRank().setDefenseRank(opponent[0].getRank().getDefenseRank() - statusRank);
+-                    break;
+-                case "special_attack":   
+-                    opponent[0].getRank().setSpecialAttackRank(opponent[0].getRank().getSpecialAttackRank() - statusRank);
+-                    break;
+-                case "special_defense":
+-                    opponent[0].getRank().setSpecialDefenseRank(opponent[0].getRank().getSpecialDefenseRank() - statusRank);
+-                    break;
+-                case "speed":
+-                    opponent[0].getRank().setSpeedRank(opponent[0].getRank().getSpeedRank() - statusRank);
+-                    break;
+-                case "accuracy":
+-                    opponent[0].getRank().setAccuracyRank(opponent[0].getRank().getAccuracyRank() - statusRank);
+-                    break;
+-            }
+-        }
+-        console.log(user[0].getName(),"は",move!.name,"をつかった,");
+-        console.log(opponent[0].getName(),"の");
+-        for(let i = 0; i < move!.status_name.length; i++){
+-            console.log(move!.status_name[i],"が",move!.status_rank[i]);
+-        }
+-        console.log("変化した");
+-        break;
+-
+-        case "net-good-stats":
+-            if(move!.status_target === "user"){
+-                for(let i = 0; i < move!.status_name.length; i++){
+-                    const statusName = move!.status_name[i];
+-                    const statusRank = move!.status_rank[i];
+-                    switch(statusName){
+-                        case "attack":
+-                            user[0].getRank().setAttackRank(user[0].getRank().getAttackRank() + statusRank);
+-                            break;
+-                        case "defense":
+-                            user[0].getRank().setDefenseRank(user[0].getRank().getDefenseRank() + statusRank);
+-                            break;
+-                        case "special_attack":   
+-                            user[0].getRank().setSpecialAttackRank(user[0].getRank().getSpecialAttackRank() + statusRank);
+-                            break;
+-                        case "special_defense":
+-                            user[0].getRank().setSpecialDefenseRank(user[0].getRank().getSpecialDefenseRank() + statusRank);
+-                            break;
+-                        case "speed":
+-                            user[0].getRank().setSpeedRank(user[0].getRank().getSpeedRank() + statusRank);
+-                            break;
+-                        case "accuracy":
+-                            user[0].getRank().setAccuracyRank(user[0].getRank().getAccuracyRank() + statusRank);
+-                            break;
+-                    }
+-                }
+-                console.log(user[0].getName(),"は",move!.name,"をつかった,");
+-                for(let i = 0; i < move!.status_name.length; i++){
+-                    console.log(move!.status_name[i],"が",move!.status_rank[i]);
+-                }
+-                console.log("変化した");
+-                break;           
+-            }
+-            else {
+-                for(let i = 0; i < move!.status_name.length; i++){  
+-                    const statusName = move!.status_name[i];
+-                    const statusRank = move!.status_rank[i];
+-                    switch(statusName){
+-                        case "attack":
+-                            opponent[0].getRank().setAttackRank(opponent[0].getRank().getAttackRank() - statusRank);
+-                            break;
+-                        case "defense":
+-                            opponent[0].getRank().setDefenseRank(opponent[0].getRank().getDefenseRank() - statusRank);
+-                            break;
+-                        case "special_attack":   
+-                            opponent[0].getRank().setSpecialAttackRank(opponent[0].getRank().getSpecialAttackRank() - statusRank);
+-                            break;
+-                        case "special_defense":
+-                            opponent[0].getRank().setSpecialDefenseRank(opponent[0].getRank().getSpecialDefenseRank() - statusRank);
+-                            break;
+-                        case "speed":
+-                            opponent[0].getRank().setSpeedRank(opponent[0].getRank().getSpeedRank() - statusRank);
+-                            break;
+-                        case "accuracy":
+-                            opponent[0].getRank().setAccuracyRank(opponent[0].getRank().getAccuracyRank() - statusRank);
+-                            break;
+-                    }
+-                }
+-                console.log(user[0].getName(),"は",move!.name,"をつかった,");
+-                console.log(opponent[0].getName(),"の");
+-                for(let i = 0; i < move!.status_name.length; i++){
+-                    console.log(move!.status_name[i],"が",move!.status_rank[i]);
+-                }
+-                console.log("変化した");
+-                break;               
+-            }
+-    }
+-}
+\ No newline at end of file
+diff --git a/server/battle/wildBattle/gameHandler.ts b/server/battle/wildBattle/gameHandler.ts
+deleted file mode 100644
+index bbaa79f..0000000
+--- a/server/battle/wildBattle/gameHandler.ts
++++ /dev/null
+@@ -1,194 +0,0 @@
+-import { BattlePokemon } from "../../class/BattlePokemon.class";
+-import { findBattleMove } from "../../lib/find/findBattleMove";
+-import { Action } from "../../types/action.type";
+-import { Move } from "../../types/move.type";
+-import { handleAction } from "../actionHandler";
+-
+-export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],action:Action) => {
+-    let endFlag = false;
+-    const messages:string[] = [];
+-    if(action){
+-        const result = handleEnemyAilmentEffect(battlePokemons,wildPokemons,moves,endFlag);
+-        
+-        if(result?.endFlag){
+-            endFlag = true;
+-            return ({ battlePokemons,wildPokemons,moves,endFlag });
+-        }
+-        const result2 = handleAilmentEffect(battlePokemons,wildPokemons,moves,endFlag);
+-        if(result2?.endFlag){
+-            endFlag = true;
+-            return ({ battlePokemons,wildPokemons,moves,endFlag });
+-        }
+-        
+-        const isContinue = handleGameEnd(battlePokemons,wildPokemons);
+-        if(isContinue){
+-            endFlag = true;
+-            return ({ battlePokemons,wildPokemons,moves,endFlag });
+-        }
+-        
+-        switch(action.action_id){
+-            // たたかう→技を選択
+-            case 1:
+-                let battleMove:Move = findBattleMove(battlePokemons,moves,action);
+-                const random = Math.floor(Math.random() * 3 - 0) + 0;
+-                let wildMove:Move = findBattleMove(wildPokemons,moves,{action_id:1,command_id:random});
+-                if(battleMove && wildMove){
+-                    // 先制技の優先度を比較
+-                    if(battleMove.priority > wildMove.priority){
+-                        if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
+-                            handleAction(battlePokemons,wildPokemons,battleMove);
+-                        }
+-                        if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
+-                            handleAction(wildPokemons,battlePokemons,wildMove);
+-                        }
+-                    }
+-                    else if(battleMove.priority < wildMove.priority){
+-                        if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
+-                            handleAction(wildPokemons,battlePokemons,wildMove);
+-                        }
+-                        if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
+-                            handleAction(battlePokemons,wildPokemons,battleMove);
+-                        }
+-                        
+-                    }
+-                    // 先制技の優先度が同じ場合
+-                    // すばやさを比較
+-                    else if(battlePokemons[0].getSpeed() >= wildPokemons[0].getSpeed()){
+-                        console.log(battleMove?.name,":",wildMove?.name);
+-                        if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
+-                            handleAction(battlePokemons,wildPokemons,battleMove);
+-                        }
+-                        if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
+-                            handleAction(wildPokemons,battlePokemons,wildMove);
+-                        }
+-                    }
+-                    else if(battlePokemons[0].getSpeed() < wildPokemons[0].getSpeed()){
+-                        if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
+-                            handleAction(wildPokemons,battlePokemons,wildMove);
+-                        }
+-                        if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
+-                            handleAction(battlePokemons,wildPokemons,battleMove);
+-                        }
+-                    }
+-    
+-                // HPが0になった場合の処理
+-                    endFlag = handleGameEnd(battlePokemons,wildPokemons);
+-                }
+-                break;
+-        }
+-    }
+-    console.log(battlePokemons[0].getName(),"のHP",battlePokemons[0].getCurrentHp());
+-    console.log(wildPokemons[0].getName(),"のHP",wildPokemons[0].getCurrentHp());
+-    return ({ battlePokemons,wildPokemons,moves,endFlag });
+-}
+-
+-const handleGameEnd = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[]):boolean => {
+-    let endFlag = false;
+-    if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() !== 0){
+-        console.log(battlePokemons[0].getName(),"は倒れた");
+-        endFlag = true;
+-    }
+-    else if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() === 0){
+-        console.log(wildPokemons[0].getName(),"は倒れた");
+-        endFlag = true;
+-    }
+-    else if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() === 0){
+-        console.log(battlePokemons[0].getName(),"は倒れた");
+-        console.log(wildPokemons[0].getName(),"は倒れた");
+-        endFlag = true;
+-    }
+-    return endFlag;
+-}
+-
+-const handleAilmentEffect = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],endFlag:boolean) => {
+-    console.log(wildPokemons[0].getName(),"の状態異常",wildPokemons[0].getAilment());
+-    let text = "";
+-    switch(wildPokemons[0].getAilment()){
+-        case "none":
+-            break;
+-        case "poison":
+-            text = wildPokemons[0].getName() + "は毒におかされている";
+-            wildPokemons[0].setCurrentHp(wildPokemons[0].getCurrentHp() - Math.floor(wildPokemons[0].getMaxHp() * 0.15));
+-            return ({ battlePokemons,wildPokemons,moves,endFlag, text});
+-        case "paralysis":
+-            text = wildPokemons[0].getName() + "はまひしている";
+-            if(Math.floor(Math.random() * 100) < 25){
+-                const text = wildPokemons[0].getName() + "はまひして動けない";
+-                return ({ battlePokemons,wildPokemons,moves,endFlag, text });
+-            }
+-            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
+-        case "burn":
+-            text = wildPokemons[0].getName() + "はやけどしている";
+-            wildPokemons[0].setCurrentHp(wildPokemons[0].getCurrentHp() - Math.floor(wildPokemons[0].getMaxHp() * 0.1));
+-            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
+-        case "freeze":
+-            text = wildPokemons[0].getName() + "はこおっている";
+-            if(Math.floor(Math.random() * 100) < 50){
+-                const text = wildPokemons[0].getName() + "はこおり状態から回復した";
+-                wildPokemons[0].setAilment("none");
+-                return ({ battlePokemons,wildPokemons,moves,endFlag,text });
+-            }
+-            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
+-        case "sleep":
+-            text = battlePokemons[0].getName() + "はねむっている";
+-            if(Math.floor(Math.random() * 100) < 50){
+-                const text =battlePokemons[0].getName() + "はねむけからさめた";
+-                battlePokemons[0].setAilment("none");
+-                return ({ battlePokemons,wildPokemons,moves,endFlag,text });
+-            }
+-            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
+-    }
+-
+-}
+-
+-const handleEnemyAilmentEffect = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],endFlag:boolean) => {
+-    let text = "";
+-    switch(battlePokemons[0].getAilment()){
+-        case "none":
+-            break;
+-        case "poison":
+-            text = battlePokemons[0].getName() + "は毒におかされている";
+-             battlePokemons[0].setCurrentHp(battlePokemons[0].getCurrentHp() - Math.floor(battlePokemons[0].getMaxHp() * 0.15));
+-            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
+-        case "paralysis":
+-            text = battlePokemons[0].getName() + "はまひしている";
+-            if(Math.floor(Math.random() * 100) < 25){
+-                console.log(battlePokemons[0].getName(),"はまひして動けない");
+-                return ({ battlePokemons,wildPokemons,moves,endFlag,text });
+-            }
+-            break;
+-        case "burn":
+-            text = battlePokemons[0].getName() + "はやけどしている";
+-            battlePokemons[0].setCurrentHp(battlePokemons[0].getCurrentHp() - Math.floor(battlePokemons[0].getMaxHp() * 0.1));
+-            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
+-            break;
+-        case "freeze":
+-            text = battlePokemons[0].getName() + "はこおっている";
+-            if(Math.floor(Math.random() * 100) < 50){
+-                const text = battlePokemons[0].getName() + "はこおり状態から回復した";
+-                battlePokemons[0].setAilment("none");
+-                return ({ battlePokemons,wildPokemons,moves,endFlag,text });    
+-            }
+-            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
+-            break;
+-        case "sleep":
+-            console.log(battlePokemons[0].getName(),"はねむっている");
+-            if(Math.floor(Math.random() * 100) < 50){
+-                console.log(battlePokemons[0].getName(),"はねむけからさめた");
+-                battlePokemons[0].setAilment("none");
+-            }
+-            else {
+-                return ({ battlePokemons,wildPokemons,moves,endFlag });
+-            }
+-            break;
+-
+-        case "confusion":   
+-            console.log(battlePokemons[0].getName(),"はこんらんしている");
+-            if(Math.floor(Math.random() * 100) < 50){
+-                console.log(battlePokemons[0].getName(),"は自分を攻撃した");
+-                battlePokemons[0].setCurrentHp(battlePokemons[0].getCurrentHp() - Math.floor(battlePokemons[0].getMaxHp() * 0.1));
+-                return ({ battlePokemons,wildPokemons,moves,endFlag });
+-            }
+-            break;
+-    }
+-}
+\ No newline at end of file
+diff --git a/server/battle/wildBattle/gameInitializer.ts b/server/battle/wildBattle/gameInitializer.ts
+deleted file mode 100644
+index a3a2eb0..0000000
+--- a/server/battle/wildBattle/gameInitializer.ts
++++ /dev/null
+@@ -1,192 +0,0 @@
+-import { move_getter } from "../../api/move/move";
+-import { pokemon_getter } from "../../api/pokemon/pokemon";
+-import { team_pokemon_exist, team_pokemon_getter } from "../../api/teamPokemon/teamPokemonHandler";
+-import { BattlePokemon } from "../../class/BattlePokemon.class";
+-import { team_pokemon_count, wild_pokemon_count } from "../../const/pokemon_count.const";
+-import { pokemon_id_begin, pokemon_id_end } from "../../const/pokemon_id.const";
+-
+-// export const initGameData = async (player_id:string) => {
+-//     const battlePokemons = [];
+-//     let moves = [];
+-//     for(let i = 0; i < team_pokemon_count; i++){
+-//         const exist = await team_pokemon_exist(player_id,i);
+-//         if(exist){
+-//             const team_pokemon = await team_pokemon_getter(player_id,i);
+-//             if(team_pokemon){
+-//                 const pokemon_id = team_pokemon.pokemon_id;
+-//                 const pokemon = await pokemon_getter(Number(pokemon_id));
+-//                 if(!pokemon)continue;
+-//                 battlePokemons.push(new BattlePokemon({
+-//                     pokemon: pokemon,
+-//                     pokemon_index: i,
+-//                     level: team_pokemon.level,
+-//                     exp: team_pokemon.exp,
+-//                     image: pokemon.back_image,
+-//                 }));
+-//                 for(let j = 0; j < team_pokemon.move_list.length; j++){
+-//                     const move_id = team_pokemon.move_list[j];
+-//                     const move = await move_getter(Number(move_id));
+-//                     if(!move)continue;
+-//                     moves.push(move);
+-//                 }
+-//             }
+-//         }
+-//     }
+-
+-//     // 野生ポケモンの出現数
+-//     const begin = pokemon_id_begin;
+-//     const end = pokemon_id_end;
+-//     const wildPokemons = [];
+-//     for(let i = 0; i < wild_pokemon_count; i++){
+-//         const random = Math.floor(Math.random() * (end - begin + 1)) + begin;
+-//         const pokemon = await pokemon_getter(random);
+-//         if(!pokemon)continue;
+-//         wildPokemons.push(new BattlePokemon({
+-//             pokemon: pokemon,
+-//             pokemon_index: i,
+-//             level: Math.floor(Math.random() * battlePokemons[0].getLevel()+3) + 1,
+-//             exp: 0,
+-//             image: pokemon.front_image,
+-//         }));
+-//         for(let j = 0; j < pokemon.move_list.length; j++){
+-//             const move_id = pokemon.move_list[j];
+-//             const move = await move_getter(Number(move_id));
+-//             if(!move)continue;
+-//             moves.push(move);
+-//         }
+-//     }
+-//     s);
+-//     return {
+-//         battlePokemons,
+-//         wildPokemons,
+-//         moves
+-//     }
+-// }
+-
+-
+-export const TestInitGameData = async () => {
+-    // 地面来たら詰むチュウ
+-    const pikachu = new BattlePokemon({
+-        pokemon: {
+-            pokemon_id: 1,
+-            name: "ピカチュウ",
+-            type: "electric",
+-            front_image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-            back_image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-            base_hp: 35,
+-            base_attack: 55,
+-            base_defence: 40,
+-            base_special_attack: 50,
+-            base_special_defence: 50,
+-            base_speed: 90,
+-            evolve_level: 16,
+-            move_list: [344,255,261,488]
+-        },
+-        level: 5,
+-        pokemon_index: 0,
+-        exp: 0,
+-        image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-    });
+-
+-    const gorichu = new BattlePokemon({
+-        pokemon: {
+-            pokemon_id: 2,
+-            name: "ゴリチュウ",
+-            type: "fighting",
+-            front_image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-            back_image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-            base_hp: 35,            
+-            base_attack: 55,
+-            base_defence: 40,
+-            base_special_attack: 50,
+-            base_special_defence: 50,
+-            base_speed: 90,
+-            evolve_level: 16,
+-            move_list: [558,557,488,261]
+-        },
+-        level: 5,
+-        pokemon_index: 0,
+-        exp: 0,
+-        image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-    });
+-
+-    const garichu = new BattlePokemon({
+-        pokemon: {
+-            pokemon_id: 2,
+-            name: "ゴリチュウ",
+-            type: "fighting",
+-            front_image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-            back_image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-            base_hp: 35,            
+-            base_attack: 55,
+-            base_defence: 40,
+-            base_special_attack: 50,
+-            base_special_defence: 50,
+-            base_speed: 90,
+-            evolve_level: 16,
+-            move_list: [549,555,336,313]
+-        },
+-        level: 5,
+-        pokemon_index: 0,
+-        exp: 0,
+-        image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-    });
+-
+-
+-    const battlePokemons = [pikachu];
+-    const moves = [];
+-
+-    for(let i=0; i < battlePokemons.length; i++){
+-        const pokemon = battlePokemons[i];
+-        for(let j = 0; j < pokemon.getMoveList().length; j++){
+-            const move_id = pokemon.getMoveList()[j];
+-            const move = await move_getter(Number(move_id));
+-            moves.push(move);
+-            if(!move)continue;
+-        }
+-    }
+-
+-    // 野生ポケモンの出現数
+-    const begin = pokemon_id_begin;
+-    const end = pokemon_id_end;
+-    const wildPokemons = [];
+-    for(let i = 0; i < wild_pokemon_count; i++){
+-        const pokemon = new BattlePokemon({
+-            pokemon: {
+-                pokemon_id: 2,
+-                name: "ゴリチュウ",
+-                type: "normal",
+-                front_image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-                back_image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-                base_hp: 35,            
+-                base_attack: 55,
+-                base_defence: 40,
+-                base_special_attack: 50,
+-                base_special_defence: 50,
+-                base_speed: 90,
+-                evolve_level: 16,
+-                move_list: [14,15,16,17]
+-            },
+-            level: 5,
+-            pokemon_index: 0,
+-            exp: 0,
+-            image: "https://pokeapi.co/media/sprites/pokemon/other/official-artwork/4.png",
+-        });
+-        wildPokemons.push(pokemon);
+-    
+-        if(!pokemon)continue;
+-        for(let j = 0; j < pokemon.getMoveList().length; j++){
+-            const move_id = pokemon.getMoveList()[j];
+-            const move = await move_getter(Number(move_id));
+-            if(!move)continue;
+-            moves.push(move);
+-        }
+-    }
+-
+-    
+-    return {
+-        battlePokemons,
+-        wildPokemons,
+-        moves,
+-    }
+-}
+\ No newline at end of file
+diff --git a/server/battle/wildBattle/test.ts b/server/battle/wildBattle/test.ts
+deleted file mode 100644
+index be1de6c..0000000
+--- a/server/battle/wildBattle/test.ts
++++ /dev/null
+@@ -1,34 +0,0 @@
+-import { gameHandler } from "./gameHandler";
+-import { TestInitGameData } from "./gameInitializer";
+-
+-
+-const test = async () => {
+-    let initData = await TestInitGameData();
+-
+-    console.log("コマンドを選択");
+-    console.log("サーバ側へ処理を移行");
+-    let turn = 1;
+-    for(let i = 1; i < 5; i++){
+-        console.log(i,"戦目");
+-        while(true){
+-            console.log("\n",turn,"ターン目\n");
+-            const random = Math.floor(Math.random() * 4 - 1) + 1;
+-            const action = {
+-                action_id: 1,
+-                command_id: random
+-            };
+-            const result = await gameHandler(initData.battlePokemons, initData.wildPokemons,initData.moves, action);
+-            turn++;
+-            if(turn >= 5)break;
+-            if(result.endFlag){
+-                turn = 0;
+-                console.log("バトル終了\n");
+-                break;
+-            }
+-        }
+-        initData = await TestInitGameData();
+-    }
+-}
+-
+-test();
+-
+diff --git a/server/class/BattlePokemon.class.ts b/server/class/BattlePokemon.class.ts
+index 0dc989e..b3ff7bb 100644
+--- a/server/class/BattlePokemon.class.ts
++++ b/server/class/BattlePokemon.class.ts
+@@ -1,147 +1,295 @@
++// import { calcPokemonRealHp, calcPokemonRealStats } from "../lib/calc/calcPokemonStats";
++// import { Pokemon } from "../types/pokemon.types";
++// import { Rank } from "./Rank.class";
++
++// export class BattlePokemon {
++//     #pokemon_id:number;
++//     #pokemon_index:number;
++//     #level:number;
++//     #exp:number;
++//     name:string;
++//     #type:string;
++//     #image:string;
++//     #max_hp:number;
++//     #current_hp:number;
++//     #attack:number;
++//     #defense:number;
++//     #special_attack:number;
++//     #special_defence:number;
++//     #speed:number;
++//     #move_list:number[];
++//     #rank:Rank;
++//     #ailment:string;
++//     constructor(params: {
++//         pokemon:Pokemon;
++//         pokemon_index:number;
++//         level:number;
++//         exp:number;
++//         image:string;
++//     }){
++//         //初期化
++//         if(!params.pokemon){
++//             throw new Error("pokemon is required");
++//         }
++//         this.#pokemon_id = params.pokemon.pokemon_id;
++//         this.#pokemon_index = params.pokemon_index;
++//         this.#level = params.level;
++//         this.#exp = params.exp;
++//         this.name = params.pokemon.name;
++//         this.#type = params.pokemon.type;
++//         this.#image = params.image;
++//         this.#max_hp = calcPokemonRealHp(params.pokemon.base_hp,params.level);
++//         this.#current_hp = this.#max_hp;
++//         this.#attack = calcPokemonRealStats(params.pokemon.base_attack,params.level);
++//         this.#defense = calcPokemonRealStats(params.pokemon.base_defence,params.level); 
++//         this.#special_attack = calcPokemonRealStats(params.pokemon.base_special_attack,params.level);
++//         this.#special_defence = calcPokemonRealStats(params.pokemon.base_special_defence,params.level);
++//         this.#speed = calcPokemonRealStats(params.pokemon.base_speed,params.level);
++//         this.#move_list = params.pokemon.move_list;
++//         this.#rank = new Rank({
++//             attack: 0,
++//             defense: 0,
++//             special_attack: 0,
++//             special_defense: 0,
++//             speed: 0,
++//             accuracy:0
++//         });
++//         this.#ailment = "none";
++//     }
++//     //Getter
++//     getPokemonId():number{
++//         return this.#pokemon_id;
++//     }
++//     getPokemonIndex():number{
++//         return this.#pokemon_index;
++//     }
++//     getName():string{
++//         return this.name;
++//     }
++//     getType():string{
++//         return this.#type;
++//     }
++//     getImage():string{
++//         return this.#image;
++//     }
++//     getLevel():number{
++//         return this.#level;
++//     }
++//     getExp():number{    
++//         return this.#exp;
++//     }
++//     getMoveList():Array<number>{
++//         return this.#move_list;
++//     }
++//     getRank():Rank{
++//         return this.#rank;
++//     }
++//     getAilment():string{
++//         return this.#ailment;
++//     }
++//     getMaxHp():number{
++//         return this.#max_hp;
++//     }
++//     getCurrentHp():number{
++//         return this.#current_hp;
++//     }
++//     getAttack():number{
++//         return this.#attack;
++//     }
++//     getDefense():number{
++//         return this.#defense;
++//     }
++//     getSpecialAttack():number{
++//         return this.#special_attack;
++//     }
++//     getSpecialDefense():number{
++//         return this.#special_defence;
++//     }
++//     getSpeed():number{
++//         return this.#speed;
++//     }
++//     //Setter
++//     setCurrentHp(current_hp:number):void{
++//         if(this.#max_hp < current_hp){
++//             this.#current_hp = this.#max_hp;
++//         } 
++//         else {
++//             this.#current_hp = current_hp;
++//         }   
++//     }
++//     setAilment(ailment:string):void{
++//         this.#ailment = ailment;
++//     }
++//     setRank(status:string,rank:number):void{
++//         switch(status){
++//             case "attack":
++//                 this.#rank.setAttackRank(rank);
++//                 break;
++//             case "defense":
++//                 this.#rank.setDefenseRank(rank);
++//                 break;
++//             case "special_attack":          
++//                 this.#rank.setSpecialAttackRank(rank);
++//                 break;
++//             case "special_defense":
++//                 this.#rank.setSpecialDefenseRank(rank);
++//                 break;
++//             case "speed":
++//                 this.#rank.setSpeedRank(rank);
++//                 break;
++//             default:
++//                 throw new Error("Invalid status");
++//             }   
++//     }
++//     setExp(exp:number):void{
++//         this.#exp = exp;
++//     } 
++// }   
++
+ import { calcPokemonRealHp, calcPokemonRealStats } from "../lib/calc/calcPokemonStats";
+ import { Pokemon } from "../types/pokemon.types";
+ import { Rank } from "./Rank.class";
+ 
+ export class BattlePokemon {
+-    #pokemon_id:number;
+-    #pokemon_index:number;
+-    #level:number;
+-    #exp:number;
+-    #name:string;
+-    #type:string;
+-    #image:string;
+-    #max_hp:number;
+-    #current_hp:number;
+-    #attack:number;
+-    #defense:number;
+-    #special_attack:number;
+-    #special_defence:number;
+-    #speed:number;
+-    #move_list:number[];
+-    #rank:Rank;
+-    #ailment:string;
++    pokemon_id: number;
++    pokemon_index: number;
++    level: number;
++    exp: number;
++    name: string;
++    type: string;
++    image: string;
++    max_hp: number;
++    current_hp: number;
++    attack: number;
++    defense: number;
++    special_attack: number;
++    special_defence: number;
++    speed: number;
++    move_list: number[];
++    rank: Rank;
++    ailment: string;
+     constructor(params: {
+-        pokemon:Pokemon;
+-        pokemon_index:number;
+-        level:number;
+-        exp:number;
+-        image:string;
++        pokemon: Pokemon;
++        pokemon_index: number;
++        level: number;
++        exp: number;
++        image: string;
+     }){
+         //初期化
+         if(!params.pokemon){
+             throw new Error("pokemon is required");
+         }
+-        this.#pokemon_id = params.pokemon.pokemon_id;
+-        this.#pokemon_index = params.pokemon_index;
+-        this.#level = params.level;
+-        this.#exp = params.exp;
+-        this.#name = params.pokemon.name;
+-        this.#type = params.pokemon.type;
+-        this.#image = params.image;
+-        this.#max_hp = calcPokemonRealHp(params.pokemon.base_hp,params.level);
+-        this.#current_hp = this.#max_hp;
+-        this.#attack = calcPokemonRealStats(params.pokemon.base_attack,params.level);
+-        this.#defense = calcPokemonRealStats(params.pokemon.base_defence,params.level); 
+-        this.#special_attack = calcPokemonRealStats(params.pokemon.base_special_attack,params.level);
+-        this.#special_defence = calcPokemonRealStats(params.pokemon.base_special_defence,params.level);
+-        this.#speed = calcPokemonRealStats(params.pokemon.base_speed,params.level);
+-        this.#move_list = params.pokemon.move_list;
+-        this.#rank = new Rank({
++        this.pokemon_id = params.pokemon.pokemon_id;
++        this.pokemon_index = params.pokemon_index;
++        this.level = params.level;
++        this.exp = params.exp;
++        this.name = params.pokemon.name;
++        this.type = params.pokemon.type;
++        this.image = params.image;
++        this.max_hp = calcPokemonRealHp(params.pokemon.base_hp, params.level);
++        this.current_hp = this.max_hp;
++        this.attack = calcPokemonRealStats(params.pokemon.base_attack, params.level);
++        this.defense = calcPokemonRealStats(params.pokemon.base_defence, params.level); 
++        this.special_attack = calcPokemonRealStats(params.pokemon.base_special_attack, params.level);
++        this.special_defence = calcPokemonRealStats(params.pokemon.base_special_defence, params.level);
++        this.speed = calcPokemonRealStats(params.pokemon.base_speed, params.level);
++        this.move_list = params.pokemon.move_list;
++        this.rank = new Rank({
+             attack: 0,
+             defense: 0,
+             special_attack: 0,
+             special_defense: 0,
+             speed: 0,
+-            accuracy:0
++            accuracy: 0
+         });
+-        this.#ailment = "none";
++        this.ailment = "none";
+     }
+     //Getter
+-    getPokemonId():number{
+-        return this.#pokemon_id;
++    getPokemonId(): number{
++        return this.pokemon_id;
+     }
+-    getPokemonIndex():number{
+-        return this.#pokemon_index;
++    getPokemonIndex(): number{
++        return this.pokemon_index;
+     }
+-    getName():string{
+-        return this.#name;
++    getName(): string{
++        return this.name;
+     }
+-    getType():string{
+-        return this.#type;
++    getType(): string{
++        return this.type;
+     }
+-    getImage():string{
+-        return this.#image;
++    getImage(): string{
++        return this.image;
+     }
+-    getLevel():number{
+-        return this.#level;
++    getLevel(): number{
++        return this.level;
+     }
+-    getExp():number{    
+-        return this.#exp;
++    getExp(): number{    
++        return this.exp;
+     }
+-    getMoveList():Array<number>{
+-        return this.#move_list;
++    getMoveList(): Array<number>{
++        return this.move_list;
+     }
+-    getRank():Rank{
+-        return this.#rank;
++    getRank(): Rank{
++        return this.rank;
+     }
+-    getAilment():string{
+-        return this.#ailment;
++    getAilment(): string{
++        return this.ailment;
+     }
+-    getMaxHp():number{
+-        return this.#max_hp;
++    getMaxHp(): number{
++        return this.max_hp;
+     }
+-    getCurrentHp():number{
+-        return this.#current_hp;
++    getCurrentHp(): number{
++        return this.current_hp;
+     }
+-    getAttack():number{
+-        return this.#attack;
++    getAttack(): number{
++        return this.attack;
+     }
+-    getDefense():number{
+-        return this.#defense;
++    getDefense(): number{
++        return this.defense;
+     }
+-    getSpecialAttack():number{
+-        return this.#special_attack;
++    getSpecialAttack(): number{
++        return this.special_attack;
+     }
+-    getSpecialDefense():number{
+-        return this.#special_defence;
++    getSpecialDefense(): number{
++        return this.special_defence;
+     }
+-    getSpeed():number{
+-        return this.#speed;
++    getSpeed(): number{
++        return this.speed;
+     }
+     //Setter
+-    setCurrentHp(current_hp:number):void{
+-        if(this.#max_hp < current_hp){
+-            this.#current_hp = this.#max_hp;
++    setCurrentHp(current_hp: number): void{
++        if(this.max_hp < current_hp){
++            this.current_hp = this.max_hp;
+         } 
+         else {
+-            this.#current_hp = current_hp;
++            this.current_hp = current_hp;
+         }   
+     }
+-    setAilment(ailment:string):void{
+-        this.#ailment = ailment;
++    setAilment(ailment: string): void{
++        this.ailment = ailment;
+     }
+-    setRank(status:string,rank:number):void{
++    setRank(status: string, rank: number): void{
+         switch(status){
+             case "attack":
+-                this.#rank.setAttackRank(rank);
++                this.rank.setAttackRank(rank);
+                 break;
+             case "defense":
+-                this.#rank.setDefenseRank(rank);
++                this.rank.setDefenseRank(rank);
+                 break;
+             case "special_attack":          
+-                this.#rank.setSpecialAttackRank(rank);
++                this.rank.setSpecialAttackRank(rank);
+                 break;
+             case "special_defense":
+-                this.#rank.setSpecialDefenseRank(rank);
++                this.rank.setSpecialDefenseRank(rank);
+                 break;
+             case "speed":
+-                this.#rank.setSpeedRank(rank);
++                this.rank.setSpeedRank(rank);
+                 break;
+             default:
+                 throw new Error("Invalid status");
+             }   
+     }
+-    setExp(exp:number):void{
+-        this.#exp = exp;
++    setExp(exp: number): void{
++        this.exp = exp;
+     } 
+-}   
+\ No newline at end of file
++}
+\ No newline at end of file
+diff --git a/server/index.ts b/server/index.ts
+index 6c5a54c..b366a5e 100644
+--- a/server/index.ts
++++ b/server/index.ts
+@@ -11,6 +11,11 @@ import { Move } from './types/move.type';
+ import { handle_make_client_pokemon } from './api/client/makeClientPokemon';
+ import { ClientMove } from './types/clientMove.type';
+ import { Team_pokemon } from './types/team_pokemon.type';
++import { battle } from './types/battle.type';
++import { fetchInitializedGameData } from './api/battle/wildBattle/fetchInitializedData';
++import { gameHandler } from './api/battle/wildBattle/gameHandler';
++import { Action } from './types/action.type';
++import { BattlePokemon } from './class/BattlePokemon.class';
+ const cors = require('cors');
+ const app = express();
+ 
+@@ -160,6 +165,70 @@ app.post("/first-pokemon/register",async(req:Request,res:Response)=>{
+   }
+ });
+ 
++
++app.post("/battle/wildBattle/init",async(req:Request,res:Response) => {
++  try {
++    const player_id:string = req.body.id;
++    const battleData:battle = await fetchInitializedGameData(player_id);
++    res.status(200).send(battleData);
++  } catch(error){
++    console.error(error);
++    res.status(204).send("データを取得できませんでした.");
++    throw error;
++  }
++});
++
++app.post("/battle/wildBattle/handle",async(req:Request,res:Response) => {
++  try {
++    const battlePokemons:BattlePokemon[] = JSON.parse(req.body.battlePokemons);
++    const wildPokemons:BattlePokemon[] = JSON.parse(req.body.wildPokemons);
++    const moves:Move[] = JSON.parse(req.body.moves);
++    const action:Action = JSON.parse(req.body.action);
++    console.log(action.action_id)
++    
++    if(!battlePokemons || !wildPokemons || !moves || !action){
++      res.status(200).send("データが存在しません.");
++      return;
++    }
++    
++    let battlePokemonList:BattlePokemon[] = [];
++    for(let i = 0; i < battlePokemons.length; i++){
++      const pokemon:Pokemon = await pokemon_getter(battlePokemons[i].pokemon_id);
++      const battlePokemon:BattlePokemon = new BattlePokemon({
++        pokemon:pokemon,
++        pokemon_index:1,
++        level:battlePokemons[i].level,
++        exp:battlePokemons[i].exp,
++        image:battlePokemons[i].image
++      });
++      battlePokemonList.push(battlePokemon);
++    }
++    
++    const wildPokemonList:BattlePokemon[] = [];
++    for(let i = 0; i < wildPokemons.length; i++){
++      const wildPokemon:Pokemon = await pokemon_getter(wildPokemons[i].pokemon_id);
++      const wildBattlePokemon:BattlePokemon = new BattlePokemon({
++        pokemon:wildPokemon,
++        pokemon_index:1,  
++        level:wildPokemons[i].level,
++        exp:wildPokemons[i].exp,
++        image:wildPokemons[i].image
++      });
++      wildPokemonList.push(wildBattlePokemon);
++    }
++    const result = await gameHandler(battlePokemonList,wildPokemonList,moves,action);
++    if(result){
++      res.status(200).send(result);
++      return;
++    }
++    res.status(200).send("データが存在しません.");
++  } catch(error){
++    console.error(error);
++    res.status(204).send("データを取得できませんでした.");
++    throw error;
++  }
++})
++
+ // Pokemonテーブルのデータ参照
+ app.post("/data/pokemon",async(req:Request,res:Response)=>{
+   try {
