@@ -6,8 +6,10 @@ import { handleAction } from "../actionHandler";
 
 export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],action:Action) => {
     let endFlag = false;
+    const messages:string[] = [];
     if(action){
         const result = handleEnemyAilmentEffect(battlePokemons,wildPokemons,moves,endFlag);
+        
         if(result?.endFlag){
             endFlag = true;
             return ({ battlePokemons,wildPokemons,moves,endFlag });
@@ -17,18 +19,18 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
             endFlag = true;
             return ({ battlePokemons,wildPokemons,moves,endFlag });
         }
-
+        
         const isContinue = handleGameEnd(battlePokemons,wildPokemons);
         if(isContinue){
             endFlag = true;
             return ({ battlePokemons,wildPokemons,moves,endFlag });
         }
-
+        
         switch(action.action_id){
             // たたかう→技を選択
             case 1:
                 let battleMove:Move = findBattleMove(battlePokemons,moves,action);
-                const random = Math.floor(Math.random() * 4 - 1) + 1;
+                const random = Math.floor(Math.random() * 3 - 0) + 0;
                 let wildMove:Move = findBattleMove(wildPokemons,moves,{action_id:1,command_id:random});
                 if(battleMove && wildMove){
                     // 先制技の優先度を比較
@@ -47,11 +49,12 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                         if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
                             handleAction(battlePokemons,wildPokemons,battleMove);
                         }
-
+                        
                     }
                     // 先制技の優先度が同じ場合
                     // すばやさを比較
-                    else if(battlePokemons[0].getSpeed() > wildPokemons[0].getSpeed()){
+                    else if(battlePokemons[0].getSpeed() >= wildPokemons[0].getSpeed()){
+                        console.log(battleMove?.name,":",wildMove?.name);
                         if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
                             handleAction(battlePokemons,wildPokemons,battleMove);
                         }
@@ -99,76 +102,74 @@ const handleGameEnd = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon
 
 const handleAilmentEffect = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],endFlag:boolean) => {
     console.log(wildPokemons[0].getName(),"の状態異常",wildPokemons[0].getAilment());
+    let text = "";
     switch(wildPokemons[0].getAilment()){
         case "none":
             break;
         case "poison":
-            console.log(wildPokemons[0].getName(),"は毒におかされている");
+            text = wildPokemons[0].getName() + "は毒におかされている";
             wildPokemons[0].setCurrentHp(wildPokemons[0].getCurrentHp() - Math.floor(wildPokemons[0].getMaxHp() * 0.15));
-            break;
+            return ({ battlePokemons,wildPokemons,moves,endFlag, text});
         case "paralysis":
-            console.log(wildPokemons[0].getName(),"はまひしている");
+            text = wildPokemons[0].getName() + "はまひしている";
             if(Math.floor(Math.random() * 100) < 25){
-                console.log(wildPokemons[0].getName(),"はまひして動けない");
-                return ({ battlePokemons,wildPokemons,moves,endFlag });
+                const text = wildPokemons[0].getName() + "はまひして動けない";
+                return ({ battlePokemons,wildPokemons,moves,endFlag, text });
             }
-            break;
+            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
         case "burn":
-            console.log(wildPokemons[0].getName(),"はやけどしている");
+            text = wildPokemons[0].getName() + "はやけどしている";
             wildPokemons[0].setCurrentHp(wildPokemons[0].getCurrentHp() - Math.floor(wildPokemons[0].getMaxHp() * 0.1));
-            break;
+            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
         case "freeze":
-            console.log(wildPokemons[0].getName(),"はこおっている");
+            text = wildPokemons[0].getName() + "はこおっている";
             if(Math.floor(Math.random() * 100) < 50){
-                console.log(wildPokemons[0].getName(),"はこおり状態から回復した");
+                const text = wildPokemons[0].getName() + "はこおり状態から回復した";
                 wildPokemons[0].setAilment("none");
+                return ({ battlePokemons,wildPokemons,moves,endFlag,text });
             }
-            else {
-                return ({ battlePokemons,wildPokemons,moves,endFlag });
-            }
-            break;
+            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
         case "sleep":
-            console.log(battlePokemons[0].getName(),"はねむっている");
+            text = battlePokemons[0].getName() + "はねむっている";
             if(Math.floor(Math.random() * 100) < 50){
-                console.log(battlePokemons[0].getName(),"はねむけからさめた");
+                const text =battlePokemons[0].getName() + "はねむけからさめた";
                 battlePokemons[0].setAilment("none");
+                return ({ battlePokemons,wildPokemons,moves,endFlag,text });
             }
-            else {
-                return ({ battlePokemons,wildPokemons,moves,endFlag });
-            }
-            break;
+            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
     }
 
 }
 
 const handleEnemyAilmentEffect = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],endFlag:boolean) => {
+    let text = "";
     switch(battlePokemons[0].getAilment()){
         case "none":
             break;
         case "poison":
-            console.log(battlePokemons[0].getName(),"は毒におかされている");
-            battlePokemons[0].setCurrentHp(battlePokemons[0].getCurrentHp() - Math.floor(battlePokemons[0].getMaxHp() * 0.15));
-            break;
+            text = battlePokemons[0].getName() + "は毒におかされている";
+             battlePokemons[0].setCurrentHp(battlePokemons[0].getCurrentHp() - Math.floor(battlePokemons[0].getMaxHp() * 0.15));
+            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
         case "paralysis":
-            console.log(battlePokemons[0].getName(),"はまひしている");
+            text = battlePokemons[0].getName() + "はまひしている";
             if(Math.floor(Math.random() * 100) < 25){
                 console.log(battlePokemons[0].getName(),"はまひして動けない");
-                return ({ battlePokemons,wildPokemons,moves,endFlag });
+                return ({ battlePokemons,wildPokemons,moves,endFlag,text });
             }
             break;
         case "burn":
-            console.log(battlePokemons[0].getName(),"はやけどしている");
+            text = battlePokemons[0].getName() + "はやけどしている";
             battlePokemons[0].setCurrentHp(battlePokemons[0].getCurrentHp() - Math.floor(battlePokemons[0].getMaxHp() * 0.1));
+            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
             break;
         case "freeze":
-            console.log(battlePokemons[0].getName(),"はこおっている");
+            text = battlePokemons[0].getName() + "はこおっている";
             if(Math.floor(Math.random() * 100) < 50){
-                console.log(battlePokemons[0].getName(),"はこおり状態から回復した");
+                const text = battlePokemons[0].getName() + "はこおり状態から回復した";
                 battlePokemons[0].setAilment("none");
+                return ({ battlePokemons,wildPokemons,moves,endFlag,text });    
             }
-            else {
-                return ({ battlePokemons,wildPokemons,moves,endFlag });
-            }
+            return ({ battlePokemons,wildPokemons,moves,endFlag, text });
             break;
         case "sleep":
             console.log(battlePokemons[0].getName(),"はねむっている");

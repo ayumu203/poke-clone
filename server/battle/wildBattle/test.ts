@@ -1,5 +1,5 @@
 import { gameHandler } from "./gameHandler";
-import { initGameData, TestInitGameData } from "./gameInitializer";
+import { TestInitGameData } from "./gameInitializer";
 
 
 const test = async () => {
@@ -13,9 +13,13 @@ const test = async () => {
         while(true){
             console.log("\n",turn,"ターン目\n");
             const random = Math.floor(Math.random() * 4 - 1) + 1;
-            const result = await gameHandler(initData.battlePokemons,initData.wildPokemons,initData.moves,{action_id:1,command_id:random});
+            const action = {
+                action_id: 1,
+                command_id: random
+            };
+            const result = await gameHandler(initData.battlePokemons, initData.wildPokemons,initData.moves, action);
             turn++;
-            // if(turn >= 5)break;
+            if(turn >= 5)break;
             if(result.endFlag){
                 turn = 0;
                 console.log("バトル終了\n");
