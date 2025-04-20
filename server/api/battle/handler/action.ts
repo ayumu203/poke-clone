@@ -4,7 +4,7 @@ import { Move } from "../../../types/move.type";
 import { handleStatusRank } from "./statusRank";
 import { handleAilment } from "./ailment";
 import { handleAttack } from "./attack";
-import { pushAllItem } from "../../../lib/pushAllItem";
+import { pushAllItem } from "../../../lib/data/pushAllItem";
 
 export const handleAction = (attacker:BattlePokemon[],defender:BattlePokemon[],move:Move):string[] => {
     let messages:string[] = [];
