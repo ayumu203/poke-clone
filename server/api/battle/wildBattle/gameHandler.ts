@@ -109,6 +109,10 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                     endFlag = handleGameEnd(battlePokemons,wildPokemons);
                 }
                 break;
+            case 2:
+                endFlag = true;
+                buffer.push(battlePokemons[0].name + "は逃げた");
+                break;
         }
     }
     return ({ battlePokemons,wildPokemons,moves,endFlag,buffer });
