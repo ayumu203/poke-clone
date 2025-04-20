@@ -29,7 +29,7 @@ export const handleAilmentEffect = (battlePokemons:BattlePokemon[],wildPokemons:
                 return ({ battlePokemons,wildPokemons,moves,endFlag,text });
             }
             return ({ battlePokemons,wildPokemons,moves,endFlag, text });
-            case "sleep":
+        case "sleep":
             text = battlePokemons[0].getName() + "はねむっている";
             if(Math.floor(Math.random() * 100) < 50){
                 const text =battlePokemons[0].getName() + "はねむけからさめた";
@@ -37,9 +37,21 @@ export const handleAilmentEffect = (battlePokemons:BattlePokemon[],wildPokemons:
                 return ({ battlePokemons,wildPokemons,moves,endFlag,text });
             }
             return ({ battlePokemons,wildPokemons,moves,endFlag, text });
+        case "confusion":   
+            text = battlePokemons[0].getName() + "はこんらんしている";
+            if(Math.floor(Math.random() * 100) < 50){
+                text = battlePokemons[0].getName() + "はこんらんして自分を攻撃した";
+                battlePokemons[0].setCurrentHp(battlePokemons[0].getCurrentHp() - Math.floor(battlePokemons[0].getMaxHp() * 0.1));
+            }
+            
+            if(Math.floor(Math.random() * 100) < 50){
+                text = battlePokemons[0].getName() + "はこんらんから回復した";
+                battlePokemons[0].setAilment("none");
+            }
+            // ワンチャンここでバグる,混乱関連のバグが起きたらここを見る
+            return ({ battlePokemons,wildPokemons,moves,endFlag,text });
     }    
-    return
-}
+};
 
 export const handleEnemyAilmentEffect = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],endFlag:boolean) => {
     let text = "";

@@ -29,8 +29,8 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
             return ({ battlePokemons,wildPokemons,moves,endFlag,buffer });
         }
         
-        const isContinue = handleGameEnd(battlePokemons,wildPokemons);
-        if(isContinue){
+        const result3 = handleGameEnd(battlePokemons,wildPokemons);
+        if(result3.endFlag){
             endFlag = true;
             return ({ battlePokemons,wildPokemons,moves,endFlag,buffer });
         }
@@ -106,7 +106,12 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                     }
     
                 // HPが0になった場合の処理
-                    endFlag = handleGameEnd(battlePokemons,wildPokemons);
+                // 雑に書いたのでここもバグの可能性
+                    const result4 = handleGameEnd(battlePokemons,wildPokemons);
+                    if(result4.endFlag){
+                        endFlag = true;
+                        return ({ battlePokemons,wildPokemons,moves,endFlag,buffer });
+                    }
                 }
                 break;
             case 2:

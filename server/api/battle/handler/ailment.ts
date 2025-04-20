@@ -7,6 +7,7 @@ export const handleAilment = (battlePokemons:BattlePokemon[],opponentPokemons:Ba
         let text:string = battlePokemons[0].getName() + "は" + move?.name + "をつかった";
         messages.push(text);
         let chance = 0;
+        // 命中判定
         if(move.move_category === "ailment")chance = move?.accuracy;
         else chance = move?.ailment_chance;
         const random = Math.floor(Math.random() * 100);

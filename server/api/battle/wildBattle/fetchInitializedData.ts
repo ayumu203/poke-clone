@@ -3,7 +3,7 @@ import { pokemon_getter } from "../../pokemon/pokemon";
 import { team_pokemon_exist, team_pokemon_getter } from "../../teamPokemon/teamPokemonHandler";
 import { BattlePokemon } from "../../../class/BattlePokemon.class";
 import { team_pokemon_count, wild_pokemon_count } from "../../../const/pokemon_count.const";
-import { pokemon_id_begin, pokemon_id_end } from "../../../const/pokemon_id.const";
+import { POKEMON_ID_BEGIN, POKEMON_ID_END } from "../../../const/pokemon_id.const";
 import { battle } from "../../../types/battle.type";
 import { MAX_MOVE_COUNT } from "../../../const/max_move_count.const";
 
@@ -36,8 +36,8 @@ export const fetchInitializedGameData = async (player_id:string):Promise<battle>
     }
 
     // 野生ポケモンの出現数
-    const begin = pokemon_id_begin;
-    const end = pokemon_id_end;
+    const begin = POKEMON_ID_BEGIN;
+    const end = POKEMON_ID_END;
     const wildPokemons = [];
     for(let i = 0; i < wild_pokemon_count; i++){
         const random = Math.floor(Math.random() * (end - begin + 1)) + begin;
@@ -109,8 +109,8 @@ export const fetchInitializedGameData = async (player_id:string):Promise<battle>
 //     }
 
 //     // 野生ポケモンの出現数
-//     const begin = pokemon_id_begin;
-//     const end = pokemon_id_end;
+//     const begin = POKEMON_ID_BEGIN;
+//     const end = POKEMON_ID_END;
 //     const wildPokemons = [];
 //     for(let i = 0; i < wild_pokemon_count; i++){
 //         const pokemon = new BattlePokemon({

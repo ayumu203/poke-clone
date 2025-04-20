@@ -17,8 +17,8 @@ export const handleStatusRank = (user:BattlePokemon[],opponent:BattlePokemon[],m
                     text = user[0].getName() + "の攻撃が" + statusRank + "変化した";
                     messages.push(text);
                     break;
-                case "defense":
-                    user[0].getRank().setDefenseRank(user[0].getRank().getDefenseRank() + statusRank);
+                case "defence":
+                    user[0].getRank().setdefenceRank(user[0].getRank().getdefenceRank() + statusRank);
                     text = user[0].getName() + "の防御が" + statusRank + "変化した";
                     messages.push(text);
                     break;
@@ -27,8 +27,8 @@ export const handleStatusRank = (user:BattlePokemon[],opponent:BattlePokemon[],m
                     text = user[0].getName() + "の特攻が" + statusRank + "変化した";
                     messages.push(text);
                     break;
-                case "special_defense":
-                        user[0].getRank().setSpecialDefenseRank(user[0].getRank().getSpecialDefenseRank() + statusRank);
+                case "special_defence":
+                        user[0].getRank().setSpecialdefenceRank(user[0].getRank().getSpecialdefenceRank() + statusRank);
                     text = user[0].getName() + "の特防が" + statusRank + "変化した";
                     messages.push(text);
                     break;
@@ -55,8 +55,8 @@ export const handleStatusRank = (user:BattlePokemon[],opponent:BattlePokemon[],m
                     text = opponent[0].getName() + "の攻撃が" + statusRank + "変化した";
                     messages.push(text);
                     break;
-                case "defense":
-                    opponent[0].getRank().setDefenseRank(opponent[0].getRank().getDefenseRank() - statusRank);
+                case "defence":
+                    opponent[0].getRank().setdefenceRank(opponent[0].getRank().getdefenceRank() - statusRank);
                     text = opponent[0].getName() + "の防御が" + statusRank + "変化した";
                     messages.push(text);
                     break;
@@ -65,8 +65,8 @@ export const handleStatusRank = (user:BattlePokemon[],opponent:BattlePokemon[],m
                     text = opponent[0].getName() + "の特攻が" + statusRank + "変化した";
                     messages.push(text);
                     break;
-                case "special_defense":
-                        opponent[0].getRank().setSpecialDefenseRank(opponent[0].getRank().getSpecialDefenseRank() - statusRank);
+                case "special_defence":
+                        opponent[0].getRank().setSpecialdefenceRank(opponent[0].getRank().getSpecialdefenceRank() - statusRank);
                         text = opponent[0].getName() + "の特防が" + statusRank + "変化した";
                         messages.push(text);
                         break;
@@ -95,8 +95,8 @@ export const handleStatusRank = (user:BattlePokemon[],opponent:BattlePokemon[],m
                             text = user[0].getName() + "の攻撃が" + statusRank + "変化した";
                             messages.push(text);
                             break;
-                        case "defense":
-                            user[0].getRank().setDefenseRank(user[0].getRank().getDefenseRank() + statusRank);
+                        case "defence":
+                            user[0].getRank().setdefenceRank(user[0].getRank().getdefenceRank() + statusRank);
                             text = user[0].getName() + "の防御が" + statusRank + "変化した";
                             messages.push(text);
                             break;
@@ -105,8 +105,8 @@ export const handleStatusRank = (user:BattlePokemon[],opponent:BattlePokemon[],m
                             text = user[0].getName() + "の特攻が" + statusRank + "変化した";
                             messages.push(text);
                             break;
-                        case "special_defense":
-                            user[0].getRank().setSpecialDefenseRank(user[0].getRank().getSpecialDefenseRank() + statusRank);
+                        case "special_defence":
+                            user[0].getRank().setSpecialdefenceRank(user[0].getRank().getSpecialdefenceRank() + statusRank);
                             text = user[0].getName() + "の特防が" + statusRank + "変化した";
                             messages.push(text);
                             break;
@@ -134,8 +134,8 @@ export const handleStatusRank = (user:BattlePokemon[],opponent:BattlePokemon[],m
                             text = opponent[0].getName() + "の攻撃が" + statusRank + "変化した";
                             messages.push(text);
                             break;
-                        case "defense":
-                            opponent[0].getRank().setDefenseRank(opponent[0].getRank().getDefenseRank() - statusRank);
+                        case "defence":
+                            opponent[0].getRank().setdefenceRank(opponent[0].getRank().getdefenceRank() - statusRank);
                             text = opponent[0].getName() + "の防御が" + statusRank + "変化した";
                             messages.push(text);
                             break;
@@ -144,8 +144,8 @@ export const handleStatusRank = (user:BattlePokemon[],opponent:BattlePokemon[],m
                             text = opponent[0].getName() + "の特攻が" + statusRank + "変化した";
                             messages.push(text);
                             break;
-                        case "special_defense":
-                            opponent[0].getRank().setSpecialDefenseRank(opponent[0].getRank().getSpecialDefenseRank() - statusRank);
+                        case "special_defence":
+                            opponent[0].getRank().setSpecialdefenceRank(opponent[0].getRank().getSpecialdefenceRank() - statusRank);
                             text = opponent[0].getName() + "の特防が" + statusRank + "変化した";
                             messages.push(text);
                             break;

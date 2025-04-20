@@ -2,6 +2,7 @@ import { pokemon_getter } from "../../api/pokemon/pokemon";
 import { BattlePokemon } from "../../class/BattlePokemon.class";
 import { Pokemon } from "../../types/pokemon.types";
 
+// オブジェクトの配列になったbattlePokemonsをbattlePokemonクラスの配列に変換する
 export const toBattlePokemonClass = async(battlePokemons:BattlePokemon[]) => {
     const battlePokemonList:BattlePokemon[] = [];
     for(let i = 0; i < battlePokemons.length; i++){
@@ -15,6 +16,12 @@ export const toBattlePokemonClass = async(battlePokemons:BattlePokemon[]) => {
         });
         battlePokemon.setCurrentHp(battlePokemons[i].current_hp);
         battlePokemonList.push(battlePokemon);
+        battlePokemon.getRank().setAttackRank(battlePokemons[i].rank.attack);
+        battlePokemon.getRank().setdefenceRank(battlePokemons[i].rank.defence);
+        battlePokemon.getRank().setSpecialAttackRank(battlePokemons[i].rank.special_attack);
+        battlePokemon.getRank().setSpecialdefenceRank(battlePokemons[i].rank.special_defence);
+        battlePokemon.getRank().setSpeedRank(battlePokemons[i].rank.speed);
+        battlePokemon.getRank().setAccuracyRank(battlePokemons[i].rank.accuracy);
     }
     return battlePokemonList;
 }

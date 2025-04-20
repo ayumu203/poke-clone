@@ -13,7 +13,7 @@
 //     #max_hp:number;
 //     #current_hp:number;
 //     #attack:number;
-//     #defense:number;
+//     #defence:number;
 //     #special_attack:number;
 //     #special_defence:number;
 //     #speed:number;
@@ -41,16 +41,16 @@
 //         this.#max_hp = calcPokemonRealHp(params.pokemon.base_hp,params.level);
 //         this.#current_hp = this.#max_hp;
 //         this.#attack = calcPokemonRealStats(params.pokemon.base_attack,params.level);
-//         this.#defense = calcPokemonRealStats(params.pokemon.base_defence,params.level); 
+//         this.#defence = calcPokemonRealStats(params.pokemon.base_defence,params.level); 
 //         this.#special_attack = calcPokemonRealStats(params.pokemon.base_special_attack,params.level);
 //         this.#special_defence = calcPokemonRealStats(params.pokemon.base_special_defence,params.level);
 //         this.#speed = calcPokemonRealStats(params.pokemon.base_speed,params.level);
 //         this.#move_list = params.pokemon.move_list;
 //         this.#rank = new Rank({
 //             attack: 0,
-//             defense: 0,
+//             defence: 0,
 //             special_attack: 0,
-//             special_defense: 0,
+//             special_defence: 0,
 //             speed: 0,
 //             accuracy:0
 //         });
@@ -96,13 +96,13 @@
 //     getAttack():number{
 //         return this.#attack;
 //     }
-//     getDefense():number{
-//         return this.#defense;
+//     getdefence():number{
+//         return this.#defence;
 //     }
 //     getSpecialAttack():number{
 //         return this.#special_attack;
 //     }
-//     getSpecialDefense():number{
+//     getSpecialdefence():number{
 //         return this.#special_defence;
 //     }
 //     getSpeed():number{
@@ -125,14 +125,14 @@
 //             case "attack":
 //                 this.#rank.setAttackRank(rank);
 //                 break;
-//             case "defense":
-//                 this.#rank.setDefenseRank(rank);
+//             case "defence":
+//                 this.#rank.setdefenceRank(rank);
 //                 break;
 //             case "special_attack":          
 //                 this.#rank.setSpecialAttackRank(rank);
 //                 break;
-//             case "special_defense":
-//                 this.#rank.setSpecialDefenseRank(rank);
+//             case "special_defence":
+//                 this.#rank.setSpecialdefenceRank(rank);
 //                 break;
 //             case "speed":
 //                 this.#rank.setSpeedRank(rank);
@@ -161,7 +161,7 @@ export class BattlePokemon {
     max_hp: number;
     current_hp: number;
     attack: number;
-    defense: number;
+    defence: number;
     special_attack: number;
     special_defence: number;
     speed: number;
@@ -189,16 +189,16 @@ export class BattlePokemon {
         this.max_hp = calcPokemonRealHp(params.pokemon.base_hp, params.level);
         this.current_hp = this.max_hp;
         this.attack = calcPokemonRealStats(params.pokemon.base_attack, params.level);
-        this.defense = calcPokemonRealStats(params.pokemon.base_defence, params.level); 
+        this.defence = calcPokemonRealStats(params.pokemon.base_defence, params.level); 
         this.special_attack = calcPokemonRealStats(params.pokemon.base_special_attack, params.level);
         this.special_defence = calcPokemonRealStats(params.pokemon.base_special_defence, params.level);
         this.speed = calcPokemonRealStats(params.pokemon.base_speed, params.level);
         this.move_list = params.pokemon.move_list;
         this.rank = new Rank({
             attack: 0,
-            defense: 0,
+            defence: 0,
             special_attack: 0,
-            special_defense: 0,
+            special_defence: 0,
             speed: 0,
             accuracy: 0
         });
@@ -244,13 +244,13 @@ export class BattlePokemon {
     getAttack(): number{
         return this.attack;
     }
-    getDefense(): number{
-        return this.defense;
+    getdefence(): number{
+        return this.defence;
     }
     getSpecialAttack(): number{
         return this.special_attack;
     }
-    getSpecialDefense(): number{
+    getSpecialdefence(): number{
         return this.special_defence;
     }
     getSpeed(): number{
@@ -273,14 +273,14 @@ export class BattlePokemon {
             case "attack":
                 this.rank.setAttackRank(rank);
                 break;
-            case "defense":
-                this.rank.setDefenseRank(rank);
+            case "defence":
+                this.rank.setdefenceRank(rank);
                 break;
             case "special_attack":          
                 this.rank.setSpecialAttackRank(rank);
                 break;
-            case "special_defense":
-                this.rank.setSpecialDefenseRank(rank);
+            case "special_defence":
+                this.rank.setSpecialdefenceRank(rank);
                 break;
             case "speed":
                 this.rank.setSpeedRank(rank);

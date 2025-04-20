@@ -1,20 +1,20 @@
 import { BattlePokemon } from "../../../class/BattlePokemon.class";
 
-export const handleGameEnd = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[]):boolean => {
+export const handleGameEnd = (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[]) => {
     let endFlag = false;
+    let text = "";
     if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() !== 0){
-        console.log(battlePokemons[0].getName(),"は倒れた");
+        text = battlePokemons[0].getName() + "は倒れた";
         endFlag = true;
     }
     else if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() === 0){
-        console.log(wildPokemons[0].getName(),"は倒れた");
+        text = wildPokemons[0].getName() + "は倒れた";
         endFlag = true;
     }
     else if(battlePokemons[0].getCurrentHp() === 0 && wildPokemons[0].getCurrentHp() === 0){
-        console.log(battlePokemons[0].getName(),"は倒れた");
-        console.log(wildPokemons[0].getName(),"は倒れた");
+        text = battlePokemons[0].getName() + "と" + wildPokemons[0].getName() + "は倒れた";
         endFlag = true;
     }
-    return endFlag;
+    return { battlePokemons,wildPokemons,endFlag,text };
 }
 

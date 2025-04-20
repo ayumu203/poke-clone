@@ -17,11 +17,11 @@ export const handleAttack = (attacker:BattlePokemon[],defender:BattlePokemon[], 
         // 物理技なら攻撃・防御を,特殊技なら特攻・特防を割り当てる
         if(move.damage_class === "physical"){
             atk = attacker[0].getAttack() * ( 1 + attacker[0].getRank().getAttackRank() / 2);
-            def = defender[0].getDefense() * ( 1 + defender[0].getRank().getDefenseRank() / 2);
+            def = defender[0].getdefence() * ( 1 + defender[0].getRank().getdefenceRank() / 2);
         }
         else if(move.damage_class === "special"){
             atk = attacker[0].getSpecialAttack() * ( 1 + attacker[0].getRank().getSpecialAttackRank() / 2);
-            def = defender[0].getSpecialDefense() * ( 1 + defender[0].getRank().getSpecialDefenseRank() / 2);
+            def = defender[0].getSpecialdefence() * ( 1 + defender[0].getRank().getSpecialdefenceRank() / 2);
         }
         // ステータス変化技は呼び出し前に除外済み
         const battleType = attacker[0].getType();
@@ -35,11 +35,15 @@ export const handleAttack = (attacker:BattlePokemon[],defender:BattlePokemon[], 
         // タイプ相性補正
         correction *= typeCompare(move_type,wildType);
         if(typeCompare(move_type,wildType) === 0){
-            text = attacker[0].getName() + "は" + move?.name + "を使ったが効果がないようだ";
+            text = attacker[0].getName() + "は" + move?.name + "を使った" + defender[0].getName() + "には効果がないようだ";
             messages.push(text);
         }
         else if(typeCompare(move_type,wildType) === 0.5){
-            text = attacker[0].getName() + "は" + move?.name + "を使ったが効果はいまひとつのようだ";
+            text = attacker[0].getName() + "は" + move?.name + "を使った" + defender[0].getName() + "には効果はいまひとつのようだ";
+            messages.push(text);
+        }
+        else if(typeCompare(move_type,wildType) === 2){
+            text = attacker[0].getName() + "は" + move?.name + "を使った" + defender[0].getName() + "に効果ばつぐんだ";
             messages.push(text);
         }
         // やけど補正

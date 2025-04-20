@@ -1,2 +1,2 @@
-export const pokemon_id_begin = 494;
-export const pokemon_id_end = 649;
+export const POKEMON_ID_BEGIN = 494;
+export const POKEMON_ID_END = 649;
