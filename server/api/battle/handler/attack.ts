@@ -1,6 +1,6 @@
 import { BattlePokemon } from "../../../class/BattlePokemon.class";
 import { calcAttackDamage } from "../../../lib/calc/calcDamage";
-import { typeCompare } from "../../../lib/typeCompare";
+import { typeCompare } from "../../../lib/calc/typeCompare";
 import { Move } from "../../../types/move.type";
 
 export const handleAttack = (attacker:BattlePokemon[],defender:BattlePokemon[], move:Move):string[] => {

@@ -5,7 +5,7 @@ import { Move } from "../../../types/move.type";
 import { handleAction } from "../handler/action";
 import { handleGameEnd } from "../handler/gameEnd";
 import { handleAilmentEffect, handleEnemyAilmentEffect } from "../handler/ailmentEffect";
-import { pushAllItem } from "../../../lib/pushAllItem";
+import { pushAllItem } from "../../../lib/data/pushAllItem";
 
 export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],action:Action) => {
     let endFlag = false;

@@ -16,6 +16,7 @@ import { fetchInitializedGameData } from './api/battle/wildBattle/fetchInitializ
 import { gameHandler } from './api/battle/wildBattle/gameHandler';
 import { Action } from './types/action.type';
 import { BattlePokemon } from './class/BattlePokemon.class';
+import { toBattlePokemonClass } from './lib/data/toBattlePokemonClass';
 const cors = require('cors');
 const app = express();
 
@@ -184,39 +185,17 @@ app.post("/battle/wildBattle/handle",async(req:Request,res:Response) => {
     const wildPokemons:BattlePokemon[] = JSON.parse(req.body.wildPokemons);
     const moves:Move[] = JSON.parse(req.body.moves);
     const action:Action = JSON.parse(req.body.action);  
-    console.log("battlePokemons",battlePokemons);
     
     if(!battlePokemons || !wildPokemons || !moves || !action){
       res.status(200).send("データが存在しません.");
       return;
     }
     
-    let battlePokemonList:BattlePokemon[] = [];
-    for(let i = 0; i < battlePokemons.length; i++){
-      const pokemon:Pokemon = await pokemon_getter(battlePokemons[i].pokemon_id);
-      const battlePokemon:BattlePokemon = new BattlePokemon({
-        pokemon:pokemon,
-        pokemon_index:1,
-        level:battlePokemons[i].level,
-        exp:battlePokemons[i].exp,
-        image:battlePokemons[i].image
-      });
-      battlePokemon.setCurrentHp(battlePokemons[i].current_hp);
-      battlePokemonList.push(battlePokemon);
-    }
-    
-    const wildPokemonList:BattlePokemon[] = [];
-    for(let i = 0; i < wildPokemons.length; i++){
-      const pokemon:Pokemon = await pokemon_getter(wildPokemons[i].pokemon_id);
-      const wildPokemon:BattlePokemon = new BattlePokemon({
-        pokemon:pokemon,
-        pokemon_index:1,  
-        level:wildPokemons[i].level,
-        exp:wildPokemons[i].exp,
-        image:wildPokemons[i].image
-      });
-      wildPokemon.setCurrentHp(wildPokemons[i].current_hp);
-      wildPokemonList.push(wildPokemon);
+    let battlePokemonList:BattlePokemon[] = await toBattlePokemonClass(battlePokemons);    
+    const wildPokemonList:BattlePokemon[] = await toBattlePokemonClass(wildPokemons);
+    if(!battlePokemonList || !wildPokemonList){
+      res.status(200).send("データが存在しません.");
+      return;
     }
     const result = await gameHandler(battlePokemonList,wildPokemonList,moves,action);
     if(result){

@@ -5,6 +5,7 @@ import { BattlePokemon } from "../../../class/BattlePokemon.class";
 import { team_pokemon_count, wild_pokemon_count } from "../../../const/pokemon_count.const";
 import { pokemon_id_begin, pokemon_id_end } from "../../../const/pokemon_id.const";
 import { battle } from "../../../types/battle.type";
+import { MAX_MOVE_COUNT } from "../../../const/max_move_count.const";
 
 export const fetchInitializedGameData = async (player_id:string):Promise<battle> => {
     const battlePokemons = [];
@@ -49,7 +50,7 @@ export const fetchInitializedGameData = async (player_id:string):Promise<battle>
             exp: 0,
             image: pokemon.front_image,
         }));
-        for(let j = 0; j < pokemon.move_list.length; j++){
+        for(let j = 0; j < MAX_MOVE_COUNT; j++){
             const move_id = pokemon.move_list[j];
             const move = await move_getter(Number(move_id));
             if(!move)continue;
