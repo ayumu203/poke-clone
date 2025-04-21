@@ -9,6 +9,14 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
     throw new Error('response error');
     }
     const data: any = await response.json();
+    const move_list:number[] = [];
+
+    for(let i = 0; i < data.moves.length; i++){
+        const url:string = data.moves[i].move.url;
+        const id:number = Number(url.split("/").slice(-2)[0]);
+        if(id <= 559)move_list.push(id);
+    }
+
     const pokemon:Pokemon = {
         pokemon_id:pokemon_id,
         name:"none",
@@ -22,7 +30,7 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
         base_special_defence:data.stats[4].base_stat,
         base_speed:data.stats[5].base_stat,
         evolve_level:-1,
-        move_list: [1,2,3,106,5,6,7,8,9,10],
+        move_list: move_list,
     };
     return pokemon;
 };
