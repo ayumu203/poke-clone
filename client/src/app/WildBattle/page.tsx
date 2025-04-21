@@ -52,6 +52,7 @@ export default function Page() {
                     setWildPokemons(data.wildPokemons);
                     setWildPokemon(data.wildPokemons[0]);
                     setMoves(data.moves);
+                    console.log(data);
                 }
                 catch (error) {
                     console.error("バトルの初期化データ取得でエラー", error);
@@ -71,6 +72,7 @@ export default function Page() {
                     break;
                 case "run":
                     id = 2;
+                    router.push("/");
                     break;
             }
             const action:Action = {

@@ -56,8 +56,8 @@ export const fetchInitializedGameData = async (player_id:string):Promise<battle>
             if(!move)continue;
             moves.push(move);
         }
-    }
-    ;
+    };
+    console.log("wildPokemons",wildPokemons);
     return {
         battlePokemons,
         wildPokemons,
