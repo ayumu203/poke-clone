@@ -149,6 +149,7 @@ app.post("/first-pokemon/register",async(req:Request,res:Response)=>{
     }
     const player_id:string = req.body.player_id;
     const pokemon_id:number = Number(req.body.pokemon_id);
+    console.log(player_id);
     // 初期の3体以外は選択できない
     if(!((pokemon_id === 494) || (pokemon_id === 495) || (pokemon_id === 501))){
       res.status(200).send("ポケモンのIDが不正です.");
@@ -161,7 +162,7 @@ app.post("/first-pokemon/register",async(req:Request,res:Response)=>{
     else res.status(200).send("データが存在しません.")
   } catch(error){
     console.error(error);
-    res.status(204).send("データを取得できませんでした.");
+    res.status(400).send("データを取得できませんでした.");
     throw error;
   }
 });

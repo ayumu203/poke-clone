@@ -9,6 +9,12 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
     throw new Error('response error');
     }
     const data: any = await response.json();
+    const move_list = [];
+    for(let i = 0; i < data.moves.length; i++){
+        const move_id = data.moves[i].move.url.replace(/\/+$/, "");
+        const id = move_id.split("/").pop();
+        move_list.push(Number(id));
+    }
     const pokemon:Pokemon = {
         pokemon_id:pokemon_id,
         name:"none",
@@ -22,7 +28,7 @@ const fetchBaseStat = async (url: string, headers: HeadersInit,pokemon_id:number
         base_special_defence:data.stats[4].base_stat,
         base_speed:data.stats[5].base_stat,
         evolve_level:-1,
-        move_list: [1,2,3,106,5,6,7,8,9,10],
+        move_list: move_list,
     };
     return pokemon;
 };
@@ -76,11 +82,6 @@ export const fetchPokemonEvolutionChainURL = async(info_url:string, pokemon_id:n
     const url:string = data.evolution_chain.url;
     return url;
 }
-
-/*type evolveInfo = {
-    level:number,
-    id:number
-}|null;*/
 
 export const fetchPokemonEvolveLevel = async(pokemon_id:number): Promise<number> =>{
     const info_url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon_id}/`;
