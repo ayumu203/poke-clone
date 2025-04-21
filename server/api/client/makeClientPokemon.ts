@@ -32,8 +32,8 @@ const p = [];
 for(let i = 0; i < count; i++){
     const teamPokemon:Team_pokemon = await team_pokemon_getter(player_id,i+1);
     const pokemon:Pokemon = await pokemon_getter(Number(teamPokemon?.pokemon_id));
-    const pkm = await makeClientPokemon(teamPokemon,pokemon);
-    await p.push(pkm);
+    const clientPokemon = await makeClientPokemon(teamPokemon,pokemon);
+    await p.push(clientPokemon);
 }
 return p;
 }

@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { Team_pokemon } from "../../types/team_pokemon.type";
+import { MAX_MOVE_COUNT } from "../../const/max_move_count.const";
 
 const prisma = new PrismaClient();
 
@@ -45,13 +46,21 @@ export async function team_pokemon_register(player_id:string,pokemon_id:number,i
         pokemon_id:pokemon_id,
     }});
     if(!exist){
+        const move_list_cp:number[] = pokemon!.move_list;
+        const move_list:number[] = [];
+        if(move_list_cp){
+            for(let i = 0; i < MAX_MOVE_COUNT; i++){
+                move_list.push(move_list_cp[i]);
+            }
+        }
+        console.log(move_list);
         await prisma.team_pokemon.create({data: {
             player_id:player_id,
             pokemon_index:index,
             pokemon_id:pokemon_id,
             level:5,
             exp:0,
-            move_list:pokemon?.move_list,
+            move_list:move_list,
         }})
     }
 }
