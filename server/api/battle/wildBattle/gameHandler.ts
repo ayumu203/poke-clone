@@ -6,33 +6,34 @@ import { handleAction } from "../handler/action";
 import { handleGameEnd } from "../handler/gameEnd";
 import { handleAilmentEffect, handleEnemyAilmentEffect } from "../handler/ailmentEffect";
 import { pushAllItem } from "../../../lib/data/pushAllItem";
+import { battle } from "../../../types/battle.type";
 
-export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],action:Action) => {
+export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],action:Action):Promise<battle> => {
     let endFlag = false;
-    let buffer:string[] = [];
+    let message:string[] = [];
     if(battlePokemons && wildPokemons && moves && action){
         const result = handleEnemyAilmentEffect(battlePokemons,wildPokemons,moves,endFlag);
         if (result?.text) {
-            buffer.push(result.text);
+            message.push(result.text);
         }
 
         if(result?.endFlag){
             endFlag = true;
-            return ({ battlePokemons,wildPokemons,moves,endFlag, buffer });
+            return ({ battlePokemons,wildPokemons,moves,endFlag, message });
         }
         const result2 = handleAilmentEffect(battlePokemons,wildPokemons,moves,endFlag);
         if (result2?.text) {
-            buffer.push(result2.text);
+            message.push(result2.text);
         }
         if(result2?.endFlag){
             endFlag = true;
-            return ({ battlePokemons,wildPokemons,moves,endFlag,buffer });
+            return ({ battlePokemons,wildPokemons,moves,endFlag,message });
         }
         
         const result3 = handleGameEnd(battlePokemons,wildPokemons);
         if(result3.endFlag){
             endFlag = true;
-            return ({ battlePokemons,wildPokemons,moves,endFlag,buffer });
+            return ({ battlePokemons,wildPokemons,moves,endFlag,message });
         }
 
         switch(action.action_id){
@@ -47,13 +48,13 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                         if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
                             const messages:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
                             if(messages.length > 0){
-                                buffer.push(...messages);
+                                message.push(...messages);
                             }
                         }
                         if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
                             const messages:string[] = handleAction(wildPokemons,battlePokemons,wildMove);
                             if(messages.length > 0){
-                                buffer.push(...messages);
+                                message.push(...messages);
                             }
                         }
                     }
@@ -61,13 +62,13 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                         if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
                             const messages:string[] = handleAction(wildPokemons,battlePokemons,wildMove);
                             if(messages.length > 0){
-                                buffer.push(...messages);
+                                message.push(...messages);
                             }
                         }
                         if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
                             const messages:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
                             if(messages.length > 0){
-                                buffer.push(...messages);
+                                message.push(...messages);
                             }
                         }
                         
@@ -78,14 +79,14 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                         if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
                             const messages:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
                             if(messages.length > 0){
-                                buffer.push(...messages);
+                                message.push(...messages);
                             }
 
                         }
                         if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
                             const messages = handleAction(wildPokemons,battlePokemons,wildMove);
                             if(messages.length > 0){
-                                buffer.push(...messages);
+                                message.push(...messages);
                             }
                         }
                     }
@@ -94,13 +95,13 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                             handleAction(wildPokemons,battlePokemons,wildMove);
                             const messages = handleAction(battlePokemons,wildPokemons,battleMove);
                             if(messages.length > 0){
-                                buffer.push(...messages);
+                                message.push(...messages);
                             }
                         }
                         if(battlePokemons[0].getCurrentHp() !== 0 && wildPokemons[0].getCurrentHp() !== 0){
                             const message:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
                             if(message.length > 0){
-                                buffer.push(...message);
+                                message.push(...message);
                             }
                         }
                     }
@@ -110,15 +111,15 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                     const result4 = handleGameEnd(battlePokemons,wildPokemons);
                     if(result4.endFlag){
                         endFlag = true;
-                        return ({ battlePokemons,wildPokemons,moves,endFlag,buffer });
+                        return ({ battlePokemons,wildPokemons,moves,endFlag,message });
                     }
                 }
                 break;
             case 2:
                 endFlag = true;
-                buffer.push(battlePokemons[0].name + "は逃げた");
+                message.push(battlePokemons[0].name + "は逃げた");
                 break;
         }
     }
-    return ({ battlePokemons,wildPokemons,moves,endFlag,buffer });
+    return ({ battlePokemons,wildPokemons,moves,endFlag,message });
 }

@@ -1,16 +1,26 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../Components/Header/Header';
 import Footer from '../Components/Footer/Footer';
 import { useTeamPokemonContext } from '../../../contexts/teamContext';
 import PokemonInfo from './PokemonInfo';
 import { useMoveContext } from '../../../contexts/moveContext';
 import Link from 'next/link';
+import { usePlayer } from '../../../contexts/playerContext';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+    const { player } = usePlayer();
     const { pokemons } = useTeamPokemonContext();
     const { moves } = useMoveContext();
+    const router = useRouter();
+
+      useEffect(() => {
+        if (!player || !pokemons || pokemons.length === 0) {
+          router.push("/Login");
+        }
+      }, [player,pokemons]);
 
     const idToName = (id:number):string =>{
         for(let i = 0; i < moves.length; i++){
@@ -32,7 +42,6 @@ export default function Home() {
         }
         return "";
     }
-    console.log("ポケモンデータ",pokemons);
     return (
     <>
         <Link className='text-1000' href={"/"}>もどる</Link>

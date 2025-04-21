@@ -62,7 +62,6 @@ export const fetchInitializedGameData = async (player_id:string):Promise<battle>
         battlePokemons,
         wildPokemons,
         moves,
-        turn:0,
         endFlag: false,
         message: [],
     }

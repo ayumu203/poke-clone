@@ -13,7 +13,7 @@ export const toBattlePokemonClass = async(battlePokemons:BattlePokemon[]) => {
         level:battlePokemons[i].level,
         exp:battlePokemons[i].exp,
         image:battlePokemons[i].image
-        });
+    });
         battlePokemon.setCurrentHp(battlePokemons[i].current_hp);
         battlePokemonList.push(battlePokemon);
         battlePokemon.getRank().setAttackRank(battlePokemons[i].rank.attack);
