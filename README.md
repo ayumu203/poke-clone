@@ -2,7 +2,7 @@
 
 ## 環境構築
 1. Docker環境のインストール
-1. >$ git clone git@github.com:ayumu203/poke-clon.git
+1. >$ git clone git@github.com:ayumu203/poke-clone.git
 1. supabaseの登録,gcpの設定を行う.(supabase googleログイン等で調べると情報が出てきます)
 1. /serverに.envを作成し以下の内容を貼り付ける
     > DATABASE_URL="postgresql://postgres:postgres@db:5432/ postgres?schema=public"
@@ -29,9 +29,10 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 ### ポケモンバトル(arm) | feature/server/battle
 * 野生ポケモンとの戦闘を実装していく
 * 「逃げる」・「つかまえる」の実装
-* 処理の大半はAPI化したのでここからはフロントを書いていく
+* 処理の大半はAPI化し,送信受信まで実装
+* UIをおよび処理のテストを行う
 
-### 再ロード時の処理(保留)
+### 再ロード時の処理(完了)
 * 画面が再ロードされたときログイン画面へ遷移するようにする
 
 ### 技データの不足点(完成後実装)
@@ -54,16 +55,14 @@ APIエンドポイント:https://pokeapi.co/api/v2/evolution-chain/{id}/
         {
             "pokemon_id":1,
             "name":"ビクティニ",
-            "move1_id":1,
-            "move2_id":2
+            "move_id":[1,4,7,9,20....]
         }
     ],
     [
         {
             "pokemon_id":2,
             "name":"ツタージャ",
-            "move1_id":2,
-            "move2_id":3,
+            "move_list":[1,2,3,4....]
         }
     ]
 }
