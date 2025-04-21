@@ -85,11 +85,6 @@ export const fetchPokemonEvolutionChainURL = async(info_url:string, pokemon_id:n
     return url;
 }
 
-/*type evolveInfo = {
-    level:number,
-    id:number
-}|null;*/
-
 export const fetchPokemonEvolveLevel = async(pokemon_id:number): Promise<number> =>{
     const info_url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon_id}/`;
     const evolution_chain_url = await fetchPokemonEvolutionChainURL(info_url, pokemon_id);

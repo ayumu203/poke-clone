@@ -25,7 +25,8 @@ export const fetchInitializedGameData = async (player_id:string):Promise<battle>
                     exp: team_pokemon.exp,
                     image: pokemon.back_image,
                 }));
-                for(let j = 0; j < team_pokemon.move_list.length; j++){
+                battlePokemons[i].setMoveList(team_pokemon.move_list);
+                for(let j = 0; j < MAX_MOVE_COUNT; j++){
                     const move_id = team_pokemon.move_list[j];
                     const move = await move_getter(Number(move_id));
                     if(!move)continue;
@@ -46,11 +47,11 @@ export const fetchInitializedGameData = async (player_id:string):Promise<battle>
         wildPokemons.push(new BattlePokemon({
             pokemon: pokemon,
             pokemon_index: i,
-            level: Math.floor(Math.random() * battlePokemons[0].getLevel()+3) + 1,
+            level: Math.floor(Math.random() * battlePokemons[0].getLevel() + 3) + 0,
             exp: 0,
             image: pokemon.front_image,
         }));
-        for(let j = 0; j < MAX_MOVE_COUNT; j++){
+        for(let j = 0; j <= MAX_MOVE_COUNT; j++){
             const move_id = pokemon.move_list[j];
             const move = await move_getter(Number(move_id));
             if(!move)continue;
