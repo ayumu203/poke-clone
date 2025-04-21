@@ -77,9 +77,14 @@ export const fetchPokemonEvolutionChainURL = async(info_url:string, pokemon_id:n
     return url;
 }
 
+/*type evolveInfo = {
+    level:number,
+    id:number
+}|null;*/
+
 export const fetchPokemonEvolveLevel = async(pokemon_id:number): Promise<number> =>{
-    const info_url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon_id}`;
-    const evolution_chain_url = await fetchPokemonEvolutinChainURL(info_url, pokemon_id);
+    const info_url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon_id}/`;
+    const evolution_chain_url = await fetchPokemonEvolutionChainURL(info_url, pokemon_id);
 
     try {
         const response = await fetch(evolution_chain_url);
@@ -90,19 +95,33 @@ export const fetchPokemonEvolveLevel = async(pokemon_id:number): Promise<number>
 
         let link = data.chain;
         let i = 1;
-        while(link.evolves_to.length !== 0){
-            if(link.species.url === info_url){
-                if(link.link.evolves_to[0].evolution_details.min_level !== null){
-                    const evolve_level = link.evolves_to[0].evolution_details.min_level;
+        while(isTrulyEmpty(link.evolves_to) == false){
+            if(link.species.url == info_url){
+                if(link.evolves_to[0].evolution_details[0].min_level !== null){
+                    const evolve_level = link.evolves_to[0].evolution_details[0].min_level;
+                    /*const url = link.evolves_to[0].species.replace(/\/+$/, "");
+                    const id = url.split("/").pop();
+                    const ret:evolveInfo = {level:evolve_level, id:id};
+                    return ret;*/
                     return evolve_level;
                 } else {
                     return i*20;
                 }
             }
             i++;
+            link = link.evolves_to[0];
         }
         return -1;
     } catch(error){
         throw error;
     }
 }
+
+function isTrulyEmpty(value: unknown): boolean {
+    if (Array.isArray(value)) {
+      return value.length === 0;
+    } else if (value && typeof value === "object") {
+      return Object.keys(value).length === 0;
+    }
+    return false; // null, undefined, 文字列、数値などは空とはみなさない
+  }

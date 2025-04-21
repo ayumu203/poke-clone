@@ -17,7 +17,7 @@ async function store_pokemon_info_from_api(){
     for(let i = begin; i <= end; i++){
       const pokemon:Pokemon = await fetchPokemonInfo(i);
       const name:string = await fetchPokemonName(i);
-      const evolve_level:number = await fetchPokemonEvolveLevel(i);
+      const level:number = await fetchPokemonEvolveLevel(i);
       if(pokemon){
         await prisma.pokemon.create({data:{
           pokemon_id:pokemon.pokemon_id,
@@ -31,7 +31,7 @@ async function store_pokemon_info_from_api(){
           base_special_attack:pokemon.base_special_attack,
           base_special_defence:pokemon.base_special_defence,
           base_speed:pokemon.base_speed,
-          evolve_level:evolve_level,
+          evolve_level:level,
           move_list:pokemon.move_list,
         }}); 
       }
