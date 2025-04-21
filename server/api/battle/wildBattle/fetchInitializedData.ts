@@ -25,7 +25,7 @@ export const fetchInitializedGameData = async (player_id:string):Promise<battle>
                     exp: team_pokemon.exp,
                     image: pokemon.back_image,
                 }));
-                battlePokemons[battlePokemons.length - 1].move_list = team_pokemon.move_list;
+                battlePokemons[i].setMoveList(team_pokemon.move_list);
                 for(let j = 0; j < MAX_MOVE_COUNT; j++){
                     const move_id = team_pokemon.move_list[j];
                     const move = await move_getter(Number(move_id));
@@ -51,7 +51,7 @@ export const fetchInitializedGameData = async (player_id:string):Promise<battle>
             exp: 0,
             image: pokemon.front_image,
         }));
-        for(let j = 1; j <= MAX_MOVE_COUNT; j++){
+        for(let j = 0; j <= MAX_MOVE_COUNT; j++){
             const move_id = pokemon.move_list[j];
             const move = await move_getter(Number(move_id));
             if(!move)continue;
