@@ -1,12 +1,15 @@
 import {PrismaClient} from "@prisma/client";
 import { Pokemon } from "../../../types/pokemon.types";
+
 import { fetchPokemonInfo, fetchPokemonName } from "./fetchData";
 import { POKEMON_ID_BEGIN, POKEMON_ID_END } from "../../../const/pokemon_id.const";
+
 
 const prisma = new PrismaClient()
 
 // イッシュ地方のポケモンのデータをAPIで取得し,データベースに保存する
 async function store_pokemon_info_from_api(){
+
   // pokemon_infoのすべてのレコードを削除する
   const del = await prisma.pokemon.deleteMany();
   let begin = POKEMON_ID_BEGIN;
