@@ -9,23 +9,23 @@ import { battle } from "../../../types/battle.type";
 
 export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:BattlePokemon[],moves:Move[],action:Action):Promise<battle> => {
     let endFlag = false;
-    let message:string[] = [];
+    let messages:string[] = [];
     if(battlePokemons && wildPokemons && moves && action){
         const result = handleEnemyAilmentEffect(battlePokemons,wildPokemons,moves,endFlag);
         if (result?.text) {
-            message.push(result.text);
+            messages.push(result.text);
         }
 
         const result2 = handleAilmentEffect(battlePokemons,wildPokemons,moves,endFlag);
         if (result2?.text) {
-            message.push(result2.text);
+            messages.push(result2.text);
         }
 
         const result3 = handleGameEnd(battlePokemons,wildPokemons);
         if(result3.endFlag){
             endFlag = true;
-            message.push(result3.text);
-            return ({ battlePokemons,wildPokemons,moves,endFlag,message });
+            messages.push(result3.text);
+            return ({ battlePokemons,wildPokemons,moves,endFlag,messages });
         }
 
         switch(action.action_id){
@@ -37,61 +37,63 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                     // 先制技の優先度を比較
                     if(battleMove.priority > wildMove.priority){
                         if(battlePokemons[0].getCurrentHp() > 0 && wildPokemons[0].getCurrentHp() > 0){
-                            const messages:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
-                            if(messages.length > 0){
-                                message.push(...messages);
+                            const text:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
+                            if(text.length > 0){
+                                messages.push(...text);
                             }
                         }
                         if(battlePokemons[0].getCurrentHp() > 0 && wildPokemons[0].getCurrentHp() > 0){
-                            const messages:string[] = handleAction(wildPokemons,battlePokemons,wildMove);
-                            if(messages.length > 0){
-                                message.push(...messages);
+                            const text:string[] = handleAction(wildPokemons,battlePokemons,wildMove);
+                            if(text.length > 0){
+                                messages.push(...text);
                             }
                         }
                     }
                     else if(battleMove.priority < wildMove.priority){
                         if(battlePokemons[0].getCurrentHp() > 0 && wildPokemons[0].getCurrentHp() > 0){
-                            const messages:string[] = handleAction(wildPokemons,battlePokemons,wildMove);
-                            if(messages.length > 0){
-                                message.push(...messages);
+                            const text:string[] = handleAction(wildPokemons,battlePokemons,wildMove);
+                            if(text.length > 0){
+                                messages.push(...text);
                             }
                         }
                         if(battlePokemons[0].getCurrentHp() > 0 && wildPokemons[0].getCurrentHp() > 0){
-                            const messages:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
-                            if(messages.length > 0){
-                                message.push(...messages);
+                            const text:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
+                            if(text.length > 0){
+                                messages.push(...text);
                             }
                         }   
                     }
                     // 先制技の優先度が同じ場合
                     // すばやさを比較
                     else if(battleMove.priority == wildMove.priority && battlePokemons[0].getSpeed() >= wildPokemons[0].getSpeed()){
+                        messages.push("すばやさを比較");
                         if(battlePokemons[0].getCurrentHp() > 0 && wildPokemons[0].getCurrentHp() > 0){
-                            const messages:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
-                            if(messages.length > 0){
-                                message.push(...messages);
+                            const text:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
+                            if(text.length > 0){
+                                messages.push(...text);
                             }
 
                         }
                         if(battlePokemons[0].getCurrentHp() > 0 && wildPokemons[0].getCurrentHp() > 0){
-                            const messages = handleAction(wildPokemons,battlePokemons,wildMove);
-                            if(messages.length > 0){
-                                message.push(...messages);
+
+                            const text = handleAction(wildPokemons,battlePokemons,wildMove);
+                            if(text.length > 0){
+                                messages.push(...text);
                             }
                         }
                     }
                     else if(battleMove.priority == wildMove.priority && battlePokemons[0].getSpeed() < wildPokemons[0].getSpeed()){
+                        messages.push("すばやさを比較2");
                         if(battlePokemons[0].getCurrentHp() > 0 && wildPokemons[0].getCurrentHp() > 0){
-                            handleAction(wildPokemons,battlePokemons,wildMove);
-                            const messages = handleAction(battlePokemons,wildPokemons,battleMove);
-                            if(messages.length > 0){
-                                message.push(...messages);
+                            const text:string[] = handleAction(wildPokemons,battlePokemons,wildMove);
+                            if(text.length > 0){
+                                messages.push(...text);
                             }
                         }
                         if(battlePokemons[0].getCurrentHp() > 0 && wildPokemons[0].getCurrentHp() > 0){
-                            const message:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
-                            if(message.length > 0){
-                                message.push(...message);
+                            const messages:string[] = handleAction(battlePokemons,wildPokemons,battleMove);
+                            if(messages.length > 0){
+                                messages.push(...messages);
                             }
                         }
                     }
@@ -99,18 +101,18 @@ export const gameHandler = async (battlePokemons:BattlePokemon[],wildPokemons:Ba
                     const result4 = handleGameEnd(battlePokemons,wildPokemons);
                     if(result4.endFlag){
                         endFlag = true;
-                        message.push(result4.text);
-                        return ({ battlePokemons,wildPokemons,moves,endFlag,message });
+                        messages.push(result4.text);
+                        return ({ battlePokemons,wildPokemons,moves,endFlag,messages });
                     }
-                    return ({ battlePokemons,wildPokemons,moves,endFlag,message });
+                    return ({ battlePokemons,wildPokemons,moves,endFlag,messages });
                 }
                 break;
             case 2:
                 endFlag = true;
-                message.push(battlePokemons[0].name + "は逃げた");
-                return ({ battlePokemons,wildPokemons,moves,endFlag,message });
+                messages.push(battlePokemons[0].name + "は逃げた");
+                return ({ battlePokemons,wildPokemons,moves,endFlag,messages });
                 break;
         }
     }
-    return ({ battlePokemons,wildPokemons,moves,endFlag,message });
+    return ({ battlePokemons,wildPokemons,moves,endFlag,messages });
 }

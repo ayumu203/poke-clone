@@ -26,6 +26,7 @@ export default function Page() {
     const [ command,setCommand ] = useState<string>("");
     const [ turn,setTurn ] = useState<number>(0);
     const [ index,setIndex ] = useState<number>(0);
+    const [ endFlag,setEndFlag ] = useState<boolean>(false);
  
     const [ battlePokemon,setBattlePokemon ] = useState<BattlePokemon | null>(null);
     const [ wildPokemon,setWildPokemon ] = useState<BattlePokemon | null>(null);
@@ -52,6 +53,7 @@ export default function Page() {
                     setWildPokemons(data.wildPokemons);
                     setWildPokemon(data.wildPokemons[0]);
                     setMoves(data.moves);
+                    setEndFlag(data.endFlag);
                     console.log(data);
                 }
                 catch (error) {
@@ -81,17 +83,26 @@ export default function Page() {
             }
             const data = await send_game_action(battlePokemons,wildPokemons,moves,action);
             console.log(data);
+            setBattlePokemons(data.battlePokemons);
+            setWildPokemons(data.wildPokemons);
+            setBattlePokemon(data.battlePokemons[0]);
+            setWildPokemon(data.wildPokemons[0]);
+            setMoves(data.moves);
+            setCommand("");
+            setEndFlag(data.endFlag);
         }
         if(data){
             handleGameDate();
             setCommand("");
         }
     },[turn]);
+
   return (
     <div>
         <Header />
         <main className="flex justify-center h-192 bg-[url(/003_wildBattle.png)] z-999">
         {!start && <button className='text-5xl text-white' onClick={()=>{setStart(true)}}>ゲーム開始</button> }
+        {endFlag && <button className='text-5xl text-white' onClick={()=>{router.push("/")}}>バトル終了</button>}
         {start && command === "" &&
             <div className='flex justify-left items-center flex-col'>
                 <button className='mt-10 text-3xl text-white' onClick={()=>{setCommand("fight")}}>

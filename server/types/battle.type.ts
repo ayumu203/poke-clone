@@ -6,5 +6,5 @@ export type battle = {
     wildPokemons: BattlePokemon[];
     moves: Move[];
     endFlag: boolean;
-    message: string[];
+    messages: string[];
 } | null;
