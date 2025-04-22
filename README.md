@@ -27,10 +27,9 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 ## 今後の実装
 
 ### ポケモンバトル(arm) | feature/server/battle
-* 野生ポケモンとの戦闘を実装していく
-* 「逃げる」・「つかまえる」の実装
-* 処理の大半はAPI化し,送信受信まで実装
-* UIをおよび処理のテストを行う
+* 「つかまえる」の実装
+* 相手ポケモンの技のランダム化
+* リザルト画面の作成
 
 ### 再ロード時の処理(完了)
 * 画面が再ロードされたときログイン画面へ遷移するようにする
@@ -44,6 +43,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 APIエンドポイント:https://pokeapi.co/api/v2/evolution-chain/{id}/
 
 ### ポケモンの技データの登録(arm)
+* <font color="orange">仕様を変更して実装</font>
 * 現在のシステムではすべてのポケモンにmove_idの1と2が割り当てられている.(はたくとからてチョップだったきがする)
 * そのため各ポケモンに割り当てる技データとpokemon_idをおよび理解のためpokemonのnameを記述したJSONファイルを自動生成できるようにする.
 * server/api/masterdata/Pokemon/registerMove.tsにて実装
