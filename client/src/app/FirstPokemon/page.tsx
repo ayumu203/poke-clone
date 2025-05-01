@@ -30,7 +30,7 @@ export default function Home() {
     useEffect(()=>{
         if(!player){
             // ユーザデータが存在しない=ログインしていな状態なのでログインページへ飛ばす
-            router.push("/login");
+            router.push("/Login");
             return ;
         }
 
