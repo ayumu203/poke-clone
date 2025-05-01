@@ -67,3 +67,16 @@ APIエンドポイント:https://pokeapi.co/api/v2/evolution-chain/{id}/
     ]
 }
 ``` 
+
+# 進捗
+## はじめてのぽけもん
+![image](https://github.com/user-attachments/assets/4c5adf0b-de03-4966-9f6e-d085c8cf7a1a)
+
+## ほーむ
+![image](https://github.com/user-attachments/assets/07ce6f5e-d18c-4d40-919b-31c705451f6a)
+
+## ポケモン情報
+![image](https://github.com/user-attachments/assets/1fe0ba53-8c97-4d7c-b59e-4f7e2b88bf6e)
+
+## ポケモンバトル
+![image](https://github.com/user-attachments/assets/5d12e7bf-f223-47e5-a2fa-141aa952c4e5)
